@@ -19,7 +19,7 @@ export function Products() {
               <p className="label">{product.label}</p>
               <h3>{product.title}</h3>
               <p>{product.description}</p>
-              <a className="text-link" href="#quote">View Products</a>
+              <a className="text-link" href="/quote">View Products</a>
             </div>
           </article>
         ))}

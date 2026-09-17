@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import type { ImageItem } from "@/lib/site-data";
 
 type SiteImageProps = ImageItem & {
@@ -12,7 +13,7 @@ export function SiteImage({
   alt,
   className,
   priority = false,
-  sizes = "(max-width: 860px) 100vw, 50vw"
+  sizes = "(max-width: 860px) 100vw, 50vw",
 }: SiteImageProps) {
   return (
     <Image
@@ -22,7 +23,12 @@ export function SiteImage({
       height={800}
       className={className}
       priority={priority}
+      unoptimized
       sizes={sizes}
+      style={{
+        width: "100%",
+        height: "auto",
+      }}
     />
   );
 }

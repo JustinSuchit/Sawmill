@@ -64,7 +64,7 @@ export function Gallery() {
               type="button"
               onClick={() => setLightbox({ src: item.src, alt: item.alt, title: item.title })}
             >
-              <Image src={item.src} alt={item.alt} width={1000} height={700} sizes="(max-width: 860px) 100vw, 25vw" />
+              <Image src={item.src} alt={item.alt} width={1000} height={700} sizes="(max-width: 860px) 100vw, 25vw" unoptimized />
               <span>{item.label}</span>
             </button>
           ))}
@@ -75,7 +75,7 @@ export function Gallery() {
         <button type="button" aria-label="Close gallery image" onClick={() => setLightbox(null)}>×</button>
         {lightbox && (
           <>
-            <Image src={lightbox.src} alt={lightbox.alt} width={1200} height={800} sizes="100vw" />
+            <Image src={lightbox.src} alt={lightbox.alt} width={1200} height={800} sizes="100vw" unoptimized />
             <p>{lightbox.title}</p>
           </>
         )}

@@ -14,7 +14,7 @@ export function Contact() {
         <div className="contact-actions">
           <a className="btn btn-dark" href="tel:+10000000000">Call Us</a>
           <a className="btn btn-whatsapp" href="https://wa.me/10000000000">WhatsApp Us</a>
-          <a className="btn btn-primary" href="#quote">Request a Quote</a>
+          <a className="btn btn-primary" href="/quote">Request a Quote</a>
         </div>
       </div>
       <div className="map-placeholder reveal" role="img" aria-label="Map placeholder for company location">

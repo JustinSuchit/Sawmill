@@ -1,88 +1,227 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  ["#products", "Products"],
-  ["#services", "Services"],
-  ["#about", "About"],
-  ["#gallery", "Projects / Gallery"],
-  ["#contact", "Contact"]
+  ["/", "Home"],
+  ["/products", "Tools"],
+  ["/lumber", "Lumber"],
+  ["/steel", "Steel"],
+  ["/services", "Services"],
+  ["/contact", "Contact"],
 ] as const;
 
 type Theme = "light" | "dark";
 
 function getPreferredTheme(): Theme {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") {
+    return "light";
+  }
+
   const stored = window.localStorage.getItem("industrial-theme");
-  if (stored === "dark" || stored === "light") return stored;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+  if (stored === "dark") {
+    return "dark";
+  }
+
+  if (stored === "light") {
+    return "light";
+  }
+
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return "dark";
+  }
+
+  return "light";
 }
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [theme, setThemeState] = useState<Theme>("light");
+  const [mounted, setMounted] = useState(false);
+
+  const pathname = usePathname();
 
   useEffect(() => {
-    const nextTheme = getPreferredTheme();
-    setThemeState(nextTheme);
-    document.documentElement.dataset.theme = nextTheme;
+    const preferredTheme = getPreferredTheme();
+
+    setThemeState(preferredTheme);
+    document.documentElement.dataset.theme = preferredTheme;
+    setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted) {
+      return;
+    }
+
+    document.documentElement.dataset.theme = theme;
+  }, [theme, mounted]);
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", menuOpen);
-    return () => document.body.classList.remove("menu-open");
+
+    return () => {
+      document.body.classList.remove("menu-open");
+    };
   }, [menuOpen]);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 12);
+    function handleScroll() {
+      if (window.scrollY > 12) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    }
+
     handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  function setTheme(nextTheme: Theme) {
+  function changeTheme() {
+    const nextTheme: Theme =
+      theme === "dark" ? "light" : "dark";
+
     setThemeState(nextTheme);
     document.documentElement.dataset.theme = nextTheme;
     window.localStorage.setItem("industrial-theme", nextTheme);
   }
 
+  function closeMenu() {
+    setMenuOpen(false);
+  }
+
+  let headerClassName = "site-header";
+
+  if (scrolled) {
+    headerClassName = "site-header scrolled";
+  }
+
+  let navMenuClassName = "nav-menu";
+
+  if (menuOpen) {
+    navMenuClassName = "nav-menu open";
+  }
+
+  let themeLabel = "Theme";
+  let themeAriaLabel = "Toggle theme";
+
+  if (mounted) {
+    if (theme === "dark") {
+      themeLabel = "Light";
+      themeAriaLabel = "Switch to light theme";
+    } else {
+      themeLabel = "Dark";
+      themeAriaLabel = "Switch to dark theme";
+    }
+  }
+
   return (
-    <header className={`site-header${scrolled ? " scrolled" : ""}`} data-header>
-      <nav className="nav-shell" aria-label="Main navigation">
-        <a className="brand" href="#home" aria-label="Home" onClick={() => setMenuOpen(false)}>
-          <span className="brand-mark" aria-hidden="true">TT</span>
+    <header
+      className={headerClassName}
+      data-header
+    >
+      <nav
+        className="nav-shell"
+        aria-label="Main navigation"
+      >
+        <Link
+          className="brand"
+          href="/"
+          aria-label="Home"
+          onClick={closeMenu}
+        >
+          <span
+            className="brand-mark"
+            aria-hidden="true"
+          >
+            TT
+          </span>
+
           <span>
             <strong>Company Name</strong>
-            <small>Materials &middot; Sawmill &middot; Haulage</small>
+            <small>
+              Materials · Sawmill · Haulage
+            </small>
           </span>
-        </a>
+        </Link>
+
         <button
           className="menu-toggle"
           type="button"
           aria-expanded={menuOpen}
           aria-controls="nav-menu"
-          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={
+            menuOpen
+              ? "Close menu"
+              : "Open menu"
+          }
+          onClick={() => {
+            setMenuOpen(!menuOpen);
+          }}
         >
-          <span></span><span></span><span></span>
-          <span className="sr-only">Open menu</span>
+          <span />
+          <span />
+          <span />
+
+          <span className="sr-only">
+            {menuOpen
+              ? "Close menu"
+              : "Open menu"}
+          </span>
         </button>
-        <div className={`nav-menu${menuOpen ? " open" : ""}`} id="nav-menu">
-          {navItems.map(([href, label]) => (
-            <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
-          ))}
+
+        <div
+          className={navMenuClassName}
+          id="nav-menu"
+        >
+          {navItems.map(
+            ([href, label]) => (
+              <Link
+                key={href}
+                href={href}
+                aria-current={
+                  pathname === href
+                    ? "page"
+                    : undefined
+                }
+                onClick={closeMenu}
+              >
+                {label}
+              </Link>
+            )
+          )}
+
           <button
             className="theme-toggle"
             type="button"
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label={themeAriaLabel}
+            onClick={changeTheme}
           >
-            {theme === "dark" ? "Light" : "Dark"}
+            {themeLabel}
           </button>
-          <a className="nav-cta" href="#quote" onClick={() => setMenuOpen(false)}>Request a Quote</a>
+
+          <Link
+            className="nav-cta"
+            href="/quote"
+            onClick={closeMenu}
+          >
+            Request a Quote
+          </Link>
         </div>
       </nav>
     </header>
   );
 }
+

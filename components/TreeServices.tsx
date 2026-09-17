@@ -24,7 +24,7 @@ export function TreeServices() {
           <li><strong>3.</strong> Hauling</li>
           <li><strong>4.</strong> Site Cleanup</li>
         </ol>
-        <a className="btn btn-primary" href="#quote">Request a Tree Service Quote</a>
+        <a className="btn btn-primary" href="/quote">Request a Tree Service Quote</a>
       </div>
     </section>
   );

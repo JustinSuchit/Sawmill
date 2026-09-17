@@ -7,10 +7,12 @@ const initialForm = {
   company: "",
   phone: "",
   email: "",
+  requestType: "",
   service: "",
   quantity: "",
   location: "",
   date: "",
+  specifications: "",
   message: ""
 };
 
@@ -35,7 +37,7 @@ export function QuoteForm() {
     setLoading(true);
     setSuccess(false);
 
-    const requiredFields: FieldName[] = ["name", "phone", "email", "service", "location", "message"];
+    const requiredFields: FieldName[] = ["name", "phone", "email", "requestType", "service", "location", "message"];
     const nextErrors: Partial<Record<FieldName, boolean>> = {};
     const emptyField = requiredFields.find((field) => !form[field].trim());
 
@@ -79,15 +81,22 @@ export function QuoteForm() {
           <label>Company <input name="company" autoComplete="organization" value={form.company} onChange={(event) => updateField("company", event.target.value)} /></label>
           <label>Phone <input name="phone" inputMode="tel" autoComplete="tel" required value={form.phone} aria-invalid={errors.phone || undefined} className={errors.phone ? "error" : undefined} onChange={(event) => updateField("phone", event.target.value)} /></label>
           <label>Email <input name="email" type="email" autoComplete="email" required value={form.email} aria-invalid={errors.email || undefined} className={errors.email ? "error" : undefined} onChange={(event) => updateField("email", event.target.value)} /></label>
-          <label>Service/Product
+          <label>Request Type
+            <select name="requestType" required value={form.requestType} aria-invalid={errors.requestType || undefined} className={errors.requestType ? "error" : undefined} onChange={(event) => updateField("requestType", event.target.value)}>
+              <option value="">Select one</option>
+              <option>Tools</option><option>Lumber</option><option>Steel</option><option>Haulage</option><option>Tree Removal</option><option>Sawmill Services</option><option>Other</option>
+            </select>
+          </label>
+          <label>Product/Service
             <select name="service" required value={form.service} aria-invalid={errors.service || undefined} className={errors.service ? "error" : undefined} onChange={(event) => updateField("service", event.target.value)}>
               <option value="">Select one</option>
-              <option>Lumber</option><option>Steel</option><option>Tools & Hardware</option><option>Sawmill</option><option>Haulage</option><option>Tree Cutting</option><option>Tree Removal</option><option>Land Clearing</option><option>Material Delivery</option><option>Other</option>
+              <option>Tools & Hardware</option><option>Lumber</option><option>Steel</option><option>Haulage</option><option>Tree Removal</option><option>Sawmill Services</option><option>Material Delivery</option><option>Other</option>
             </select>
           </label>
           <label>Quantity <input name="quantity" placeholder="Approximate quantity or load size" value={form.quantity} onChange={(event) => updateField("quantity", event.target.value)} /></label>
           <label>Location <input name="location" autoComplete="street-address" required value={form.location} aria-invalid={errors.location || undefined} className={errors.location ? "error" : undefined} onChange={(event) => updateField("location", event.target.value)} /></label>
           <label>Preferred Date <input name="date" type="date" value={form.date} onChange={(event) => updateField("date", event.target.value)} /></label>
+          <label className="wide">Specifications <textarea name="specifications" rows={4} placeholder="Sizes, material type, application, delivery needs or service details" value={form.specifications} onChange={(event) => updateField("specifications", event.target.value)}></textarea></label>
           <label className="wide">Message <textarea name="message" rows={5} required value={form.message} aria-invalid={errors.message || undefined} className={errors.message ? "error" : undefined} onChange={(event) => updateField("message", event.target.value)}></textarea></label>
           <label className="wide file-field">File Upload / Photos <input name="files" type="file" multiple accept="image/*,.pdf" /></label>
         </div>

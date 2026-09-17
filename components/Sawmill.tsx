@@ -12,7 +12,7 @@ export function Sawmill() {
             Sawmill capabilities help convert timber into usable lumber and custom-cut material for construction,
             repairs, site work and special orders. Replace the representative imagery here with company-owned sawmill photos when available.
           </p>
-          <a className="btn btn-primary" href="#quote">Ask About Custom Cutting</a>
+          <a className="btn btn-primary" href="/quote">Ask About Custom Cutting</a>
         </div>
         <div className="image-stack reveal" aria-label="Representative sawmill imagery">
           {sawmillImages.map((image) => (

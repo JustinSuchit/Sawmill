@@ -16,7 +16,7 @@ export function Services() {
             <div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <a href="#quote">Request a Quote</a>
+              <a href="/quote">Request a Quote</a>
             </div>
           </article>
         ))}

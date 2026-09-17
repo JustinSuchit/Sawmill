@@ -24,8 +24,8 @@ export function Process() {
   return (
     <section className="section process" aria-labelledby="process-title">
       <div className="section-head reveal">
-        <p className="eyebrow">Quote Process</p>
-        <h2 id="process-title">Simple Steps. Clear Next Move.</h2>
+        <p className="eyebrow">How It Works</p>
+        <h2 id="process-title">How It Works.</h2>
       </div>
       <ol className="timeline">
         {processItems.map(([number, title, description]) => (

@@ -17,7 +17,7 @@ export function Haulage() {
         <div>
           <h3>Built for supply jobs and site logistics.</h3>
           <p>Coordinate material movement with the same team handling supply, cutting or clearing.</p>
-          <a className="btn btn-dark" href="#quote">Request Haulage Quote</a>
+          <a className="btn btn-dark" href="/quote">Request Haulage Quote</a>
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 export function RevealProvider() {
   useEffect(() => {
+    document.documentElement.classList.add("reveal-ready");
     const items = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
 
     if (!("IntersectionObserver" in window)) {
@@ -21,7 +22,10 @@ export function RevealProvider() {
     }, { threshold: 0.12 });
 
     items.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      document.documentElement.classList.remove("reveal-ready");
+    };
   }, []);
 
   return null;

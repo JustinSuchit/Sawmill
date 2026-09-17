@@ -1,37 +1,22 @@
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
-import { Gallery } from "@/components/Gallery";
-import { Haulage } from "@/components/Haulage";
+import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
-import { Navbar } from "@/components/Navbar";
-import { Process, WhyChooseUs } from "@/components/Process";
-import { Products } from "@/components/Products";
-import { QuoteForm } from "@/components/QuoteForm";
-import { RevealProvider } from "@/components/RevealProvider";
-import { Sawmill } from "@/components/Sawmill";
-import { Services } from "@/components/Services";
-import { TreeServices } from "@/components/TreeServices";
+import { WhyChooseUs } from "@/components/Process";
+import { QuoteCTA } from "@/components/QuoteCTA";
+
+export const metadata: Metadata = {
+  title: "Industrial Supply & Services | Company Name",
+  description: "Tools, lumber, steel, haulage, tree removal and sawmill services for projects in Trinidad & Tobago."
+};
 
 export default function Home() {
   return (
-    <>
-      <RevealProvider />
-      <a className="skip-link" href="#main">Skip to content</a>
-      <Navbar />
-      <main id="main">
-        <Hero />
-        <Products />
-        <Sawmill />
-        <Services />
-        <TreeServices />
-        <Haulage />
-        <WhyChooseUs />
-        <Gallery />
-        <Process />
-        <QuoteForm />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <main id="main">
+      <Hero />
+      <WhyChooseUs />
+      <QuoteCTA
+        title="Ready to Price the Job?"
+        copy="Send the product, service, quantity, location or specification details and the team can prepare the next step."
+      />
+    </main>
   );
 }
