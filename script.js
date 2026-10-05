@@ -9,8 +9,7 @@ const preferredDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 function setTheme(theme) {
   root.dataset.theme = theme;
   localStorage.setItem("industrial-theme", theme);
-  themeToggle.textContent = theme === "dark" ? "Light" : "Dark";
-  themeToggle.setAttribute("aria-label", `Switch to ${theme === "dark" ? "light" : "dark"} theme`);
+  themeToggle.setAttribute("aria-checked", String(theme === "dark"));
 }
 
 setTheme(storedTheme || (preferredDark ? "dark" : "light"));

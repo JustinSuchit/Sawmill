@@ -41,13 +41,13 @@ export type ServiceDetail = ImageItem & {
 };
 
 export const heroImage =
-  "https://www.mcf-bois.com/content/uploads/2024/10/photo-chargement-camion.jpg";
+  "/images/lumber/logging/hero_img.png";
 
 export const toolImage =
   "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=1400&q=80";
 
 export const lumberImage =
-  "https://i.insider.com/60deef604a93e200191299a7?width=1400";
+  "/images/lumber/products/stacked-hardwood-lumber.jpg";
 
 export const steelImage =
   "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1400&q=80";
@@ -56,270 +56,305 @@ export const treeRemovalImage =
   "https://boomrooierijweijtmans.nl/storage/app/uploads/public/645/621/c2d/645621c2d1541835105532.jpg";
 
 export const sawmillImage =
-  "https://darex.rs/uploads/documents/empire_plugin/12.jpg";
+  "/images/lumber/sawmill/sawmill-woodmizer.jpg";
 
 export const homeCapabilities: CategoryCard[] = [
   {
     label: "Tools",
     title: "Professional tools and hardware.",
-    description: "Professional tools and hardware for construction, maintenance and everyday jobs.",
+    description:
+      "Professional tools and hardware for construction, maintenance and everyday jobs.",
     href: "/products",
     cta: "Explore Tools",
     src: toolImage,
-    alt: "Hardware tools arranged for construction work"
+    alt: "Hardware tools arranged for construction work",
   },
   {
     label: "Lumber",
     title: "Lumber and timber products.",
-    description: "A range of lumber and timber products for construction and general applications.",
+    description:
+      "A range of lumber and timber products for construction and general applications.",
     href: "/lumber",
     cta: "Explore Lumber",
     src: lumberImage,
-    alt: "Representative stacks of logs and finished lumber in a sawmill yard"
+    alt: "Stacks of locally processed hardwood lumber",
   },
   {
     label: "Steel",
-    title: "Steel for demanding applications.",
-    description: "Steel products available in different sizes, forms and applications.",
+    title: "Concrete sleepers.",
+    description:
+      "Concrete sleepers available with sale and rental options.",
     href: "/steel",
     cta: "Explore Steel",
     src: steelImage,
-    alt: "Steel pipes and industrial metal stock"
+    alt: "Concrete sleepers",
   },
   {
     label: "Haulage",
     title: "Transportation and delivery.",
-    description: "Transportation and delivery services for materials, equipment and loads.",
+    description:
+      "Transportation and delivery services for materials, equipment and loads.",
     href: "/services#haulage",
     cta: "View Haulage",
-    src: heroImage,
-    alt: "Representative flatbed truck loaded with timber and construction materials"
+    src: "/images/lumber/delivery/lumber-delivery-truck.jpg",
+    alt: "Lumber loaded onto delivery truck",
   },
   {
     label: "Tree Removal",
     title: "Tree cutting and clearing.",
-    description: "Tree cutting, removal and property clearing services.",
+    description:
+      "Tree cutting, removal and property clearing services.",
     href: "/services#tree-removal",
     cta: "View Tree Removal",
     src: treeRemovalImage,
-    alt: "Representative tree removal operation with safety equipment"
+    alt: "Representative tree removal operation with safety equipment",
   },
   {
     label: "Sawmill",
-    title: "Timber processing and custom cuts.",
-    description: "Timber processing and custom sawmill services.",
+    title: "Sawmill and blade services.",
+    description:
+      "Bandsaw resharpening and blade setting services.",
     href: "/services#sawmill-services",
     cta: "View Sawmill",
     src: sawmillImage,
-    alt: "Representative sawmill and log transport operation"
-  }
+    alt: "Wood-Mizer sawmill processing timber",
+  },
 ];
 
 export const toolCategories: CategoryCard[] = [
   {
-    label: "Tools",
-    title: "Hand Tools",
-    description: "Category placeholder for hammers, pliers, screwdrivers, wrenches, saws, measuring tools and levels.",
+    label: "Bandsaw",
+    title: "Bandsaw Blades",
+    description:
+      "Bandsaw blades available for Wood-Mizer and wood bandsaw applications.",
     href: "/quote",
-    cta: "View Category",
-    src: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative hand tools on a workbench",
-    examples: ["Hammers", "Pliers", "Screwdrivers", "Wrenches", "Saws", "Measuring tools", "Levels"]
-  },
-  {
-    label: "Tools",
-    title: "Power Tools",
-    description: "Category placeholder for drills, grinders, saws, sanders and impact tools.",
-    href: "/quote",
-    cta: "View Category",
+    cta: "Request a Quote",
     src: toolImage,
-    alt: "Representative power tools and hardware",
-    examples: ["Drills", "Grinders", "Saws", "Sanders", "Impact tools"]
+    alt: "Bandsaw blades for sawmill operations",
+    examples: [
+      "Wood-Mizer",
+      "Wideband 4-inch",
+      "Wideband 5-inch",
+      "Wideband 6-inch",
+      "Wood bandsaw 80-inch",
+      "Wood bandsaw 93.5-inch",
+    ],
   },
   {
-    label: "Tools",
-    title: "Cutting & Blades",
-    description: "Category placeholder for saw blades, cutting discs, drill bits and blades.",
+    label: "Sharpening",
+    title: "Sharpening Stones",
+    description:
+      "Sharpening stones and wheels for sawmill blade maintenance.",
     href: "/quote",
-    cta: "View Category",
-    src: "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative cutting tools and blades",
-    examples: ["Saw blades", "Cutting discs", "Drill bits", "Blades"]
+    cta: "Request a Quote",
+    src: toolImage,
+    alt: "Sharpening wheel for sawmill blades",
+    examples: [
+      "Ripper 37 7° 5-inch BN Sharpening Wheel",
+      "Tyrolit 10-inch",
+      "Tyrolit",
+    ],
   },
   {
-    label: "Hardware",
-    title: "Construction Hardware",
-    description: "Category placeholder for fasteners, bolts, nuts, screws, anchors and general hardware.",
+    label: "Welding",
+    title: "Welding Electrodes",
+    description:
+      "Bridge Brand welding electrodes available in 10 gauge and 12 gauge.",
     href: "/quote",
-    cta: "View Category",
-    src: "https://images.unsplash.com/photo-1609205807107-e8ec2120f9de?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative construction hardware and fasteners",
-    examples: ["Fasteners", "Bolts", "Nuts", "Screws", "Anchors", "General hardware"]
+    cta: "Request a Quote",
+    src: toolImage,
+    alt: "Welding electrodes",
+    specs:
+      "AWS A5.1 E6013. Certification: 150 2560-A-E35 0RA12.",
+    examples: [
+      "10 Gauge - 11 lb box - $80.00",
+      "10 Gauge - 44 lb case - $300.00",
+      "12 Gauge - 11 lb box - $75.00",
+      "12 Gauge - 44 lb case - $280.00",
+    ],
   },
   {
-    label: "Safety",
-    title: "Safety Equipment",
-    description: "Category placeholder for gloves, safety glasses, helmets and protective equipment.",
+    label: "Nailing",
+    title: "Nail Guns & Coil Nails",
+    description:
+      "Nail guns and coil nails for construction and woodworking applications.",
     href: "/quote",
-    cta: "View Category",
-    src: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative protective equipment on an industrial site",
-    examples: ["Gloves", "Safety glasses", "Helmets", "Protective equipment"]
-  }
+    cta: "Request a Quote",
+    src: toolImage,
+    alt: "Nail gun and coil nails",
+    examples: [
+      "CN70 Nail Gun",
+      "CN100 Nail Gun",
+      "2-inch Coil Nails",
+      "2.25-inch Coil Nails",
+      "2.5-inch Coil Nails",
+    ],
+  },
 ];
 
 export const lumberCategories: CategoryCard[] = [
   {
     label: "Lumber",
     title: "Dimensional Lumber",
-    description: "Standard-sized boards used for general construction and framing.",
+    description:
+      "Standard and custom-sized lumber available for a range of construction and woodworking requirements.",
     href: "/quote",
-    cta: "View Options",
+    cta: "Request a Quote",
     src: lumberImage,
-    alt: "Representative dimensional lumber stacked for construction"
+    alt: "Stacks of locally processed hardwood lumber",
+    specs: "Custom and standard sizes available.",
   },
   {
     label: "Lumber",
     title: "Treated Lumber",
-    description: "Wood treated for increased resistance to moisture, decay and outdoor conditions.",
+    description:
+      "Lumber available with pest treatment and heat treatment options.",
     href: "/quote",
-    cta: "View Options",
+    cta: "Request a Quote",
     src: "https://images.unsplash.com/photo-1601063476271-a159c71ab0b3?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative treated lumber boards"
+    alt: "Treated lumber boards",
+    specs: "Pest treatment and heat treatment available.",
   },
   {
-    label: "Timber",
-    title: "Hardwood",
-    description: "Dense and durable timber suitable for applications requiring strength and longevity.",
+    label: "Hardwood",
+    title: "Hardwood Lumber",
+    description:
+      "Hardwood lumber available for applications requiring dense and durable timber.",
     href: "/quote",
-    cta: "View Options",
+    cta: "Request a Quote",
     src: "https://images.unsplash.com/photo-1520637736862-4d197d17c23a?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative hardwood timber texture"
+    alt: "Hardwood lumber",
+    specs:
+      "Starting at $16.00 per square foot. Availability varies by wood type.",
+    examples: [
+      "Olivier",
+      "Tapana",
+      "Roble",
+      "Apamate",
+    ],
   },
   {
-    label: "Timber",
-    title: "Softwood",
-    description: "Versatile timber commonly used for construction and general applications.",
+    label: "Softwood",
+    title: "Softwood Lumber",
+    description:
+      "Utility-grade lumber suitable for pallets, dunnage, crating, boxes, boxing boards and formwork.",
     href: "/quote",
-    cta: "View Options",
+    cta: "Request a Quote",
     src: "https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative softwood planks"
+    alt: "Softwood lumber boards",
+    specs: "Starting at $6.00 per square foot.",
+    examples: [
+      "Hogplum",
+      "Cajuca",
+      "Sandbox",
+      "Milkwood",
+      "Immortelle",
+      "Mahoe",
+    ],
   },
   {
-    label: "Timber",
-    title: "Timber",
-    description: "Larger structural wood sections for construction and heavy-duty applications.",
+    label: "Semi-Hardwood",
+    title: "Semi-Hardwood Lumber",
+    description:
+      "Medium-density utility hardwoods offering flexibility, high shock resistance and good machinability.",
     href: "/quote",
-    cta: "View Options",
-    src: "https://images.fordaq.com/newsletter/452730/IMG_8070.jpeg",
-    alt: "Representative timber yard with logs"
+    cta: "Request a Quote",
+    src: lumberImage,
+    alt: "Stacks of locally processed hardwood lumber",
+    specs:
+      "Starting at $9.00 per square foot. Availability varies by wood type.",
+    examples: [
+      "Pois Doux",
+      "Tantakayo",
+      "Juniper",
+      "Blackheart",
+      "Balata",
+      "Locust",
+      "Mousarra",
+      "Crappo",
+    ],
   },
   {
-    label: "Boards",
-    title: "Boards & Planks",
-    description: "Various board and plank sizes for construction, fabrication and general use.",
+    label: "Imported Lumber",
+    title: "Southern Yellow Pine",
+    description:
+      "Imported Southern Yellow Pine available in a range of commonly used dimensions.",
     href: "/quote",
-    cta: "View Options",
-    src: "https://s.yimg.com/ny/api/res/1.2/cGv3bKdNUY54ksTn.ZNpcQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTI0MDA7aD0xNTkwO2NmPXdlYnA-/https%3A/media.zenfs.com/es/efe.es/6bf7c384ef9eb233c692633426257ae3",
-    alt: "Representative boards and planks at a lumber yard"
-  }
+    cta: "Request a Quote",
+    src: lumberImage,
+    alt: "Stacks of locally processed hardwood lumber",
+    specs: "Starting at $13.00 per square foot.",
+    examples: [
+      "1x12",
+      "1x4",
+      "1x3",
+      "2x2",
+      "2x4",
+      "2x6",
+      "1x6",
+      "1x8",
+    ],
+  },
+  {
+    label: "Mouldings & Dressed Lumber",
+    title: "Mouldings & Dressed Lumber",
+    description:
+      "Professional lumber dressing and moulding services, including custom designs.",
+    href: "/quote",
+    cta: "Request a Quote",
+    src: lumberImage,
+    alt: "Stacks of locally processed hardwood lumber",
+    specs:
+      "Dressing starts at $1.50 per square foot. Crown mouldings, base mouldings, premium decking and flooring available.",
+    examples: [
+      "Lumber dressing",
+      "Crown mouldings",
+      "Base mouldings",
+      "Premium decking",
+      "Flooring",
+      "Custom designs",
+    ],
+  },
 ];
 
 export const steelCategories: CategoryCard[] = [
   {
     label: "Steel",
-    title: "Steel Bars",
-    description: "Bars used in construction, reinforcement and fabrication.",
+    title: "Concrete Sleepers",
+    description:
+      "Concrete sleepers available with sale and rental options.",
     href: "/quote",
-    cta: "Request Quote",
-    specs: "Specifications placeholder: size, length, finish and quantity can be added once verified inventory data is available.",
+    cta: "Request a Quote",
     src: steelImage,
-    alt: "Representative steel bars and metal stock"
+    alt: "Concrete sleepers",
+    specs: "Sale and rental options available.",
   },
-  {
-    label: "Steel",
-    title: "Structural Steel",
-    description: "Steel products used for structural construction and fabrication.",
-    href: "/quote",
-    cta: "Request Quote",
-    specs: "Specifications placeholder: profile, grade, length and quantity can be added later.",
-    src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative structural steel on a construction site"
-  },
-  {
-    label: "Steel",
-    title: "Steel Sheets",
-    description: "Flat steel products for fabrication and construction applications.",
-    href: "/quote",
-    cta: "Request Quote",
-    specs: "Specifications placeholder: thickness, finish, sheet size and quantity.",
-    src: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative metal sheets in an industrial setting"
-  },
-  {
-    label: "Steel",
-    title: "Steel Plates",
-    description: "Heavy-duty steel products for structural and industrial applications.",
-    href: "/quote",
-    cta: "Request Quote",
-    specs: "Specifications placeholder: thickness, dimensions and application details.",
-    src: "https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative heavy steel plates"
-  },
-  {
-    label: "Steel",
-    title: "Steel Pipes",
-    description: "Steel piping for construction, fabrication and other applications.",
-    href: "/quote",
-    cta: "Request Quote",
-    specs: "Specifications placeholder: diameter, wall thickness, length and quantity.",
-    src: "https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative steel pipes stacked in a yard"
-  },
-  {
-    label: "Steel",
-    title: "Steel Sections",
-    description: "Different structural steel profiles and sections.",
-    href: "/quote",
-    cta: "Request Quote",
-    specs: "Specifications placeholder: profile type, length, finish and quantity.",
-    src: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative steel profiles and sections"
-  },
-  {
-    label: "Steel",
-    title: "Reinforcement Steel",
-    description: "Steel products used for reinforced concrete construction.",
-    href: "/quote",
-    cta: "Request Quote",
-    specs: "Specifications placeholder: diameter, length, bend requirements and quantity.",
-    src: "https://images.unsplash.com/photo-1565608438257-fac3c27beb36?auto=format&fit=crop&w=1100&q=80",
-    alt: "Representative reinforcement steel on a construction project"
-  }
 ];
 
 export const serviceDetails: ServiceDetail[] = [
   {
     eyebrow: "Haulage & Delivery",
-    title: "Reliable transportation for materials, equipment and project loads.",
-    description: "Coordinate movement for materials, equipment and commercial deliveries without inventing fleet capacity, truck size or service radius.",
+    title: "Transportation for materials, equipment and project loads.",
+    description:
+      "Transportation and delivery support for materials, equipment and commercial loads.",
     href: "/quote",
     cta: "Request Haulage Quote",
-    src: heroImage,
-    alt: "Representative truck carrying timber materials",
+    src: "/images/lumber/delivery/lumber-delivery-truck.jpg",
+    alt: "Lumber loaded onto delivery truck",
     items: [
       "Lumber transportation",
       "Steel transportation",
       "Construction material delivery",
       "Equipment transportation",
       "Timber hauling",
-      "Commercial deliveries"
-    ]
+      "Commercial deliveries",
+    ],
   },
   {
     eyebrow: "Tree Removal",
-    title: "Professional tree cutting and removal for property-clearing requirements.",
-    description: "Tree service support for residential, commercial and property-clearing work, with hauling connected to the removal process.",
+    title: "Tree cutting and removal for property-clearing requirements.",
+    description:
+      "Tree cutting, removal and property clearing support.",
     href: "/quote",
     cta: "Request Tree Removal Quote",
     src: treeRemovalImage,
@@ -330,155 +365,282 @@ export const serviceDetails: ServiceDetail[] = [
       "Branch removal",
       "Property clearing",
       "Site cleanup",
-      "Large tree removal"
-    ]
+      "Large tree removal",
+    ],
   },
   {
     eyebrow: "Sawmill Services",
-    title: "Transforming timber into usable lumber.",
-    description: "Sawmill services can help process timber into usable lumber for construction, fabrication and general applications.",
+    title: "Bandsaw resharpening and blade setting.",
+    description:
+      "Bandsaw resharpening and blade setting services for qualifying blades.",
     href: "/quote",
-    cta: "Ask About Custom Cutting",
+    cta: "Request Sawmill Service",
     src: sawmillImage,
-    alt: "Representative sawmill and timber processing operation",
+    alt: "Wood-Mizer sawmill processing timber",
     items: [
-      "Timber processing",
-      "Lumber cutting",
-      "Custom cutting",
-      "Timber preparation",
-      "Sawn timber"
-    ]
-  }
+      "Bandsaw resharpening",
+      "Bandsaw blade setting",
+      "7° blades",
+      "Blades up to 2 inches",
+    ],
+  },
 ];
 
 export const products: Product[] = [
   {
     label: "Lumber & Timber",
-    title: "Dimensional lumber, boards and custom-cut timber.",
+    title: "Lumber, timber and wood products.",
     description:
-      "Construction wood, treated lumber and timber materials ready for builders, carpenters and property work.",
-    src: "https://i.insider.com/60deef604a93e200191299a7?width=1100",
-    alt: "Representative stacks of logs and finished lumber in a sawmill yard"
+      "Dimensional lumber, treated lumber, hardwood, softwood, semi-hardwood, Southern Yellow Pine, mouldings and dressed lumber.",
+    src: lumberImage,
+    alt: "Stacks of locally processed hardwood lumber",
   },
   {
     label: "Steel",
-    title: "Steel bars, sheets, pipes and structural materials.",
+    title: "Concrete Sleepers",
     description:
-      "Steel and related hardware for construction, fabrication, repairs and industrial supply needs.",
-    src: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1100&q=80",
-    alt: "Steel pipes and industrial metal stock"
+      "Concrete sleepers available with sale and rental options.",
+    src: steelImage,
+    alt: "Concrete sleepers",
   },
   {
-    label: "Tools & Hardware",
-    title: "Hand tools, power tools, fasteners and accessories.",
+    label: "Tools & Sawmill Supplies",
+    title: "Bandsaw blades, sharpening stones and workshop supplies.",
     description:
-      "Everyday jobsite essentials for contractors, tradespeople, homeowners and maintenance teams.",
-    src: "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=1100&q=80",
-    alt: "Hardware tools arranged for construction work"
-  }
+      "Wood-Mizer and wood bandsaw blades, sharpening stones, welding electrodes, nail guns and coil nails.",
+    src: toolImage,
+    alt: "Sawmill tools and supplies",
+  },
 ];
 
 export const services: Service[] = [
   {
-    title: "Sawmill Services",
-    description: "Timber processing and custom cutting for practical building needs.",
-    src: "https://darex.rs/uploads/documents/empire_plugin/12.jpg",
-    alt: "Representative sawmill and log transport operation"
+    title: "Bandsaw Resharpening",
+    description:
+      "Bandsaw resharpening for qualifying blades.",
+    src: sawmillImage,
+    alt: "Wood-Mizer sawmill processing timber",
+  },
+  {
+    title: "Bandsaw Blade Setting",
+    description:
+      "Bandsaw blade setting for 7° blades and blades up to 2 inches.",
+    src: sawmillImage,
+    alt: "Wood-Mizer sawmill processing timber",
   },
   {
     title: "Haulage",
-    description: "Reliable movement of materials, equipment and commercial loads.",
-    src: heroImage,
-    alt: "Representative flatbed trailer loaded with timber"
+    description:
+      "Transportation and delivery support for materials, equipment and commercial loads.",
+    src: "/images/lumber/delivery/lumber-haulage-truck.jpg",
+    alt: "Flatbed truck carrying processed lumber",
   },
   {
     title: "Tree Cutting",
-    description: "Professional cutting for residential, commercial and industrial properties.",
+    description:
+      "Tree cutting services for property-clearing requirements.",
     src: "https://assets.weforum.org/article/image/Bo0Qek_KruQYGA-MF9w0MPhRwMvS1aCUtTdLk-TSyFo.JPG",
-    alt: "Representative worker using a chainsaw for tree cutting"
+    alt: "Representative worker using a chainsaw for tree cutting",
   },
   {
     title: "Tree Removal",
-    description: "Removal of unwanted, fallen or hazardous trees with hauling support.",
-    src: "https://boomrooierijweijtmans.nl/storage/app/uploads/public/645/621/c2d/645621c2d1541835105532.jpg",
-    alt: "Representative tree removal operation with safety equipment"
+    description:
+      "Tree removal and property-clearing services.",
+    src: treeRemovalImage,
+    alt: "Representative tree removal operation with safety equipment",
   },
   {
     title: "Land Clearing",
-    description: "Clearing trees, branches and vegetation before construction or property use.",
+    description:
+      "Property clearing support associated with tree and vegetation removal.",
     src: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1100&q=80",
-    alt: "Heavy equipment preparing land for development"
+    alt: "Heavy equipment preparing land for development",
   },
-  {
-    title: "Material Delivery",
-    description: "Delivery for lumber, steel, tools and other construction supplies.",
-    src: "https://cdn.realdania.dk/media/fakjc4km/traeelementer-paa-lastbil-1.jpg",
-    alt: "Representative construction materials delivered on a truck"
-  }
 ];
 
 export const galleryItems: GalleryItem[] = [
   {
     category: "lumber",
-    title: "Placeholder: Lumber & Sawmill",
-    label: "Placeholder - Lumber & Sawmill",
+    title: "Lumber & Sawmill",
+    label: "Lumber & Sawmill",
     className: "tall",
-    src: "https://s.yimg.com/ny/api/res/1.2/cGv3bKdNUY54ksTn.ZNpcQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTI0MDA7aD0xNTkwO2NmPXdlYnA-/https%3A/media.zenfs.com/es/efe.es/6bf7c384ef9eb233c692633426257ae3",
-    alt: "Placeholder lumber and sawmill category"
+    src: lumberImage,
+    alt: "Stacks of locally processed hardwood lumber",
   },
   {
     category: "materials",
-    title: "Placeholder: Construction Materials",
-    label: "Placeholder - Construction Materials",
-    src: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=900&q=80",
-    alt: "Placeholder construction material category"
+    title: "Construction Materials",
+    label: "Construction Materials",
+    src: steelImage,
+    alt: "Construction material category",
   },
   {
     category: "haulage",
-    title: "Placeholder: Haulage",
-    label: "Placeholder - Haulage",
+    title: "Haulage",
+    label: "Haulage",
     className: "wide",
-    src: "https://cdn.realdania.dk/media/fakjc4km/traeelementer-paa-lastbil-1.jpg",
-    alt: "Placeholder haulage category"
+    src: heroImage,
+    alt: "Logs stored at a lumber logging yard",
   },
   {
     category: "tree",
-    title: "Placeholder: Tree Services",
-    label: "Placeholder - Tree Services",
-    src: "https://boomrooierijweijtmans.nl/storage/app/uploads/public/645/621/c2d/645621c2d1541835105532.jpg",
-    alt: "Placeholder tree services category"
+    title: "Tree Services",
+    label: "Tree Services",
+    src: treeRemovalImage,
+    alt: "Tree cutting and removal services",
   },
   {
     category: "clearing",
-    title: "Placeholder: Land Clearing",
-    label: "Placeholder - Land Clearing",
+    title: "Land Clearing",
+    label: "Land Clearing",
     src: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=900&q=80",
-    alt: "Placeholder land clearing category"
-  }
+    alt: "Land clearing operations",
+  },
 ];
 
 export const sawmillImages: ImageItem[] = [
   {
-    src: "https://s.yimg.com/ny/api/res/1.2/cGv3bKdNUY54ksTn.ZNpcQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTI0MDA7aD0xNTkwO2NmPXdlYnA-/https%3A/media.zenfs.com/es/efe.es/6bf7c384ef9eb233c692633426257ae3",
-    alt: "Representative tropical lumber yard with logs and cut planks"
+    src: sawmillImage,
+    alt: "Wood-Mizer sawmill processing timber",
   },
   {
-    src: "https://images.fordaq.com/newsletter/452730/IMG_8070.jpeg",
-    alt: "Representative log truck at a timber processing yard"
-  }
+    src: lumberImage,
+    alt: "Stacks of locally processed hardwood lumber",
+  },
 ];
 
+export const woodTypes = {
+  softwood: [
+    "Hogplum",
+    "Cajuca",
+    "Sandbox",
+    "Milkwood",
+    "Immortelle",
+    "Mahoe",
+  ],
+  semiHardwood: [
+    "Pois Doux",
+    "Tantakayo",
+    "Juniper",
+    "Blackheart",
+    "Balata",
+    "Locust",
+    "Mousarra",
+    "Crappo",
+  ],
+  hardwood: [
+    "Olivier",
+    "Tapana",
+    "Roble",
+    "Apamate",
+  ],
+  furnitureGrade: [
+    "Teak",
+    "Cedar",
+    "Cypre",
+    "Samoan",
+    "Redwood",
+  ],
+} as const;
+
+export const softwoodApplications = [
+  {
+    title: "Pallets",
+    description:
+      "Suitable for block and stringer disposable pallets.",
+    woodTypes: ["Mahoe", "Cajuca", "Milkwood"],
+  },
+  {
+    title: "Dunnage",
+    description:
+      "Suitable for dunnage applications.",
+    woodTypes: ["Mahoe", "Cajuca", "Milkwood"],
+  },
+  {
+    title: "Crating & Boxes",
+    description:
+      "Suitable for crating and boxes.",
+    woodTypes: ["Sandbox", "Hogplum", "Immortelle"],
+  },
+  {
+    title: "Boxing Boards & Formwork",
+    description:
+      "Suitable for boxing boards and formwork.",
+    woodTypes: ["Sandbox", "Hogplum", "Immortelle"],
+  },
+] as const;
+
+export const semiHardwoodInfo = {
+  startingPrice: "$9.00 per square foot",
+  description:
+    "Medium-density utility hardwoods offering flexibility, high shock resistance and good machinability.",
+  benefits: [
+    "Flexibility",
+    "High shock resistance",
+    "Good machinability",
+    "Does not dull blades fast",
+  ],
+  applications: [
+    "Pallets",
+    "Dunnage",
+    "Crating",
+    "Structural purposes (light duty)",
+  ],
+  additionalBenefit:
+    "A replacement for imported pine at lower cost while being more durable.",
+  treatmentOptions: [
+    "Heat treatment",
+    "Chemical treatment",
+  ],
+} as const;
+
 export const whyItems = [
-  ["01", "Quality Materials", "Reliable products for construction and industrial applications."],
-  ["02", "Reliable Service", "Focused on dependable delivery, communication and execution."],
-  ["03", "One Company. Multiple Capabilities.", "Materials, cutting, hauling and removal services under one roof."],
-  ["04", "Local Expertise", "Built for customers and site conditions across Trinidad & Tobago."],
-  ["05", "Experienced Team", "Professional handling of materials, equipment and field services."]
+  [
+    "01",
+    "Quality Materials",
+    "Reliable products for construction and industrial applications.",
+  ],
+  [
+    "02",
+    "Reliable Service",
+    "Focused on dependable delivery, communication and execution.",
+  ],
+  [
+    "03",
+    "One Company. Multiple Capabilities.",
+    "Materials, cutting, hauling and removal services under one roof.",
+  ],
+  [
+    "04",
+    "Local Expertise",
+    "Built for customers and site conditions across Trinidad & Tobago.",
+  ],
+  [
+    "05",
+    "Experienced Team",
+    "Professional handling of materials, equipment and field services.",
+  ],
 ] as const;
 
 export const processItems = [
-  ["01", "Tell Us What You Need", "Submit material, quantity, location or service details."],
-  ["02", "We Assess the Requirement", "Our team reviews the job, quantity, location or specifications."],
-  ["03", "Receive Your Quote", "We provide pricing and availability."],
-  ["04", "We Get the Job Done", "Materials are supplied, transported or the service is completed."]
+  [
+    "01",
+    "Tell Us What You Need",
+    "Submit material, quantity, location or service details.",
+  ],
+  [
+    "02",
+    "We Assess the Requirement",
+    "Our team reviews the job, quantity, location or specifications.",
+  ],
+  [
+    "03",
+    "Receive Your Quote",
+    "We provide pricing and availability.",
+  ],
+  [
+    "04",
+    "We Get the Job Done",
+    "Materials are supplied, transported or the service is completed.",
+  ],
 ] as const;

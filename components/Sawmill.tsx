@@ -10,7 +10,7 @@ export function Sawmill() {
           <h2 id="sawmill-title">From Timber to Finished Lumber.</h2>
           <p>
             Sawmill capabilities help convert timber into usable lumber and custom-cut material for construction,
-            repairs, site work and special orders. Replace the representative imagery here with company-owned sawmill photos when available.
+            repairs, site work and special orders using the same real operation shown across the site.
           </p>
           <a className="btn btn-primary" href="/quote">Ask About Custom Cutting</a>
         </div>

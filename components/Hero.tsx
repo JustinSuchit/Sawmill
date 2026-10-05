@@ -9,16 +9,17 @@ export function Hero() {
         <picture>
           <SiteImage
             src={heroImage}
-            alt="Representative flatbed truck loaded with timber and construction materials"
+            alt="Logging yard with harvested timber and forestry equipment"
             priority
             sizes="100vw"
+            cover
           />
         </picture>
         <div className="hero-overlay"></div>
         <div className="hero-content reveal">
           <p className="eyebrow">Trinidad & Tobago materials and field services</p>
-          <h1 id="hero-title">Built for the Job.</h1>
-          <p className="hero-line">Quality lumber, steel and tools backed by reliable haulage, sawmill and tree removal services.</p>
+          <h1 id="hero-title">From Forest to Finished Timber.</h1>
+          <p className="hero-line">Quality lumber, sawmilling, haulage and timber services for residential, commercial and industrial needs.</p>
           <p className="hero-copy">
             Practical industrial supply and site services for contractors, maintenance teams, property owners and project work across Trinidad & Tobago.
           </p>
@@ -27,7 +28,6 @@ export function Hero() {
             <a className="btn btn-secondary" href="/products">Explore Our Products</a>
           </div>
         </div>
-        <a className="scroll-indicator" href="#capabilities" aria-label="Scroll to capabilities"><span></span></a>
       </section>
 
       <section className="capability-bar" id="capabilities" aria-label="Core capabilities">

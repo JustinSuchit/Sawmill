@@ -48,9 +48,16 @@ export function Navbar() {
   useEffect(() => {
     const preferredTheme = getPreferredTheme();
 
-    setThemeState(preferredTheme);
     document.documentElement.dataset.theme = preferredTheme;
-    setMounted(true);
+
+    const mountTimer = window.setTimeout(() => {
+      setThemeState(preferredTheme);
+      setMounted(true);
+    }, 0);
+
+    return () => {
+      window.clearTimeout(mountTimer);
+    };
   }, []);
 
   useEffect(() => {
@@ -114,18 +121,7 @@ export function Navbar() {
     navMenuClassName = "nav-menu open";
   }
 
-  let themeLabel = "Theme";
-  let themeAriaLabel = "Toggle theme";
-
-  if (mounted) {
-    if (theme === "dark") {
-      themeLabel = "Light";
-      themeAriaLabel = "Switch to light theme";
-    } else {
-      themeLabel = "Dark";
-      themeAriaLabel = "Switch to dark theme";
-    }
-  }
+  const darkModeOn = mounted && theme === "dark";
 
   return (
     <header
@@ -146,11 +142,11 @@ export function Navbar() {
             className="brand-mark"
             aria-hidden="true"
           >
-            TT
+            LUMBER 
           </span>
 
           <span>
-            <strong>Company Name</strong>
+            <strong>Jagmohan Co</strong>
             <small>
               Materials · Sawmill · Haulage
             </small>
@@ -203,14 +199,21 @@ export function Navbar() {
             )
           )}
 
-          <button
-            className="theme-toggle"
-            type="button"
-            aria-label={themeAriaLabel}
-            onClick={changeTheme}
-          >
-            {themeLabel}
-          </button>
+          <div className="theme-toggle-wrap">
+            <span className="theme-toggle-label">Theme</span>
+            <button
+              className="theme-toggle"
+              type="button"
+              role="switch"
+              aria-checked={darkModeOn}
+              aria-label="Dark mode"
+              onClick={changeTheme}
+            >
+              <span className="theme-switch" aria-hidden="true">
+                <span className="theme-switch-thumb" />
+              </span>
+            </button>
+          </div>
 
           <Link
             className="nav-cta"
@@ -224,4 +227,3 @@ export function Navbar() {
     </header>
   );
 }
-

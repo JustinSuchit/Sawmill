@@ -6,6 +6,7 @@ type SiteImageProps = ImageItem & {
   className?: string;
   priority?: boolean;
   sizes?: string;
+  cover?: boolean;
 };
 
 export function SiteImage({
@@ -14,6 +15,7 @@ export function SiteImage({
   className,
   priority = false,
   sizes = "(max-width: 860px) 100vw, 50vw",
+  cover = false,
 }: SiteImageProps) {
   return (
     <Image
@@ -27,7 +29,7 @@ export function SiteImage({
       sizes={sizes}
       style={{
         width: "100%",
-        height: "auto",
+        height: cover ? "100%" : "auto",
       }}
     />
   );

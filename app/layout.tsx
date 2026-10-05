@@ -121,11 +121,6 @@ export default function RootLayout({
           href="https://assets.weforum.org"
         />
 
-        <link
-          rel="preconnect"
-          href="https://www.mcf-bois.com"
-        />
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

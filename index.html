@@ -79,7 +79,12 @@
           <a href="#about">About</a>
           <a href="#gallery">Projects / Gallery</a>
           <a href="#contact">Contact</a>
-          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">Light</button>
+          <div class="theme-toggle-wrap">
+            <span class="theme-toggle-label">Theme</span>
+            <button class="theme-toggle" type="button" data-theme-toggle role="switch" aria-checked="false" aria-label="Dark mode">
+              <span class="theme-switch" aria-hidden="true"><span class="theme-switch-thumb"></span></span>
+            </button>
+          </div>
           <a class="nav-cta" href="#quote">Request a Quote</a>
         </div>
       </nav>
@@ -110,7 +115,6 @@
             <a class="btn btn-secondary" href="#services">Explore Our Services</a>
           </div>
         </div>
-        <a class="scroll-indicator" href="#capabilities" aria-label="Scroll to capabilities"><span></span></a>
       </section>
 
       <section class="capability-bar" id="capabilities" aria-label="Core capabilities">

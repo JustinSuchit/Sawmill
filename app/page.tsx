@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import { HomeLumberStory } from "@/components/HomeLumberStory";
 import { WhyChooseUs } from "@/components/Process";
 import { QuoteCTA } from "@/components/QuoteCTA";
 
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <main id="main">
       <Hero />
+      <HomeLumberStory />
       <WhyChooseUs />
       <QuoteCTA
         title="Ready to Price the Job?"
