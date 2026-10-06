@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Process } from "@/components/Process";
 import { QuoteCTA } from "@/components/QuoteCTA";
 import { ServiceDetailSections } from "@/components/ServiceDetailSections";
+import { ServiceMediaSections } from "@/components/ServiceMediaSections";
 import { heroImage } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function ServicesPage() {
         image={heroImage}
       />
       <ServiceDetailSections />
+      <ServiceMediaSections />
       <Process />
       <QuoteCTA
         title="Need a Service Quote?"

@@ -42,18 +42,18 @@ export type ServiceDetail = ImageItem & {
 
 export const heroImage =
   "/images/lumber/logging/hero_img.png";
-
+  
 export const toolImage =
   "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=1400&q=80";
 
 export const lumberImage =
-  "/images/lumber/products/stacked-hardwood-lumber.jpg";
+  "/images/lumber/products/stacked-processed-lumber.jpg";
 
 export const steelImage =
-  "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1400&q=80";
+  "/images/lumber/sleepers/concrete-sleeper-storage-yard.jpg";
 
 export const treeRemovalImage =
-  "https://boomrooierijweijtmans.nl/storage/app/uploads/public/645/621/c2d/645621c2d1541835105532.jpg";
+  "/images/lumber/logging/forest-clearing-log-loading.jpg";
 
 export const sawmillImage =
   "/images/lumber/sawmill/sawmill-woodmizer.jpg";
@@ -77,7 +77,7 @@ export const homeCapabilities: CategoryCard[] = [
     href: "/lumber",
     cta: "Explore Lumber",
     src: lumberImage,
-    alt: "Stacks of locally processed hardwood lumber",
+    alt: "Stacks of processed lumber",
   },
   {
     label: "Steel",
@@ -87,7 +87,7 @@ export const homeCapabilities: CategoryCard[] = [
     href: "/steel",
     cta: "Explore Steel",
     src: steelImage,
-    alt: "Concrete sleepers",
+    alt: "Concrete sleepers stored in industrial yard",
   },
   {
     label: "Haulage",
@@ -96,8 +96,8 @@ export const homeCapabilities: CategoryCard[] = [
       "Transportation and delivery services for materials, equipment and loads.",
     href: "/services#haulage",
     cta: "View Haulage",
-    src: "/images/lumber/delivery/lumber-delivery-truck.jpg",
-    alt: "Lumber loaded onto delivery truck",
+    src: "/images/lumber/delivery/lumber-delivery-fleet.jpg",
+    alt: "Loaded lumber delivery trucks",
   },
   {
     label: "Tree Removal",
@@ -107,7 +107,7 @@ export const homeCapabilities: CategoryCard[] = [
     href: "/services#tree-removal",
     cta: "View Tree Removal",
     src: treeRemovalImage,
-    alt: "Representative tree removal operation with safety equipment",
+    alt: "Log loading during forest clearing operation",
   },
   {
     label: "Sawmill",
@@ -129,8 +129,8 @@ export const toolCategories: CategoryCard[] = [
       "Bandsaw blades available for Wood-Mizer and wood bandsaw applications.",
     href: "/quote",
     cta: "Request a Quote",
-    src: toolImage,
-    alt: "Bandsaw blades for sawmill operations",
+    src: "/images/bandsaw img.webp",
+    alt: "Bandsaw blade product image",
     examples: [
       "Wood-Mizer",
       "Wideband 4-inch",
@@ -162,7 +162,7 @@ export const toolCategories: CategoryCard[] = [
       "Bridge Brand welding electrodes available in 10 gauge and 12 gauge.",
     href: "/quote",
     cta: "Request a Quote",
-    src: toolImage,
+    src: "/images/welding electrodes.jpg",
     alt: "Welding electrodes",
     specs:
       "AWS A5.1 E6013. Certification: 150 2560-A-E35 0RA12.",
@@ -201,7 +201,7 @@ export const lumberCategories: CategoryCard[] = [
     href: "/quote",
     cta: "Request a Quote",
     src: lumberImage,
-    alt: "Stacks of locally processed hardwood lumber",
+    alt: "Stacks of processed lumber",
     specs: "Custom and standard sizes available.",
   },
   {
@@ -240,8 +240,8 @@ export const lumberCategories: CategoryCard[] = [
       "Utility-grade lumber suitable for pallets, dunnage, crating, boxes, boxing boards and formwork.",
     href: "/quote",
     cta: "Request a Quote",
-    src: "https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?auto=format&fit=crop&w=1100&q=80",
-    alt: "Softwood lumber boards",
+    src: "/images/lumber/pallets/four-way-entry-timber-pallet-top-view.jpg",
+    alt: "Top view of four-way entry timber pallet",
     specs: "Starting at $6.00 per square foot.",
     examples: [
       "Hogplum",
@@ -260,7 +260,7 @@ export const lumberCategories: CategoryCard[] = [
     href: "/quote",
     cta: "Request a Quote",
     src: lumberImage,
-    alt: "Stacks of locally processed hardwood lumber",
+    alt: "Stacks of processed lumber",
     specs:
       "Starting at $9.00 per square foot. Availability varies by wood type.",
     examples: [
@@ -282,7 +282,7 @@ export const lumberCategories: CategoryCard[] = [
     href: "/quote",
     cta: "Request a Quote",
     src: lumberImage,
-    alt: "Stacks of locally processed hardwood lumber",
+    alt: "Stacks of processed lumber",
     specs: "Starting at $13.00 per square foot.",
     examples: [
       "1x12",
@@ -303,7 +303,7 @@ export const lumberCategories: CategoryCard[] = [
     href: "/quote",
     cta: "Request a Quote",
     src: lumberImage,
-    alt: "Stacks of locally processed hardwood lumber",
+    alt: "Stacks of processed lumber",
     specs:
       "Dressing starts at $1.50 per square foot. Crown mouldings, base mouldings, premium decking and flooring available.",
     examples: [
@@ -326,7 +326,7 @@ export const steelCategories: CategoryCard[] = [
     href: "/quote",
     cta: "Request a Quote",
     src: steelImage,
-    alt: "Concrete sleepers",
+    alt: "Concrete sleepers stored in industrial yard",
     specs: "Sale and rental options available.",
   },
 ];
@@ -339,8 +339,8 @@ export const serviceDetails: ServiceDetail[] = [
       "Transportation and delivery support for materials, equipment and commercial loads.",
     href: "/quote",
     cta: "Request Haulage Quote",
-    src: "/images/lumber/delivery/lumber-delivery-truck.jpg",
-    alt: "Lumber loaded onto delivery truck",
+    src: "/images/lumber/delivery/lumber-delivery-fleet.jpg",
+    alt: "Loaded lumber delivery trucks",
     items: [
       "Lumber transportation",
       "Steel transportation",
@@ -358,7 +358,7 @@ export const serviceDetails: ServiceDetail[] = [
     href: "/quote",
     cta: "Request Tree Removal Quote",
     src: treeRemovalImage,
-    alt: "Representative tree removal operation with safety equipment",
+    alt: "Log loading during forest clearing operation",
     items: [
       "Tree cutting",
       "Tree removal",
@@ -393,7 +393,7 @@ export const products: Product[] = [
     description:
       "Dimensional lumber, treated lumber, hardwood, softwood, semi-hardwood, Southern Yellow Pine, mouldings and dressed lumber.",
     src: lumberImage,
-    alt: "Stacks of locally processed hardwood lumber",
+    alt: "Stacks of processed lumber",
   },
   {
     label: "Steel",
@@ -401,7 +401,7 @@ export const products: Product[] = [
     description:
       "Concrete sleepers available with sale and rental options.",
     src: steelImage,
-    alt: "Concrete sleepers",
+    alt: "Concrete sleepers stored in industrial yard",
   },
   {
     label: "Tools & Sawmill Supplies",
@@ -432,29 +432,29 @@ export const services: Service[] = [
     title: "Haulage",
     description:
       "Transportation and delivery support for materials, equipment and commercial loads.",
-    src: "/images/lumber/delivery/lumber-haulage-truck.jpg",
-    alt: "Flatbed truck carrying processed lumber",
+    src: "/images/lumber/delivery/lumber-delivery-fleet.jpg",
+    alt: "Loaded lumber delivery trucks",
   },
   {
     title: "Tree Cutting",
     description:
       "Tree cutting services for property-clearing requirements.",
-    src: "https://assets.weforum.org/article/image/Bo0Qek_KruQYGA-MF9w0MPhRwMvS1aCUtTdLk-TSyFo.JPG",
-    alt: "Representative worker using a chainsaw for tree cutting",
+    src: treeRemovalImage,
+    alt: "Log loading during forest clearing operation",
   },
   {
     title: "Tree Removal",
     description:
       "Tree removal and property-clearing services.",
     src: treeRemovalImage,
-    alt: "Representative tree removal operation with safety equipment",
+    alt: "Log loading during forest clearing operation",
   },
   {
     title: "Land Clearing",
     description:
       "Property clearing support associated with tree and vegetation removal.",
-    src: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1100&q=80",
-    alt: "Heavy equipment preparing land for development",
+    src: treeRemovalImage,
+    alt: "Log loading during forest clearing operation",
   },
 ];
 
@@ -465,36 +465,36 @@ export const galleryItems: GalleryItem[] = [
     label: "Lumber & Sawmill",
     className: "tall",
     src: lumberImage,
-    alt: "Stacks of locally processed hardwood lumber",
+    alt: "Stacks of processed lumber",
   },
   {
     category: "materials",
     title: "Construction Materials",
     label: "Construction Materials",
     src: steelImage,
-    alt: "Construction material category",
+    alt: "Concrete sleepers stored in industrial yard",
   },
   {
     category: "haulage",
     title: "Haulage",
     label: "Haulage",
     className: "wide",
-    src: heroImage,
-    alt: "Logs stored at a lumber logging yard",
+    src: "/images/lumber/delivery/lumber-delivery-fleet.jpg",
+    alt: "Loaded lumber delivery trucks",
   },
   {
     category: "tree",
     title: "Tree Services",
     label: "Tree Services",
     src: treeRemovalImage,
-    alt: "Tree cutting and removal services",
+    alt: "Log loading during forest clearing operation",
   },
   {
     category: "clearing",
     title: "Land Clearing",
     label: "Land Clearing",
-    src: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=900&q=80",
-    alt: "Land clearing operations",
+    src: treeRemovalImage,
+    alt: "Log loading during forest clearing operation",
   },
 ];
 
@@ -505,7 +505,7 @@ export const sawmillImages: ImageItem[] = [
   },
   {
     src: lumberImage,
-    alt: "Stacks of locally processed hardwood lumber",
+    alt: "Stacks of processed lumber",
   },
 ];
 

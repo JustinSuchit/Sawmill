@@ -3,6 +3,7 @@ import { CategoryGrid } from "@/components/CategoryGrid";
 import { PageHeader } from "@/components/PageHeader";
 import { QuoteCTA } from "@/components/QuoteCTA";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SleeperFeature } from "@/components/SleeperFeature";
 import { steelCategories, steelImage } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function SteelPage() {
         />
         <CategoryGrid items={steelCategories} variant="steel" />
       </section>
+      <SleeperFeature />
       <QuoteCTA
         eyebrow="Haulage"
         title="Need Steel Delivered to Your Site?"

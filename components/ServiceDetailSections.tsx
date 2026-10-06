@@ -25,7 +25,7 @@ export function ServiceDetailSections() {
           key={service.eyebrow}
         >
           <div className="service-feature-media reveal">
-            <SiteImage src={service.src} alt={service.alt} sizes="(max-width: 860px) 100vw, 50vw" />
+            <SiteImage src={service.src} alt={service.alt} sizes="(max-width: 860px) 100vw, 50vw" cover />
           </div>
           <div className="service-feature-copy reveal">
             <p className="eyebrow">{service.eyebrow}</p>

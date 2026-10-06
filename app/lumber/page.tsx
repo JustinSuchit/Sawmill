@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CategoryGrid } from "@/components/CategoryGrid";
+import { LumberMediaSections } from "@/components/LumberMediaSections";
 import { PageHeader } from "@/components/PageHeader";
 import { QuoteCTA } from "@/components/QuoteCTA";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -28,6 +29,7 @@ export default function LumberPage() {
         />
         <CategoryGrid items={lumberCategories} />
       </section>
+      <LumberMediaSections />
       <QuoteCTA
         eyebrow="Sawmill Connection"
         title="Need Lumber Cut to Size?"

@@ -23,13 +23,25 @@ const lumberMedia = {
     src: "/images/lumber/logging/forest-log-extraction.jpg",
     alt: "Large timber logs extracted from forest site",
   },
+  forestClearingLogLoading: {
+    src: "/images/lumber/logging/forest-clearing-log-loading.jpg",
+    alt: "Log loading during forest clearing operation",
+  },
   stackedHardwoodLumber: {
     src: "/images/lumber/products/stacked-hardwood-lumber.jpg",
     alt: "Stacks of locally processed hardwood lumber",
   },
+  stackedProcessedLumber: {
+    src: "/images/lumber/products/stacked-processed-lumber.jpg",
+    alt: "Stacks of processed lumber",
+  },
   sawmillWoodmizer: {
     src: "/images/lumber/sawmill/sawmill-woodmizer.jpg",
     alt: "Wood-Mizer sawmill processing timber",
+  },
+  lumberDeliveryFleet: {
+    src: "/images/lumber/delivery/lumber-delivery-fleet.jpg",
+    alt: "Loaded lumber delivery trucks",
   },
   lumberHaulageTruck: {
     src: "/images/lumber/delivery/lumber-haulage-truck.jpg",
@@ -42,6 +54,14 @@ const lumberMedia = {
   lumberDryingYard: {
     src: "/images/lumber/products/lumber-drying-yard.jpg",
     alt: "Processed lumber arranged for storage and drying",
+  },
+  exportMarkedTimberBundles: {
+    src: "/images/lumber/export/export-marked-timber-bundles.jpg",
+    alt: "Marked timber bundles prepared for export",
+  },
+  concreteSleeperStorageYard: {
+    src: "/images/lumber/sleepers/concrete-sleeper-storage-yard.jpg",
+    alt: "Concrete sleepers stored in industrial yard",
   },
 };
 
@@ -70,23 +90,23 @@ const processSteps = [
     title: "Prepare",
     description:
       "Timber is sorted, stacked and prepared to meet project requirements.",
-    image: lumberMedia.stackedHardwoodLumber,
+    image: lumberMedia.stackedProcessedLumber,
   },
   {
     number: "05",
     title: "Deliver",
     description:
       "Finished lumber can be transported directly to project or customer locations.",
-    image: lumberMedia.lumberDeliveryTruck,
+    image: lumberMedia.lumberDeliveryFleet,
   },
 ];
 
 const galleryItems = [
-  lumberMedia.forestrySkidder,
-  lumberMedia.harvestedTimberYard,
-  lumberMedia.lumberHaulageTruck,
+  lumberMedia.forestClearingLogLoading,
+  lumberMedia.exportMarkedTimberBundles,
+  lumberMedia.concreteSleeperStorageYard,
   lumberMedia.lumberDryingYard,
-  lumberMedia.forestLogExtraction,
+  lumberMedia.lumberHaulageTruck,
 ];
 
 export function HomeLumberStory() {
@@ -108,7 +128,7 @@ export function HomeLumberStory() {
               muted
               playsInline
               preload="metadata"
-              poster={lumberMedia.stackedHardwoodLumber.src}
+              poster={lumberMedia.stackedProcessedLumber.src}
             >
               <source
                 src="/videos/lumber/timber-measurement-video.mp4"
@@ -153,8 +173,8 @@ export function HomeLumberStory() {
         <div className="product-feature-shell">
           <div className="product-feature-media reveal">
             <SiteImage
-              src={lumberMedia.stackedHardwoodLumber.src}
-              alt={lumberMedia.stackedHardwoodLumber.alt}
+              src={lumberMedia.stackedProcessedLumber.src}
+              alt={lumberMedia.stackedProcessedLumber.alt}
               sizes="(max-width: 860px) 100vw, 56vw"
               cover
             />
@@ -208,8 +228,8 @@ export function HomeLumberStory() {
         <div className="delivery-shell">
           <div className="delivery-media reveal">
             <SiteImage
-              src={lumberMedia.lumberDeliveryTruck.src}
-              alt={lumberMedia.lumberDeliveryTruck.alt}
+              src={lumberMedia.lumberDeliveryFleet.src}
+              alt={lumberMedia.lumberDeliveryFleet.alt}
               sizes="(max-width: 860px) 100vw, 52vw"
               cover
             />
@@ -254,8 +274,8 @@ export function HomeLumberStory() {
               cover
             />
             <SiteImage
-              src={lumberMedia.harvestedTimberYard.src}
-              alt={lumberMedia.harvestedTimberYard.alt}
+              src={lumberMedia.forestClearingLogLoading.src}
+              alt={lumberMedia.forestClearingLogLoading.alt}
               sizes="(max-width: 860px) 100vw, 24vw"
               cover
             />
