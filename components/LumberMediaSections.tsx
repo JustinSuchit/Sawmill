@@ -12,6 +12,10 @@ const palletImages = [
     src: "/images/lumber/pallets/four-way-entry-timber-pallet-side-view.jpg",
     alt: "Side view of four-way entry timber pallet",
   },
+  {
+    src: "/images/lumber/pallets/pallet delivery.jpg",
+    alt: "Timber pallets stacked on a delivery truck",
+  },
 ];
 
 const exportImages = [
@@ -90,13 +94,13 @@ export function LumberMediaSections() {
               Request Pallet Quote
             </Link>
           </div>
-          <div className="media-duo-grid media-duo-grid-single reveal">
+          <div className="media-duo-grid reveal">
             {palletImages.map((image) => (
               <SiteImage
                 key={image.src}
                 src={image.src}
                 alt={image.alt}
-                sizes="(max-width: 860px) 100vw, 56vw"
+                sizes="(max-width: 520px) 100vw, (max-width: 860px) 50vw, 28vw"
                 cover
               />
             ))}
