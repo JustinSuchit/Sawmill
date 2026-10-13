@@ -4,14 +4,14 @@ import { SiteImage } from "./SiteImage";
 
 type CategoryCardProps = {
   item: CategoryCardData;
-  variant?: "default" | "steel";
+  variant?: "default" | "steel" | "tools";
 };
 
 export function CategoryCard({ item, variant = "default" }: CategoryCardProps) {
   return (
     <article className={`category-card ${variant === "steel" ? "steel-card" : ""} reveal`}>
       <div className="category-media">
-        <SiteImage src={item.src} alt={item.alt} sizes="(max-width: 860px) 100vw, 33vw" />
+        <SiteImage src={item.src} alt={item.alt} sizes="(max-width: 520px) 100vw, (max-width: 1120px) 50vw, 25vw" />
       </div>
       <div className="category-body">
         <p className="label">{item.label}</p>

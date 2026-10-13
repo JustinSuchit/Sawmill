@@ -44,7 +44,7 @@ export const heroImage =
   "/images/lumber/logging/hero_img.png";
   
 export const toolImage =
-  "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=1400&q=80";
+  "/images/tools/cn70-pneumatic-coil-nailer.avif";
 
 export const lumberImage =
   "/images/lumber/products/stacked-processed-lumber.jpg";
@@ -147,8 +147,8 @@ export const toolCategories: CategoryCard[] = [
       "Sharpening stones and wheels for sawmill blade maintenance.",
     href: "/quote",
     cta: "Request a Quote",
-    src: toolImage,
-    alt: "Sharpening wheel for sawmill blades",
+    src: "/images/tools/sharpening-wheel.avif",
+    alt: "Tyrolit sharpening wheel for sawmill blades",
     examples: [
       "Ripper 37 7° 5-inch BN Sharpening Wheel",
       "Tyrolit 10-inch",

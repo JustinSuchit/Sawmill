@@ -3,12 +3,12 @@ import { CategoryCard } from "./CategoryCard";
 
 type CategoryGridProps = {
   items: CategoryCardData[];
-  variant?: "default" | "steel";
+  variant?: "default" | "steel" | "tools";
 };
 
 export function CategoryGrid({ items, variant = "default" }: CategoryGridProps) {
   return (
-    <div className="category-grid">
+    <div className={`category-grid ${variant === "tools" ? "category-grid-tools" : ""}`}>
       {items.map((item) => <CategoryCard key={item.title} item={item} variant={variant} />)}
     </div>
   );
