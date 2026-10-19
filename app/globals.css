@@ -612,6 +612,14 @@ h3 {
 .lumber-page-feature {
   background: color-mix(in srgb, var(--surface) 58%, var(--bg));
 }
+.lumber-page-feature .product-feature-media {
+  position: relative;
+}
+.lumber-page-feature .product-feature-media img {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
 .media-duo-section,
 .service-proof {
   background: var(--bg);

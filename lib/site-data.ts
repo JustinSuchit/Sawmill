@@ -212,8 +212,8 @@ export const lumberCategories: CategoryCard[] = [
       "Lumber available with pest treatment and heat treatment options.",
     href: "/quote",
     cta: "Request a Quote",
-    src: "https://images.unsplash.com/photo-1601063476271-a159c71ab0b3?auto=format&fit=crop&w=1100&q=80",
-    alt: "Treated lumber boards",
+    src: "/images/lumber/products/treated-lumber.jpg",
+    alt: "Stacks of treated lumber boards ready for use",
     specs: "Pest treatment and heat treatment available.",
   },
   {
@@ -223,8 +223,8 @@ export const lumberCategories: CategoryCard[] = [
       "Hardwood lumber available for applications requiring dense and durable timber.",
     href: "/quote",
     cta: "Request a Quote",
-    src: "https://images.unsplash.com/photo-1520637736862-4d197d17c23a?auto=format&fit=crop&w=1100&q=80",
-    alt: "Hardwood lumber",
+    src: "/images/lumber/products/hardwood.webp",
+    alt: "Stacked hardwood timber with exposed end grain",
     specs:
       "Starting at $16.00 per square foot. Availability varies by wood type.",
     examples: [
@@ -246,8 +246,8 @@ export const lumberCategories: CategoryCard[] = [
       "Utility-grade lumber suitable for pallets, dunnage, crating, boxes, boxing boards and formwork.",
     href: "/quote",
     cta: "Request a Quote",
-    src: "/images/lumber/pallets/four-way-entry-timber-pallet-top-view.jpg",
-    alt: "Top view of four-way entry timber pallet",
+    src: "/images/lumber/products/softwood.jpg",
+    alt: "Close-up of stacked rough-sawn softwood boards",
     specs: "Starting at $6.00 per square foot.",
     examples: [
       "Hogplum",
@@ -303,8 +303,8 @@ export const lumberCategories: CategoryCard[] = [
       "Professional lumber dressing and moulding services, including custom designs.",
     href: "/quote",
     cta: "Request a Quote",
-    src: lumberImage,
-    alt: "Stacks of processed lumber",
+    src: "/images/lumber/products/timber-moulding-profile-sanding.jpg",
+    alt: "Shaped timber moulding being sanded in the workshop",
     specs:
       "Dressing starts at $1.50 per square foot. Crown mouldings, base mouldings, premium decking and flooring available.",
     examples: [

@@ -18,6 +18,17 @@ const palletImages = [
   },
 ];
 
+const mouldingImages = [
+  {
+    src: "/images/lumber/products/timber-moulding-profile-sanding.jpg",
+    alt: "Shaped timber moulding being sanded in the workshop",
+  },
+  {
+    src: "/images/lumber/products/shaped-timber-moulding-profiles.jpg",
+    alt: "Timber moulding profiles showing their curved cross sections",
+  },
+];
+
 const exportImages = [
   {
     src: "/images/lumber/export/export-timber-container-load.jpg",
@@ -77,6 +88,33 @@ export function LumberMediaSections() {
             <Link className="btn btn-dark" href="/quote">
               Request Lumber Quote
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section media-duo-section" aria-labelledby="mouldings-title">
+        <div className="media-duo-shell">
+          <div className="media-duo-copy reveal">
+            <p className="eyebrow">Mouldings &amp; Dressed Lumber</p>
+            <h2 id="mouldings-title">Timber Mouldings for the Finishing Details.</h2>
+            <p>
+              We shape and dress timber for crown mouldings, base mouldings
+              and custom profiles to suit your project.
+            </p>
+            <Link className="btn btn-dark" href="/quote">
+              Request Moulding Quote
+            </Link>
+          </div>
+          <div className="media-duo-grid reveal">
+            {mouldingImages.map((image) => (
+              <SiteImage
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                sizes="(max-width: 520px) 100vw, (max-width: 860px) 50vw, 28vw"
+                cover
+              />
+            ))}
           </div>
         </div>
       </section>

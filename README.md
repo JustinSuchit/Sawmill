@@ -31,6 +31,17 @@ Replace placeholder company details before publishing:
 - Physical location and Google Maps embed
 - Real project gallery photos
 - Production domain, sitemap URL and Open Graph image
-- Backend/email/CRM integration for the quote form
 
 The current gallery is intentionally marked as placeholder because no verified company project photos were available.
+
+## Quote Email Delivery
+
+The quote form posts to FormSubmit for delivery to `joshjagmohan93@gmail.com`.
+Emails use the table template with a Jagmohan Co quote-request subject and the
+customer's email as Reply-To. Photos and PDFs are limited to 10 MB combined.
+FormSubmit handles spam verification and shows its confirmation page after submission.
+
+Before launch, submit a quote request from the deployed website and click the
+FormSubmit activation link sent to the recipient inbox (check spam as well).
+Email delivery requires that one-time confirmation. Verify a complete request
+and attachment arrive in the inbox after activation.
