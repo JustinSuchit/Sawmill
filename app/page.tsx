@@ -1,13 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Hero } from "@/components/Hero";
 import { HomeLumberStory } from "@/components/HomeLumberStory";
 import { WhyChooseUs } from "@/components/Process";
 import { QuoteCTA } from "@/components/QuoteCTA";
 
-export const metadata: Metadata = {
-  title: "Industrial Supply & Services | Company Name",
-  description: "Tools, lumber, steel, haulage, tree removal and sawmill services for projects in Trinidad & Tobago."
-};
+export const metadata = pageMetadata("Lumber, Sawmill & Site Services", "Lumber, mouldings, tools, concrete sleepers, haulage and sawmill services in Trinidad & Tobago.", "/");
 
 export default function Home() {
   return (

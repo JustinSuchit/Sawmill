@@ -1,11 +1,8 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Contact } from "@/components/Contact";
 import { PageHeader } from "@/components/PageHeader";
 
-export const metadata: Metadata = {
-  title: "Contact | Company Name",
-  description: "Contact Company Name for tools, lumber, steel, haulage, tree removal and sawmill service quotes."
-};
+export const metadata = pageMetadata("Contact", "Contact Jagmohan Co for lumber, materials, haulage and sawmill service quotes.", "/contact");
 
 export default function ContactPage() {
   return (
@@ -13,7 +10,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Phone, WhatsApp, Email or Request a Quote."
-        copy="Placeholder company contact details are preserved exactly as supplied so verified business information can be added before launch."
+        copy="Get in touch about material supply, timber processing, delivery or site services."
       />
       <Contact />
     </main>

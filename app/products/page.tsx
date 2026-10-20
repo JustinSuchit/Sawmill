@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { PageHeader } from "@/components/PageHeader";
 import { QuoteCTA } from "@/components/QuoteCTA";
@@ -6,10 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SiteImage } from "@/components/SiteImage";
 import { toolCategories, toolImage } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Tools & Hardware | Company Name",
-  description: "Tools, hardware and construction products for contractors, tradesmen and projects in Trinidad & Tobago."
-};
+export const metadata = pageMetadata("Tools & Hardware", "Tools, sawmill supplies and hardware for contractors and tradespeople in Trinidad & Tobago.", "/products");
 
 export default function ProductsPage() {
   return (
@@ -24,7 +21,7 @@ export default function ProductsPage() {
         <SectionHeading
           eyebrow="Tools"
           title="Tool Categories"
-          copy="These categories are structured for future inventory integration and do not claim specific stock, pricing or availability."
+          copy="Browse blades, sharpening supplies, welding electrodes and nailers. Ask our team about the right fit for your work."
         />
         <CategoryGrid items={toolCategories} variant="tools" />
       </section>
@@ -39,7 +36,7 @@ export default function ProductsPage() {
             <p className="eyebrow">Materials</p>
             <h2 id="tools-cross-title">Complete the Build.</h2>
             <p>
-              Pair the right tools with the lumber and steel your project needs,
+              Pair the right tools with the lumber and concrete sleepers your project needs,
               then send us the details for a tailored quote.
             </p>
           </div>
@@ -51,7 +48,7 @@ export default function ProductsPage() {
             </a>
             <a className="materials-bridge-link" href="/steel">
               <span>02</span>
-              <strong>Explore Steel</strong>
+              <strong>Concrete Sleepers</strong>
               <small>Concrete sleepers and industrial products.</small>
             </a>
             <a className="btn btn-primary materials-bridge-cta" href="/quote">

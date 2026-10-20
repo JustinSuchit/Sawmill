@@ -29,7 +29,7 @@ export function ServiceDetailSections() {
           </div>
           <div className="service-feature-copy reveal">
             <p className="eyebrow">{service.eyebrow}</p>
-            <h2>{service.eyebrow.toUpperCase()}</h2>
+            <h2>{service.eyebrow}</h2>
             <p>{service.description}</p>
             <div className="check-list" aria-label={`${service.eyebrow} capabilities`}>
               {service.items.map((item) => <span key={item}>{item}</span>)}
@@ -42,7 +42,7 @@ export function ServiceDetailSections() {
               </ol>
             )}
             <div className="hero-actions">
-              <Link className="btn btn-primary" href={service.href}>{service.cta}</Link>
+              <Link className="btn btn-primary" href={service.href === "/quote" ? `/quote?product=${encodeURIComponent(service.eyebrow)}` : service.href}>{service.cta}</Link>
               {service.eyebrow === "Tree Removal" && <Link className="btn btn-secondary" href="/services#haulage">Need Material Hauled Away?</Link>}
               {service.eyebrow === "Sawmill Services" && <Link className="btn btn-secondary" href="/lumber">Need Lumber?</Link>}
             </div>

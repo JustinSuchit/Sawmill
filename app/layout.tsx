@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import { business } from "@/lib/business";
+import { siteUrl } from "@/lib/metadata";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title:
-    "Lumber, Sawmill, Steel, Haulage & Tree Services in Trinidad & Tobago",
+    "Jagmohan Co | Lumber, Sawmill & Site Services",
   description:
     "A professional Trinidad & Tobago supplier for lumber, timber, sawmill services, steel, hardware, tools, haulage, tree cutting, tree removal and land clearing.",
   robots: {
@@ -20,9 +23,8 @@ export const metadata: Metadata = {
       "Lumber, Steel, Haulage & Tree Services in Trinidad & Tobago",
     description:
       "Reliable materials, sawmill capabilities, haulage and site services for contractors, property owners and industrial clients across Trinidad & Tobago.",
-    images: [
-      "https://images.fordaq.com/newsletter/452730/IMG_8070.jpeg",
-    ],
+    siteName: business.name,
+    ...(siteUrl ? { images: [{ url: new URL("/images/og-jagmohan-yard.jpg", siteUrl).href, width: 1200, height: 630, alt: "Jagmohan Co timber yard" }] } : {}),
   },
   twitter: {
     card: "summary_large_image",
@@ -30,22 +32,22 @@ export const metadata: Metadata = {
       "Lumber, Sawmill, Steel, Haulage & Tree Services",
     description:
       "Construction materials and field services for Trinidad & Tobago.",
+    ...(siteUrl ? { images: [new URL("/images/og-jagmohan-yard.jpg", siteUrl).href] } : {}),
   },
 };
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Company Name Placeholder",
+  name: business.name,
   description:
     "Supplier of lumber, steel, tools and hardware with sawmill, haulage, tree cutting, tree removal and land clearing services in Trinidad & Tobago.",
   areaServed: "Trinidad and Tobago",
-  telephone: "Phone number placeholder",
-  email: "Email placeholder",
+  email: business.email,
+  ...(siteUrl ? { url: siteUrl.href } : {}),
   address: {
     "@type": "PostalAddress",
     addressCountry: "TT",
-    addressLocality: "Location placeholder",
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -111,15 +113,7 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#121713" />
 
-        <link
-          rel="preconnect"
-          href="https://images.fordaq.com"
-        />
-
-        <link
-          rel="preconnect"
-          href="https://assets.weforum.org"
-        />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var theme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';try{var saved=localStorage.getItem('industrial-theme');if(saved==='dark'||saved==='light')theme=saved;}catch(e){}document.documentElement.dataset.theme=theme;})();` }} />
 
         <script
           type="application/ld+json"

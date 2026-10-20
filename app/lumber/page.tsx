@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { LumberMediaSections } from "@/components/LumberMediaSections";
 import { PageHeader } from "@/components/PageHeader";
@@ -6,10 +6,7 @@ import { QuoteCTA } from "@/components/QuoteCTA";
 import { SectionHeading } from "@/components/SectionHeading";
 import { lumberCategories, lumberImage } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Lumber & Timber | Company Name",
-  description: "Quality lumber and timber products for construction and general applications."
-};
+export const metadata = pageMetadata("Lumber & Timber", "Lumber, timber, mouldings and dressed lumber for construction and woodworking.", "/lumber");
 
 export default function LumberPage() {
   return (
@@ -25,7 +22,7 @@ export default function LumberPage() {
         <SectionHeading
           eyebrow="Lumber"
           title="Lumber for Every Project."
-          copy="Categories are organized for future inventory integration without inventing dimensions, species, pricing or availability."
+          copy="Explore lumber by type and application. Send your sizes and quantities for current pricing and availability."
         />
         <CategoryGrid items={lumberCategories} />
       </section>

@@ -29,7 +29,7 @@ export function ServiceMediaSections() {
               Our delivery fleet supports the movement of lumber and materials
               from yard to project site.
             </p>
-            <Link className="btn btn-dark" href="/quote">
+            <Link className="btn btn-dark" href="/quote?product=Haulage%20%26%20Delivery">
               Request Haulage Quote
             </Link>
           </div>
@@ -61,7 +61,7 @@ export function ServiceMediaSections() {
               Timber extraction, site clearing and log handling are supported by
               heavy equipment and field operations.
             </p>
-            <Link className="btn btn-primary" href="/quote">
+            <Link className="btn btn-primary" href="/quote?product=Tree%20Removal">
               Request Service Quote
             </Link>
           </div>
@@ -83,7 +83,7 @@ export function ServiceMediaSections() {
               controls
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               poster={serviceMedia.sawmillPoster.src}
             >
               <source

@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   images: {
+    formats: ["image/webp"],
     remotePatterns: [
       { protocol: "https", hostname: "www.mcf-bois.com" },
       { protocol: "https", hostname: "i.insider.com" },

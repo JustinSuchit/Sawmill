@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { PageHeader } from "@/components/PageHeader";
 import { Process } from "@/components/Process";
 import { QuoteCTA } from "@/components/QuoteCTA";
@@ -6,10 +6,7 @@ import { ServiceDetailSections } from "@/components/ServiceDetailSections";
 import { ServiceMediaSections } from "@/components/ServiceMediaSections";
 import { heroImage } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Haulage, Tree Removal & Sawmill Services | Company Name",
-  description: "Professional haulage, tree removal and sawmill services in Trinidad & Tobago."
-};
+export const metadata = pageMetadata("Haulage, Tree Removal & Sawmill Services", "Haulage, tree removal and sawmill services for projects in Trinidad & Tobago.", "/services");
 
 export default function ServicesPage() {
   return (

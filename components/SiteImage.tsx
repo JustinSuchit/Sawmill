@@ -7,6 +7,7 @@ type SiteImageProps = ImageItem & {
   priority?: boolean;
   sizes?: string;
   cover?: boolean;
+  objectPosition?: string;
 };
 
 export function SiteImage({
@@ -16,21 +17,19 @@ export function SiteImage({
   priority = false,
   sizes = "(max-width: 860px) 100vw, 50vw",
   cover = false,
+  objectPosition = "center",
 }: SiteImageProps) {
   return (
-    <Image
-      src={src}
-      alt={alt}
-      width={1200}
-      height={800}
-      className={className}
-      priority={priority}
-      unoptimized
-      sizes={sizes}
-      style={{
-        width: "100%",
-        height: cover ? "100%" : "auto",
-      }}
-    />
+    <span className={`site-image${cover ? " site-image-cover" : ""}${className ? ` ${className}` : ""}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        preload={priority}
+        loading={priority ? "eager" : "lazy"}
+        sizes={sizes}
+        style={{ objectFit: "cover", objectPosition }}
+      />
+    </span>
   );
 }

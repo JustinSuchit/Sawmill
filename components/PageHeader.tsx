@@ -1,4 +1,5 @@
-import type { CSSProperties } from "react";
+import { SiteImage } from "./SiteImage";
+import { heroImage } from "@/lib/site-data";
 
 type PageHeaderProps = {
   eyebrow: string;
@@ -13,8 +14,8 @@ export function PageHeader({ eyebrow, title, copy, image, tone = "default" }: Pa
     <section
       className={`page-hero page-hero-${tone}`}
       aria-labelledby="page-title"
-      style={image ? { "--page-hero-image": `url("${image}")` } as CSSProperties : undefined}
     >
+      <SiteImage src={image || heroImage} alt="" sizes="100vw" priority cover />
       <div className="page-hero-content reveal">
         <p className="eyebrow">{eyebrow}</p>
         <h1 id="page-title">{title}</h1>

@@ -85,7 +85,7 @@ export function LumberMediaSections() {
               Processed timber supports dimensional lumber, construction lumber,
               furniture work and custom-cut project requirements.
             </p>
-            <Link className="btn btn-dark" href="/quote">
+            <Link className="btn btn-dark" href="/quote?product=Dimensional%20Lumber">
               Request Lumber Quote
             </Link>
           </div>
@@ -101,7 +101,7 @@ export function LumberMediaSections() {
               We shape and dress timber for crown mouldings, base mouldings
               and custom profiles to suit your project.
             </p>
-            <Link className="btn btn-dark" href="/quote">
+            <Link className="btn btn-dark" href="/quote?product=Mouldings%20%26%20Dressed%20Lumber">
               Request Moulding Quote
             </Link>
           </div>
@@ -128,7 +128,7 @@ export function LumberMediaSections() {
               Durable timber pallets designed for convenient handling and access
               from multiple sides.
             </p>
-            <Link className="btn btn-dark" href="/quote">
+            <Link className="btn btn-dark" href="/quote?product=Timber%20Pallets">
               Request Pallet Quote
             </Link>
           </div>

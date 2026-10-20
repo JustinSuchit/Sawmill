@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { PageHeader } from "@/components/PageHeader";
 import { QuoteCTA } from "@/components/QuoteCTA";
@@ -6,38 +6,35 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { SleeperFeature } from "@/components/SleeperFeature";
 import { steelCategories, steelImage } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Steel Products | Company Name",
-  description: "Steel products for construction, fabrication and industrial applications."
-};
+export const metadata = pageMetadata("Concrete Sleepers", "Concrete sleepers for industrial and infrastructure applications, with sale and rental options.", "/steel");
 
 export default function SteelPage() {
   return (
     <main id="main">
       <PageHeader
-        eyebrow="Steel Products"
-        title="Steel for Strength."
-        copy="Steel products for construction, fabrication, structural and industrial applications."
+        eyebrow="Industrial Materials"
+        title="Concrete Sleepers."
+        copy="Heavy-duty concrete sleepers for industrial and infrastructure applications. Enquire about sale, rental and delivery."
         image={steelImage}
         tone="steel"
       />
       <section className="section steel-section">
         <SectionHeading
-          eyebrow="Steel"
+          eyebrow="Concrete Sleepers"
           title="Request by Category and Specification."
-          copy="Steel products are quantity and specification dependent, so the primary action is to request a quote rather than display fake prices."
+          copy="Share your required quantity, specifications and location for pricing and availability."
         />
         <CategoryGrid items={steelCategories} variant="steel" />
       </section>
       <SleeperFeature />
       <QuoteCTA
         eyebrow="Haulage"
-        title="Need Steel Delivered to Your Site?"
-        copy="Connect steel supply with haulage and delivery support for project loads, commercial deliveries and construction material movement."
+        title="Need Sleepers Delivered?"
+        copy="Coordinate your sleeper requirements with haulage and delivery support for your project location."
         cta="Explore Haulage"
         href="/services#haulage"
-        secondaryCta="Request Steel Quote"
-        secondaryHref="/quote"
+        secondaryCta="Request Sleeper Quote"
+        secondaryHref="/quote?product=Concrete%20Sleepers"
       />
     </main>
   );

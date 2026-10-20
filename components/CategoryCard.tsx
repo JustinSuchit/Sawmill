@@ -5,13 +5,14 @@ import { SiteImage } from "./SiteImage";
 type CategoryCardProps = {
   item: CategoryCardData;
   variant?: "default" | "steel" | "tools";
+  priority?: boolean;
 };
 
-export function CategoryCard({ item, variant = "default" }: CategoryCardProps) {
+export function CategoryCard({ item, variant = "default", priority = false }: CategoryCardProps) {
   return (
     <article className={`category-card ${variant === "steel" ? "steel-card" : ""} reveal`}>
       <div className="category-media">
-        <SiteImage src={item.src} alt={item.alt} sizes="(max-width: 520px) 100vw, (max-width: 1120px) 50vw, 25vw" />
+        <SiteImage src={item.src} alt={item.alt} priority={priority} sizes={variant === "tools" ? "(max-width: 520px) 100vw, (max-width: 1120px) 50vw, 310px" : "(max-width: 520px) 100vw, (max-width: 1120px) 50vw, 414px"} cover />
       </div>
       <div className="category-body">
         <p className="label">{item.label}</p>
@@ -23,7 +24,7 @@ export function CategoryCard({ item, variant = "default" }: CategoryCardProps) {
           </ul>
         )}
         {item.specs && <p className="spec-placeholder">{item.specs}</p>}
-        <Link className="text-link" href={item.href}>{item.cta}</Link>
+        <Link className="text-link" href={item.href === "/quote" ? `/quote?product=${encodeURIComponent(item.title)}` : item.href}>{item.cta}</Link>
       </div>
     </article>
   );

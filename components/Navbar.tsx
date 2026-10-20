@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X } from "lucide-react";
+import { business } from "@/lib/business";
 
 const navItems = [
   ["/", "Home"],
   ["/products", "Tools"],
   ["/lumber", "Lumber"],
-  ["/steel", "Steel"],
+  ["/steel", "Sleepers"],
   ["/services", "Services"],
   ["/contact", "Contact"],
 ] as const;
@@ -20,7 +22,12 @@ function getPreferredTheme(): Theme {
     return "light";
   }
 
-  const stored = window.localStorage.getItem("industrial-theme");
+  let stored: string | null = null;
+  try {
+    stored = window.localStorage.getItem("industrial-theme");
+  } catch {
+    // System preference still works when browser storage is unavailable.
+  }
 
   if (stored === "dark") {
     return "dark";
@@ -38,12 +45,41 @@ function getPreferredTheme(): Theme {
 }
 
 export function Navbar() {
+  const menuRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [theme, setThemeState] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   const pathname = usePathname();
+
+  useEffect(() => {
+    const breakpoint = window.matchMedia("(max-width: 1100px)");
+    const resetMenu = () => setMenuOpen(false);
+    breakpoint.addEventListener("change", resetMenu);
+    return () => breakpoint.removeEventListener("change", resetMenu);
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const frame = requestAnimationFrame(() => menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus());
+    function handleKey(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+      if (event.key === "Tab") {
+        const items = [toggleRef.current, ...Array.from(menuRef.current?.querySelectorAll<HTMLElement>("a, button") || [])].filter((item): item is HTMLElement => Boolean(item));
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
+    }
+    document.addEventListener("keydown", handleKey);
+    return () => { cancelAnimationFrame(frame); document.removeEventListener("keydown", handleKey); };
+  }, [menuOpen]);
 
   useEffect(() => {
     const preferredTheme = getPreferredTheme();
@@ -102,7 +138,11 @@ export function Navbar() {
 
     setThemeState(nextTheme);
     document.documentElement.dataset.theme = nextTheme;
-    window.localStorage.setItem("industrial-theme", nextTheme);
+    try {
+      window.localStorage.setItem("industrial-theme", nextTheme);
+    } catch {
+      // Keep the selected theme for this page even without persistent storage.
+    }
   }
 
   function closeMenu() {
@@ -142,11 +182,11 @@ export function Navbar() {
             className="brand-mark"
             aria-hidden="true"
           >
-            LUMBER 
+            JC
           </span>
 
           <span>
-            <strong>Jagmohan Co</strong>
+            <strong>{business.name}</strong>
             <small>
               Materials · Sawmill · Haulage
             </small>
@@ -155,6 +195,7 @@ export function Navbar() {
 
         <button
           className="menu-toggle"
+          ref={toggleRef}
           type="button"
           aria-expanded={menuOpen}
           aria-controls="nav-menu"
@@ -167,9 +208,7 @@ export function Navbar() {
             setMenuOpen(!menuOpen);
           }}
         >
-          <span />
-          <span />
-          <span />
+          {menuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
 
           <span className="sr-only">
             {menuOpen
@@ -180,6 +219,7 @@ export function Navbar() {
 
         <div
           className={navMenuClassName}
+          ref={menuRef}
           id="nav-menu"
         >
           {navItems.map(
@@ -207,6 +247,7 @@ export function Navbar() {
               role="switch"
               aria-checked={darkModeOn}
               aria-label="Dark mode"
+              title="Toggle dark mode"
               onClick={changeTheme}
             >
               <span className="theme-switch" aria-hidden="true">

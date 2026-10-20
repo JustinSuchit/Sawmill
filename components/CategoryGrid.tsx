@@ -9,7 +9,7 @@ type CategoryGridProps = {
 export function CategoryGrid({ items, variant = "default" }: CategoryGridProps) {
   return (
     <div className={`category-grid ${variant === "tools" ? "category-grid-tools" : ""}`}>
-      {items.map((item) => <CategoryCard key={item.title} item={item} variant={variant} />)}
+      {items.map((item, index) => <CategoryCard key={item.title} item={item} variant={variant} priority={index === 0} />)}
     </div>
   );
 }

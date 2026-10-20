@@ -14,32 +14,49 @@ Open `http://localhost:3000`.
 ## Routes
 
 - `/` - overview home page
-- `/products` - products and sawmill capabilities
+- `/products` - tools and sawmill supplies
+- `/lumber` - lumber, mouldings, pallets and export
+- `/steel` - concrete sleepers (existing route retained)
 - `/services` - sawmill, haulage, tree services and process
-- `/about` - company positioning and quote process
-- `/gallery` - filterable placeholder project gallery
 - `/quote` - controlled quote request form
+- `/quote/thanks` - confirmation after the email provider completes a submission
 - `/contact` - contact details and map placeholder
 
 ## Launch Notes
 
 Replace placeholder company details before publishing:
 
-- Company name and logo
 - Phone and WhatsApp numbers
-- Email address
 - Physical location and Google Maps embed
-- Real project gallery photos
-- Production domain, sitemap URL and Open Graph image
+- Production domain
 
-The current gallery is intentionally marked as placeholder because no verified company project photos were available.
+The verified business name and quote email are centralized in `lib/business.ts`.
+Unverified phone, WhatsApp, address and hours remain unchanged.
+
+## Production URL and Images
+
+Set `SITE_URL` to the verified public website origin before building for production.
+On Vercel, `VERCEL_PROJECT_PRODUCTION_URL` is used automatically when available.
+Canonical links, social image URLs, sitemap entries and the robots sitemap link
+use that origin. Without either setting, the sitemap is intentionally empty;
+no localhost or invented production domain is published.
+
+Existing source photos are preserved. Next.js serves responsive WebP derivatives
+through its image optimizer. The social preview is a JPEG derived from the existing
+timber-yard photo. Internal page headers also use optimized images.
+
+For an isolated local preview, set `NEXT_DIST_DIR=.next-review` before running
+`npm run dev -- --port 3001`. This keeps a separate `.next` directory from another
+running development session.
 
 ## Quote Email Delivery
 
 The quote form posts to FormSubmit for delivery to `joshjagmohan93@gmail.com`.
 Emails use the table template with a Jagmohan Co quote-request subject and the
 customer's email as Reply-To. Photos and PDFs are limited to 10 MB combined.
-FormSubmit handles spam verification and shows its confirmation page after submission.
+FormSubmit handles spam verification, then redirects to `/quote/thanks` on the
+origin from which the customer submitted. Product and service quote links prefill
+the form; site services require a location and show an optional preferred date.
 
 Before launch, submit a quote request from the deployed website and click the
 FormSubmit activation link sent to the recipient inbox (check spam as well).

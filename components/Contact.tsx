@@ -1,3 +1,5 @@
+import { business } from "@/lib/business";
+
 export function Contact() {
   return (
     <section className="contact-section" id="contact" aria-labelledby="contact-title">
@@ -7,7 +9,7 @@ export function Contact() {
         <dl>
           <div><dt>Phone</dt><dd>Phone number placeholder</dd></div>
           <div><dt>WhatsApp</dt><dd>WhatsApp number placeholder</dd></div>
-          <div><dt>Email</dt><dd>Email address placeholder</dd></div>
+          <div><dt>Email</dt><dd><a href={`mailto:${business.email}`}>{business.email}</a></dd></div>
           <div><dt>Location</dt><dd>Physical location placeholder, Trinidad & Tobago</dd></div>
           <div><dt>Business Hours</dt><dd>Business hours placeholder</dd></div>
         </dl>

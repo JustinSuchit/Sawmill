@@ -80,12 +80,12 @@ export const homeCapabilities: CategoryCard[] = [
     alt: "Stacks of processed lumber",
   },
   {
-    label: "Steel",
+    label: "Concrete Sleepers",
     title: "Concrete sleepers.",
     description:
       "Concrete sleepers available with sale and rental options.",
     href: "/steel",
-    cta: "Explore Steel",
+    cta: "Explore Sleepers",
     src: steelImage,
     alt: "Concrete sleepers stored in industrial yard",
   },
@@ -320,7 +320,7 @@ export const lumberCategories: CategoryCard[] = [
 
 export const steelCategories: CategoryCard[] = [
   {
-    label: "Steel",
+    label: "Concrete Sleepers",
     title: "Concrete Sleepers",
     description:
       "Concrete sleepers available with sale and rental options.",
