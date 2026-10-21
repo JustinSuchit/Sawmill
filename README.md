@@ -11,6 +11,18 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## Production Deployments
+
+The Vercel project `jagmohanco` is connected to `JustinSuchit/Sawmill`.
+Pushes to `main` should automatically build and deploy to
+`https://jagmohanco.vercel.app` through Vercel's native GitHub integration.
+Other branches use preview deployments.
+
+After pushing, check that Vercel creates a deployment for the new commit SHA
+and reaches `Ready` in the Production environment. A successful Git push alone
+does not confirm deployment. Keep the production branch set to `main`, the
+Ignored Build Step set to `Automatic`, and the repository connection enabled.
+
 ## Routes
 
 - `/` - overview home page
