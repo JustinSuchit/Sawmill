@@ -1352,6 +1352,16 @@ dl {
 dt { color: var(--muted); font-weight: 900; text-transform: uppercase; font-size: 0.78rem; }
 dd { margin: 0; font-weight: 850; }
 .contact-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.contact-address { font-style: normal; }
+.contact-map { min-width: 0; display: flex; flex-direction: column; border: 1px solid var(--line); background: var(--surface); }
+.contact-map-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem; }
+.contact-map-heading h2 { display: flex; align-items: center; gap: 0.5rem; font-size: 1.2rem; margin: 0; }
+.contact-map-heading h2 svg { color: var(--amber-dark); flex-shrink: 0; }
+.contact-map-heading a { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; }
+.contact-map-embed { display: block; width: 100%; min-height: 360px; flex: 1; border: 0; }
+@media (max-width: 520px) {
+  .contact-map-embed { min-height: 320px; }
+}
 .map-placeholder {
   min-height: 430px;
   display: grid;

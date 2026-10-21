@@ -32,18 +32,18 @@ Ignored Build Step set to `Automatic`, and the repository connection enabled.
 - `/services` - sawmill, haulage, tree services and process
 - `/quote` - controlled quote request form
 - `/quote/thanks` - confirmation after the email provider completes a submission
-- `/contact` - contact details and map placeholder
+- `/contact` - contact details, verified Penal address and Google Maps
 
 ## Launch Notes
 
 Replace placeholder company details before publishing:
 
 - Phone and WhatsApp numbers
-- Physical location and Google Maps embed
 - Production domain
 
 The verified business name and quote email are centralized in `lib/business.ts`.
-Unverified phone, WhatsApp, address and hours remain unchanged.
+The verified Penal address and Google Maps query use the same business data.
+Unverified phone, WhatsApp and hours remain unchanged.
 
 ## Production URL and Images
 

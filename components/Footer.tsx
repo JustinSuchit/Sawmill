@@ -30,6 +30,7 @@ export function Footer() {
         Phone number placeholder<br />
         WhatsApp number placeholder<br />
         <a href={`mailto:${business.email}`}>{business.email}</a><br />
+        {business.address.street}, {business.address.locality}<br />
         Trinidad & Tobago
       </address>
       <p className="copyright">© {year} {business.name}. All rights reserved.</p>

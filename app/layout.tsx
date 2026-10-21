@@ -48,6 +48,8 @@ const structuredData = {
   ...(siteUrl ? { url: siteUrl.href } : {}),
   address: {
     "@type": "PostalAddress",
+    streetAddress: business.address.street,
+    addressLocality: business.address.locality,
     addressCountry: "TT",
   },
   hasOfferCatalog: {
