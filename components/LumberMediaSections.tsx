@@ -2,10 +2,11 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import { SiteImage } from "./SiteImage";
+import { PhotoGallery } from "./PhotoGallery";
 
 const processedLumber = {
-  src: "/images/lumber/products/stacked-processed-lumber.jpg",
-  alt: "Stacks of processed lumber",
+  src: "/images/lumber/export/export-lumber-bundles.jpg",
+  alt: "Processed timber bundled and stacked in the workshop",
 };
 
 const palletImages = [
@@ -112,22 +113,7 @@ export function LumberMediaSections() {
               Request Moulding Quote <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
-          <div className="mouldings-gallery reveal">
-            {mouldingImages.map((image) => (
-              <figure key={image.src}>
-                <div className="mouldings-photo">
-                  <SiteImage
-                    src={image.src}
-                    alt={image.alt}
-                    objectPosition={image.position}
-                    sizes="(max-width: 680px) 100vw, (max-width: 1240px) 50vw, 620px"
-                    cover
-                  />
-                </div>
-                <figcaption>{image.caption}</figcaption>
-              </figure>
-            ))}
-          </div>
+          <PhotoGallery images={mouldingImages} className="mouldings-gallery" sizes="(max-width: 680px) 100vw, (max-width: 1240px) 50vw, 620px" />
           <div className="mouldings-details">
             <ul aria-label="Mouldings and dressed lumber options">
               {["Lumber dressing", "Crown mouldings", "Base mouldings", "Premium decking", "Flooring", "Custom designs"].map((item) => <li key={item}>{item}</li>)}

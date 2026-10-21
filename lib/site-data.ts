@@ -22,6 +22,7 @@ export type GalleryItem = ImageItem & {
 };
 
 export type CategoryCard = ImageItem & {
+  id?: string;
   imagePosition?: string;
   label: string;
   title: string;
@@ -198,6 +199,7 @@ export const lumberCategories: CategoryCard[] = [
   {
     label: "Lumber",
     title: "Dimensional Lumber",
+    id: "dimensional-lumber",
     description:
       "Standard and custom-sized lumber available for a range of construction and woodworking requirements.",
     href: "/quote",
@@ -210,6 +212,7 @@ export const lumberCategories: CategoryCard[] = [
   {
     label: "Lumber",
     title: "Treated Lumber",
+    id: "treated-lumber",
     description:
       "Lumber available with pest treatment and heat treatment options.",
     href: "/quote",
@@ -221,6 +224,7 @@ export const lumberCategories: CategoryCard[] = [
   {
     label: "Hardwood",
     title: "Hardwood Lumber",
+    id: "hardwood-lumber",
     description:
       "Hardwood lumber available for applications requiring dense and durable timber.",
     href: "/quote",
@@ -244,6 +248,7 @@ export const lumberCategories: CategoryCard[] = [
   {
     label: "Softwood",
     title: "Softwood Lumber",
+    id: "softwood-lumber",
     description:
       "Utility-grade lumber suitable for pallets, dunnage, crating, boxes, boxing boards and formwork.",
     href: "/quote",
@@ -263,6 +268,7 @@ export const lumberCategories: CategoryCard[] = [
   {
     label: "Semi-Hardwood",
     title: "Semi-Hardwood Lumber",
+    id: "semi-hardwood-lumber",
     description:
       "Medium-density utility hardwoods offering flexibility, high shock resistance and good machinability.",
     href: "/quote",
@@ -281,6 +287,7 @@ export const lumberCategories: CategoryCard[] = [
   {
     label: "Imported Lumber",
     title: "Southern Yellow Pine",
+    id: "southern-yellow-pine",
     description:
       "Imported Southern Yellow Pine available in a range of commonly used dimensions.",
     href: "/quote",

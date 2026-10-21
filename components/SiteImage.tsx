@@ -8,6 +8,7 @@ type SiteImageProps = ImageItem & {
   sizes?: string;
   cover?: boolean;
   objectPosition?: string;
+  quality?: number;
 };
 
 export function SiteImage({
@@ -18,6 +19,7 @@ export function SiteImage({
   sizes = "(max-width: 860px) 100vw, 50vw",
   cover = false,
   objectPosition = "center",
+  quality = 75,
 }: SiteImageProps) {
   return (
     <span className={`site-image${cover ? " site-image-cover" : ""}${className ? ` ${className}` : ""}`}>
@@ -28,6 +30,7 @@ export function SiteImage({
         preload={priority}
         loading={priority ? "eager" : "lazy"}
         sizes={sizes}
+        quality={quality}
         style={{ objectFit: "cover", objectPosition }}
       />
     </span>

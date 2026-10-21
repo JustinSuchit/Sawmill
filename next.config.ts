@@ -3,7 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
   images: {
-    formats: ["image/webp"],
+    formats: ["image/avif", "image/webp"],
+    qualities: [65, 75],
     remotePatterns: [
       { protocol: "https", hostname: "www.mcf-bois.com" },
       { protocol: "https", hostname: "i.insider.com" },

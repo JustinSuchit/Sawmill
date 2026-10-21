@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { CategoryCard as CategoryCardData } from "@/lib/site-data";
-import { SiteImage } from "./SiteImage";
+import { ArrowUpRight } from "lucide-react";
+import { PhotoGallery } from "./PhotoGallery";
 
 type CategoryCardProps = {
   item: CategoryCardData;
@@ -16,9 +17,9 @@ export function CategoryCard({ item, variant = "default", priority = false }: Ca
       : "(max-width: 520px) 100vw, (max-width: 1120px) 50vw, 414px";
 
   return (
-    <article className={`category-card ${variant === "steel" ? "steel-card" : ""} reveal`}>
+    <article id={item.id} className={`category-card ${variant === "steel" ? "steel-card" : ""} reveal`}>
       <div className="category-media">
-        <SiteImage src={item.src} alt={item.alt} objectPosition={item.imagePosition} priority={priority} sizes={imageSizes} cover />
+        <PhotoGallery images={[{ src: item.src, alt: item.alt, position: item.imagePosition }]} className="category-photo-gallery" sizes={imageSizes} priority={priority} />
       </div>
       <div className="category-body">
         <p className="label">{item.label}</p>
@@ -29,8 +30,8 @@ export function CategoryCard({ item, variant = "default", priority = false }: Ca
             {item.examples.map((example) => <li key={example}>{example}</li>)}
           </ul>
         )}
-        {item.specs && <p className="spec-placeholder">{item.specs}</p>}
-        <Link className="text-link" href={item.href === "/quote" ? `/quote?product=${encodeURIComponent(item.title)}` : item.href}>{item.cta}</Link>
+        {item.specs && <p className="category-specs">{item.specs}</p>}
+        <Link className="text-link" aria-label={`${item.cta}: ${item.title}`} href={item.href === "/quote" ? `/quote?product=${encodeURIComponent(item.title)}` : item.href}>{item.cta}<ArrowUpRight size={18} aria-hidden="true" /></Link>
       </div>
     </article>
   );

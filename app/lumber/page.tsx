@@ -1,6 +1,7 @@
 import { pageMetadata } from "@/lib/metadata";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { LumberMediaSections } from "@/components/LumberMediaSections";
+import { LumberNavigation } from "@/components/LumberNavigation";
 import { PageHeader } from "@/components/PageHeader";
 import { QuoteCTA } from "@/components/QuoteCTA";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -10,7 +11,7 @@ export const metadata = pageMetadata("Lumber & Timber", "Lumber, timber, mouldin
 
 export default function LumberPage() {
   return (
-    <main id="main">
+    <main id="main" className="lumber-page">
       <PageHeader
         eyebrow="Lumber & Timber"
         title="Quality Lumber. Ready for the Job."
@@ -18,6 +19,7 @@ export default function LumberPage() {
         image={lumberImage}
         tone="timber"
       />
+      <LumberNavigation />
       <section className="section lumber-texture">
         <SectionHeading
           eyebrow="Lumber"
