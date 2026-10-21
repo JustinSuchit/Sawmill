@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Check, ArrowUpRight } from "lucide-react";
 import { business } from "@/lib/business";
 
-export const metadata: Metadata = { title: "Thank You | Jagmohan Co", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: `Thank You | ${business.name}`, robots: { index: false, follow: false } };
 
 export default function QuoteThanksPage() {
   return (

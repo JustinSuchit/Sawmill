@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 import { SiteImage } from "./SiteImage";
 
@@ -22,10 +23,14 @@ const mouldingImages = [
   {
     src: "/images/lumber/products/timber-moulding-profile-sanding.jpg",
     alt: "Shaped timber moulding being sanded in the workshop",
+    position: "50% 42%",
+    caption: "Shaping and finishing in our workshop",
   },
   {
     src: "/images/lumber/products/shaped-timber-moulding-profiles.jpg",
     alt: "Timber moulding profiles showing their curved cross sections",
+    position: "25% 38%",
+    caption: "A closer look at the timber profiles",
   },
 ];
 
@@ -92,29 +97,42 @@ export function LumberMediaSections() {
         </div>
       </section>
 
-      <section className="section media-duo-section" aria-labelledby="mouldings-title">
-        <div className="media-duo-shell">
-          <div className="media-duo-copy reveal">
-            <p className="eyebrow">Mouldings &amp; Dressed Lumber</p>
-            <h2 id="mouldings-title">Timber Mouldings for the Finishing Details.</h2>
-            <p>
-              We shape and dress timber for crown mouldings, base mouldings
-              and custom profiles to suit your project.
-            </p>
-            <Link className="btn btn-dark" href="/quote?product=Mouldings%20%26%20Dressed%20Lumber">
-              Request Moulding Quote
+      <section className="section mouldings-showcase" aria-labelledby="mouldings-title">
+        <div className="mouldings-shell">
+          <div className="mouldings-heading reveal">
+            <div>
+              <p className="eyebrow">Mouldings &amp; Dressed Lumber</p>
+              <h2 id="mouldings-title">Timber Mouldings for the Finishing Details.</h2>
+              <p>
+                We shape and dress timber for crown mouldings, base mouldings
+                and custom profiles to suit your project.
+              </p>
+            </div>
+            <Link className="btn btn-primary" href="/quote?product=Mouldings%20%26%20Dressed%20Lumber">
+              Request Moulding Quote <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
-          <div className="media-duo-grid reveal">
+          <div className="mouldings-gallery reveal">
             {mouldingImages.map((image) => (
-              <SiteImage
-                key={image.src}
-                src={image.src}
-                alt={image.alt}
-                sizes="(max-width: 520px) 100vw, (max-width: 860px) 50vw, 28vw"
-                cover
-              />
+              <figure key={image.src}>
+                <div className="mouldings-photo">
+                  <SiteImage
+                    src={image.src}
+                    alt={image.alt}
+                    objectPosition={image.position}
+                    sizes="(max-width: 680px) 100vw, (max-width: 1240px) 50vw, 620px"
+                    cover
+                  />
+                </div>
+                <figcaption>{image.caption}</figcaption>
+              </figure>
             ))}
+          </div>
+          <div className="mouldings-details">
+            <ul aria-label="Mouldings and dressed lumber options">
+              {["Lumber dressing", "Crown mouldings", "Base mouldings", "Premium decking", "Flooring", "Custom designs"].map((item) => <li key={item}>{item}</li>)}
+            </ul>
+            <p>Dressing starts at $1.50 per square foot.</p>
           </div>
         </div>
       </section>

@@ -22,6 +22,7 @@ export type GalleryItem = ImageItem & {
 };
 
 export type CategoryCard = ImageItem & {
+  imagePosition?: string;
   label: string;
   title: string;
   description: string;
@@ -201,8 +202,9 @@ export const lumberCategories: CategoryCard[] = [
       "Standard and custom-sized lumber available for a range of construction and woodworking requirements.",
     href: "/quote",
     cta: "Request a Quote",
-    src: lumberImage,
-    alt: "Stacks of processed lumber",
+    src: "/images/lumber/products/stacked-hardwood-lumber.jpg",
+    alt: "Sawn timber bundled and stacked at the yard",
+    imagePosition: "50% 52%",
     specs: "Custom and standard sizes available.",
   },
   {
@@ -267,6 +269,7 @@ export const lumberCategories: CategoryCard[] = [
     cta: "Request a Quote",
     src: lumberImage,
     alt: "Stacks of processed lumber",
+    imagePosition: "25% 50%",
     specs:
       "Starting at $9.00 per square foot. Availability varies by wood type.",
     examples: [
@@ -284,6 +287,7 @@ export const lumberCategories: CategoryCard[] = [
     cta: "Request a Quote",
     src: lumberImage,
     alt: "Stacks of processed lumber",
+    imagePosition: "85% 35%",
     specs: "Starting at $13.00 per square foot.",
     examples: [
       "1x12",

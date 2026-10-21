@@ -10,7 +10,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title:
-    "Jagmohan Co | Lumber, Sawmill & Site Services",
+    `${business.name} | Lumber, Sawmill & Site Services`,
   description:
     "A professional Trinidad & Tobago supplier for lumber, timber, sawmill services, steel, hardware, tools, haulage, tree cutting, tree removal and land clearing.",
   robots: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description:
       "Reliable materials, sawmill capabilities, haulage and site services for contractors, property owners and industrial clients across Trinidad & Tobago.",
     siteName: business.name,
-    ...(siteUrl ? { images: [{ url: new URL("/images/og-jagmohan-yard.jpg", siteUrl).href, width: 1200, height: 630, alt: "Jagmohan Co timber yard" }] } : {}),
+    ...(siteUrl ? { images: [{ url: new URL("/images/og-jagmohan-yard.jpg", siteUrl).href, width: 1200, height: 630, alt: `${business.name} timber yard` }] } : {}),
   },
   twitter: {
     card: "summary_large_image",
@@ -40,6 +40,7 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: business.name,
+  alternateName: business.alternateName,
   description:
     "Supplier of lumber, steel, tools and hardware with sawmill, haulage, tree cutting, tree removal and land clearing services in Trinidad & Tobago.",
   areaServed: "Trinidad and Tobago",

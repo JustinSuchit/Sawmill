@@ -24,7 +24,7 @@ export default function LumberPage() {
           title="Lumber for Every Project."
           copy="Explore lumber by type and application. Send your sizes and quantities for current pricing and availability."
         />
-        <CategoryGrid items={lumberCategories} />
+        <CategoryGrid items={lumberCategories.filter((item) => item.title !== "Mouldings & Dressed Lumber")} />
       </section>
       <LumberMediaSections />
       <QuoteCTA

@@ -2,7 +2,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { Contact } from "@/components/Contact";
 import { PageHeader } from "@/components/PageHeader";
 
-export const metadata = pageMetadata("Contact", "Contact Jagmohan Co for lumber, materials, haulage and sawmill service quotes.", "/contact");
+export const metadata = pageMetadata("Contact", "Contact Jebodh Jagmohan and Company LTD for lumber, materials, haulage and sawmill service quotes.", "/contact");
 
 export default function ContactPage() {
   return (

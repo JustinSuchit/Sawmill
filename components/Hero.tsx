@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { heroImage, homeCapabilities } from "@/lib/site-data";
+import { business } from "@/lib/business";
 import { CategoryGrid } from "./CategoryGrid";
 import { SiteImage } from "./SiteImage";
 
@@ -12,7 +13,8 @@ export function Hero() {
         <div className="hero-overlay" />
         <div className="hero-content">
           <p className="eyebrow">Lumber, materials &amp; site services</p>
-          <h1 id="hero-title">Jagmohan Co</h1>
+          <h1 id="hero-title">{business.name}</h1>
+          <p className="hero-alias">&quot;{business.alternateName}&quot;</p>
           <p className="hero-line">From forest to finished timber.</p>
           <p className="hero-copy">Lumber, mouldings, sawmill services and haulage for projects across Trinidad &amp; Tobago.</p>
           <div className="hero-actions">

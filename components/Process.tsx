@@ -1,4 +1,5 @@
 import { processItems, whyItems } from "@/lib/site-data";
+import { WhyCardMotion } from "./WhyCardMotion";
 
 export function WhyChooseUs() {
   return (
@@ -9,13 +10,14 @@ export function WhyChooseUs() {
       </div>
       <div className="why-grid">
         {whyItems.map(([number, title, description]) => (
-          <article className="reveal" key={number}>
+          <article className="why-card" key={number}>
             <span>{number}</span>
             <h3>{title}</h3>
             <p>{description}</p>
           </article>
         ))}
       </div>
+      <WhyCardMotion />
     </section>
   );
 }
