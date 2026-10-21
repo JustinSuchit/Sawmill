@@ -298,6 +298,7 @@ export const lumberCategories: CategoryCard[] = [
       "2x6",
       "1x6",
       "1x8",
+      "1x10",
     ],
   },
   {
@@ -333,6 +334,7 @@ export const steelCategories: CategoryCard[] = [
     src: steelImage,
     alt: "Concrete sleepers stored in industrial yard",
     specs: "Sale and rental options available.",
+    imagePosition: "50% 32%",
   },
 ];
 

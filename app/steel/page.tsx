@@ -16,6 +16,7 @@ export default function SteelPage() {
         title="Concrete Sleepers."
         copy="Heavy-duty concrete sleepers for industrial and infrastructure applications. Enquire about sale, rental and delivery."
         image={steelImage}
+        imagePosition="50% 32%"
         tone="steel"
       />
       <section className="section steel-section">

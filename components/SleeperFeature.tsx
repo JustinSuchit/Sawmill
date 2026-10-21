@@ -45,6 +45,7 @@ export function SleeperFeature() {
             <SiteImage
               src={sleeperImages[0].src}
               alt={sleeperImages[0].alt}
+              objectPosition="50% 32%"
               sizes="(max-width: 860px) 100vw, 54vw"
               cover
             />

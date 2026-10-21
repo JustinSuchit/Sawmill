@@ -9,10 +9,16 @@ type CategoryCardProps = {
 };
 
 export function CategoryCard({ item, variant = "default", priority = false }: CategoryCardProps) {
+  const imageSizes = variant === "steel"
+    ? "(max-width: 680px) 100vw, (max-width: 1240px) 50vw, 620px"
+    : variant === "tools"
+      ? "(max-width: 520px) 100vw, (max-width: 1120px) 50vw, 310px"
+      : "(max-width: 520px) 100vw, (max-width: 1120px) 50vw, 414px";
+
   return (
     <article className={`category-card ${variant === "steel" ? "steel-card" : ""} reveal`}>
       <div className="category-media">
-        <SiteImage src={item.src} alt={item.alt} objectPosition={item.imagePosition} priority={priority} sizes={variant === "tools" ? "(max-width: 520px) 100vw, (max-width: 1120px) 50vw, 310px" : "(max-width: 520px) 100vw, (max-width: 1120px) 50vw, 414px"} cover />
+        <SiteImage src={item.src} alt={item.alt} objectPosition={item.imagePosition} priority={priority} sizes={imageSizes} cover />
       </div>
       <div className="category-body">
         <p className="label">{item.label}</p>
