@@ -31,7 +31,7 @@ export function Contact() {
         </div>
         <iframe
           className="contact-map-embed"
-          src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+          src="https://www.google.com/maps?ll=10.1564018,-61.4019008&z=17&output=embed"
           title={`Google Maps: ${business.address.label}`}
           loading="lazy"
           allowFullScreen
