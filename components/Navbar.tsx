@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { business } from "@/lib/business";
 
 const navItems = [
@@ -238,6 +238,19 @@ export function Navbar() {
               </Link>
             )
           )}
+
+          <div className="nav-contact-links">
+            <a className="nav-contact-icon nav-whatsapp" href={business.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Chat with Jagmohan Sawmill on WhatsApp (opens in a new tab)" title="Chat on WhatsApp" onClick={closeMenu}>
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M16 3a12 12 0 0 0-10.3 18.2L4 28l7-1.6A12 12 0 1 0 16 3Zm0 2a10 10 0 1 1-4.5 18.9l-.4-.2-4.3 1 1-4.1-.3-.4A10 10 0 0 1 16 5Zm-4.7 5.2c-.3 0-.6.1-.8.4-.7.7-1 1.5-1 2.4 0 2.2 2 4.6 2.4 5 1.4 1.7 3.3 3 5.4 3.5 1.1.3 2.4.1 3.1-.6.5-.5.9-1.3.8-1.7 0-.2-.2-.3-.5-.5l-2.1-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-1.5-.6-2.7-1.7-3.5-3-.2-.3-.2-.4 0-.6l.6-.8c.2-.3.2-.5.1-.8l-.9-2.2c-.2-.5-.4-.5-.7-.5h-.7Z" />
+              </svg>
+              <span className="nav-contact-label">WhatsApp</span>
+            </a>
+            <a className="nav-contact-icon nav-call" href={`tel:${business.telephone}`} aria-label={`Call Jagmohan Sawmill on ${business.phone}`} title={`Call ${business.phone}`} onClick={closeMenu}>
+              <Phone size={20} aria-hidden="true" />
+              <span className="nav-contact-label">Call {business.phone}</span>
+            </a>
+          </div>
 
           <div className="theme-toggle-wrap">
             <span className="theme-toggle-label">Theme</span>

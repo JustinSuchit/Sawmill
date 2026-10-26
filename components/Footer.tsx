@@ -27,8 +27,8 @@ export function Footer() {
       </nav>
       <address>
         <h2>Contact</h2>
-        Phone number placeholder<br />
-        WhatsApp number placeholder<br />
+        Phone: <a href={`tel:${business.telephone}`}>{business.phone}</a><br />
+        WhatsApp: <a href={business.whatsappUrl}>{business.phone}</a><br />
         <a href={`mailto:${business.email}`}>{business.email}</a><br />
         {business.address.street}, {business.address.locality}<br />
         Trinidad & Tobago

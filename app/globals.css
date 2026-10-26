@@ -132,6 +132,22 @@ button:disabled { cursor: wait; opacity: 0.72; }
 .nav-menu a:not(.nav-cta) { color: rgba(255,255,255,0.82); }
 .nav-menu a:hover, .nav-menu a[aria-current="page"] { color: #fff; }
 .nav-menu a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.45rem; }
+.nav-contact-links { display: flex; align-items: center; gap: 0.4rem; }
+.nav-contact-links .nav-contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  min-height: 44px;
+  border: 1px solid rgba(255,255,255,0.24);
+  border-radius: 4px;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.nav-contact-links .nav-whatsapp { color: #fff; background: #1f7f4a; }
+.nav-contact-links a.nav-call { color: var(--amber); background: rgba(255,255,255,0.04); }
+.nav-contact-links .nav-contact-icon:hover { border-color: var(--amber); background: var(--green-2); }
+.nav-contact-label { display: none; }
 .nav-cta, .btn {
   display: inline-flex;
   align-items: center;
@@ -1513,6 +1529,9 @@ dd { margin: 0; font-weight: 850; }
     justify-content: space-between;
     border-bottom: 1px solid rgba(255,255,255,0.12);
   }
+  .nav-contact-links { padding-block: 0.75rem; gap: 0.75rem; flex-wrap: wrap; }
+  .nav-contact-links .nav-contact-icon { width: auto; flex: 1 1 auto; gap: 0.5rem; padding: 0.65rem; min-height: 48px; }
+  .nav-contact-label { display: inline; }
   .theme-toggle-label {
     display: block;
     color: rgba(255,255,255,0.82);

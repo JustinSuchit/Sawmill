@@ -11,15 +11,15 @@ export function Contact() {
           <p className="eyebrow">Contact</p>
           <h2 id="contact-title">Phone, WhatsApp or Request a Quote.</h2>
           <dl>
-            <div><dt>Phone</dt><dd>Phone number placeholder</dd></div>
-            <div><dt>WhatsApp</dt><dd>WhatsApp number placeholder</dd></div>
+            <div><dt>Phone</dt><dd><a href={`tel:${business.telephone}`}>{business.phone}</a></dd></div>
+            <div><dt>WhatsApp</dt><dd><a href={business.whatsappUrl}>{business.phone}</a></dd></div>
             <div><dt>Email</dt><dd><a href={`mailto:${business.email}`}>{business.email}</a></dd></div>
             <div><dt>Location</dt><dd><address className="contact-address">{business.address.label}</address></dd></div>
             <div><dt>Business Hours</dt><dd>Business hours placeholder</dd></div>
           </dl>
           <div className="contact-actions">
-            <a className="btn btn-dark" href="tel:+10000000000">Call Us</a>
-            <a className="btn btn-whatsapp" href="https://wa.me/10000000000">WhatsApp Us</a>
+            <a className="btn btn-dark" href={`tel:${business.telephone}`}>Call Us</a>
+            <a className="btn btn-whatsapp" href={business.whatsappUrl}>WhatsApp Us</a>
             <a className="btn btn-primary" href="/quote">Request a Quote</a>
           </div>
         </div>

@@ -45,6 +45,7 @@ const structuredData = {
     "Supplier of lumber, steel, tools and hardware with sawmill, haulage, tree cutting, tree removal and land clearing services in Trinidad & Tobago.",
   areaServed: "Trinidad and Tobago",
   email: business.email,
+  telephone: business.telephone,
   ...(siteUrl ? { url: siteUrl.href } : {}),
   address: {
     "@type": "PostalAddress",
