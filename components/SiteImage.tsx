@@ -28,6 +28,7 @@ export function SiteImage({
         alt={alt}
         fill
         preload={priority}
+        fetchPriority={priority ? "high" : undefined}
         loading={priority ? "eager" : "lazy"}
         sizes={sizes}
         quality={quality}

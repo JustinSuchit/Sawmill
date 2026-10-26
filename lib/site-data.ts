@@ -22,6 +22,7 @@ export type GalleryItem = ImageItem & {
 };
 
 export type CategoryCard = ImageItem & {
+  thumbnailSrc?: string;
   id?: string;
   imagePosition?: string;
   label: string;
@@ -69,6 +70,7 @@ export const homeCapabilities: CategoryCard[] = [
     href: "/products",
     cta: "Explore Tools",
     src: toolImage,
+    thumbnailSrc: "/images/tools/cn70-pneumatic-coil-nailer-thumbnail.webp",
     alt: "Hardware tools arranged for construction work",
   },
   {
@@ -183,6 +185,7 @@ export const toolCategories: CategoryCard[] = [
     href: "/quote",
     cta: "Request a Quote",
     src: "/images/tools/cn70-pneumatic-coil-nailer.avif",
+    thumbnailSrc: "/images/tools/cn70-pneumatic-coil-nailer-thumbnail.webp",
     alt: "CN70 pneumatic wire-collated coil nailer",
     specs: "Industrial-grade pneumatic coil nailer for heavy-duty timber assembly.",
     examples: [

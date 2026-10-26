@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, ExternalLink, LoaderCircle, Maximize2, X } f
 import { useEffect, useId, useRef, useState } from "react";
 import { SiteImage } from "./SiteImage";
 
-type Photo = { src: string; alt: string; caption?: string; position?: string };
+type Photo = { src: string; thumbnailSrc?: string; alt: string; caption?: string; position?: string };
 type PhotoGalleryProps = { images: Photo[]; className?: string; sizes: string; priority?: boolean };
 
 export function PhotoGallery({ images, className = "", sizes, priority = false }: PhotoGalleryProps) {
@@ -37,7 +37,7 @@ export function PhotoGallery({ images, className = "", sizes, priority = false }
           <figure key={photo.src}>
             <button className="photo-gallery-trigger" type="button" aria-label={`View photo: ${photo.alt}`} aria-haspopup="dialog" onClick={() => { setImageState("loading"); setActive(index); }}>
               <span className="photo-gallery-media">
-                <SiteImage src={photo.src} alt={photo.alt} objectPosition={photo.position} sizes={sizes} quality={65} priority={priority && index === 0} cover />
+                <SiteImage src={photo.thumbnailSrc || photo.src} alt={photo.alt} objectPosition={photo.position} sizes={sizes} quality={65} priority={priority && index === 0} cover />
               </span>
               <span className="photo-gallery-expand" aria-hidden="true"><Maximize2 size={18} /></span>
             </button>

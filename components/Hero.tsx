@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <>
       <section className="hero" id="home" aria-labelledby="hero-title">
-        <SiteImage src={heroImage} alt="Harvested timber and forestry equipment at the logging yard" priority sizes="100vw" cover />
+        <SiteImage src={heroImage} alt="Harvested timber and forestry equipment at the logging yard" priority sizes="100vw" quality={65} cover />
         <div className="hero-overlay" />
         <div className="hero-content">
           <p className="eyebrow">Lumber, materials &amp; site services</p>
