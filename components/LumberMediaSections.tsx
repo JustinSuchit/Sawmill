@@ -91,9 +91,6 @@ export function LumberMediaSections() {
               Processed timber supports dimensional lumber, construction lumber,
               furniture work and custom-cut project requirements.
             </p>
-            <Link className="btn btn-dark" href="/quote?product=Dimensional%20Lumber">
-              Request Lumber Quote
-            </Link>
           </div>
         </div>
       </section>
@@ -109,8 +106,8 @@ export function LumberMediaSections() {
                 and custom profiles to suit your project.
               </p>
             </div>
-            <Link className="btn btn-primary" href="/quote?product=Mouldings%20%26%20Dressed%20Lumber">
-              Request Moulding Quote <ArrowUpRight size={18} aria-hidden="true" />
+            <Link className="text-link contextual-enquiry" href="/quote?product=Mouldings%20%26%20Dressed%20Lumber">
+              Discuss Your Mouldings <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
           <PhotoGallery images={mouldingImages} className="mouldings-gallery" sizes="(max-width: 680px) 100vw, (max-width: 1240px) 50vw, 620px" />
@@ -132,8 +129,8 @@ export function LumberMediaSections() {
               Durable timber pallets designed for convenient handling and access
               from multiple sides.
             </p>
-            <Link className="btn btn-dark" href="/quote?product=Timber%20Pallets">
-              Request Pallet Quote
+            <Link className="text-link contextual-enquiry" href="/quote?product=Timber%20Pallets">
+              Get Pallet Pricing <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
           <div className="media-duo-grid reveal">

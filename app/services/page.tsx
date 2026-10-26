@@ -1,7 +1,6 @@
 import { pageMetadata } from "@/lib/metadata";
 import { PageHeader } from "@/components/PageHeader";
 import { Process } from "@/components/Process";
-import { QuoteCTA } from "@/components/QuoteCTA";
 import { ServiceDetailSections } from "@/components/ServiceDetailSections";
 import { ServiceMediaSections } from "@/components/ServiceMediaSections";
 import { heroImage } from "@/lib/site-data";
@@ -20,10 +19,6 @@ export default function ServicesPage() {
       <ServiceDetailSections />
       <ServiceMediaSections />
       <Process />
-      <QuoteCTA
-        title="Need a Service Quote?"
-        copy="Send service details, location, timing and any photos or files that help describe the requirement."
-      />
     </main>
   );
 }

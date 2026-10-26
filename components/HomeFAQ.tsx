@@ -6,7 +6,7 @@ const questions = [
     question: "What information should I include in a lumber quote request?",
     answer: "Include the wood type, board sizes, quantities and intended use. Add your delivery location if needed, and attach drawings or photos when they help explain the job. Pricing and availability are confirmed when your request is reviewed.",
     href: "/quote?product=Dimensional%20Lumber",
-    link: "Request a lumber quote",
+    link: "Get Lumber Pricing",
   },
   {
     question: "Can I request custom-cut timber and mouldings?",

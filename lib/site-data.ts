@@ -132,7 +132,7 @@ export const toolCategories: CategoryCard[] = [
     description:
       "Bandsaw blades available for Wood-Mizer and wood bandsaw applications.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: "/images/bandsaw img.webp",
     alt: "Bandsaw blade product image",
     examples: [
@@ -150,7 +150,7 @@ export const toolCategories: CategoryCard[] = [
     description:
       "Sharpening stones and wheels for sawmill blade maintenance.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: "/images/tools/sharpening-wheel.avif",
     alt: "Tyrolit sharpening wheel for sawmill blades",
     examples: [
@@ -165,7 +165,7 @@ export const toolCategories: CategoryCard[] = [
     description:
       "Bridge Brand welding electrodes available in 10 gauge and 12 gauge.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: "/images/welding electrodes.jpg",
     alt: "Welding electrodes",
     specs:
@@ -183,7 +183,7 @@ export const toolCategories: CategoryCard[] = [
     description:
       "An industrial-grade pneumatic coil nailer specifically engineered for heavy-duty timber assembly, such as manufacturing and repairing wooden pallets, crates, drums and fencing.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: "/images/tools/cn70-pneumatic-coil-nailer.avif",
     thumbnailSrc: "/images/tools/cn70-pneumatic-coil-nailer-thumbnail.webp",
     alt: "CN70 pneumatic wire-collated coil nailer",
@@ -206,7 +206,7 @@ export const lumberCategories: CategoryCard[] = [
     description:
       "Standard and custom-sized lumber available for a range of construction and woodworking requirements.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: "/images/lumber/products/stacked-hardwood-lumber.jpg",
     alt: "Sawn timber bundled and stacked at the yard",
     imagePosition: "50% 52%",
@@ -219,7 +219,7 @@ export const lumberCategories: CategoryCard[] = [
     description:
       "Lumber available with pest treatment and heat treatment options.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: "/images/lumber/products/treated-lumber.jpg",
     alt: "Stacks of treated lumber boards ready for use",
     specs: "Pest treatment and heat treatment available.",
@@ -231,7 +231,7 @@ export const lumberCategories: CategoryCard[] = [
     description:
       "Hardwood lumber available for applications requiring dense and durable timber.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: "/images/lumber/products/hardwood.webp",
     alt: "Stacked hardwood timber with exposed end grain",
     specs:
@@ -255,7 +255,7 @@ export const lumberCategories: CategoryCard[] = [
     description:
       "Utility-grade lumber suitable for pallets, dunnage, crating, boxes, boxing boards and formwork.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: "/images/lumber/products/softwood.jpg",
     alt: "Close-up of stacked rough-sawn softwood boards",
     specs: "Starting at $6.00 per square foot.",
@@ -275,7 +275,7 @@ export const lumberCategories: CategoryCard[] = [
     description:
       "Medium-density utility hardwoods offering flexibility, high shock resistance and good machinability.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: lumberImage,
     alt: "Stacks of processed lumber",
     imagePosition: "25% 50%",
@@ -294,7 +294,7 @@ export const lumberCategories: CategoryCard[] = [
     description:
       "Imported Southern Yellow Pine available in a range of commonly used dimensions.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: lumberImage,
     alt: "Stacks of processed lumber",
     imagePosition: "85% 35%",
@@ -317,7 +317,7 @@ export const lumberCategories: CategoryCard[] = [
     description:
       "Professional lumber dressing and moulding services, including custom designs.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: "/images/lumber/products/timber-moulding-profile-sanding.jpg",
     alt: "Shaped timber moulding being sanded in the workshop",
     specs:
@@ -340,7 +340,7 @@ export const steelCategories: CategoryCard[] = [
     description:
       "Concrete sleepers available with sale and rental options.",
     href: "/quote",
-    cta: "Request a Quote",
+    cta: "Get Pricing",
     src: steelImage,
     alt: "Concrete sleepers stored in industrial yard",
     specs: "Sale and rental options available.",
@@ -355,7 +355,7 @@ export const serviceDetails: ServiceDetail[] = [
     description:
       "Transportation and delivery support for materials, equipment and commercial loads.",
     href: "/quote",
-    cta: "Request Haulage Quote",
+    cta: "Enquire About Haulage",
     src: "/images/lumber/delivery/lumber-delivery-fleet.jpg",
     alt: "Loaded lumber delivery trucks",
     items: [
@@ -373,7 +373,7 @@ export const serviceDetails: ServiceDetail[] = [
     description:
       "Tree cutting, removal and property clearing support.",
     href: "/quote",
-    cta: "Request Tree Removal Quote",
+    cta: "Discuss Tree Removal",
     src: treeRemovalImage,
     alt: "Log loading during forest clearing operation",
     items: [
@@ -391,7 +391,7 @@ export const serviceDetails: ServiceDetail[] = [
     description:
       "Bandsaw resharpening and blade setting services for qualifying blades.",
     href: "/quote",
-    cta: "Request Sawmill Service",
+    cta: "Discuss Sawmill Requirements",
     src: sawmillImage,
     alt: "Wood-Mizer sawmill processing timber",
     items: [

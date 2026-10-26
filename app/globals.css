@@ -1122,6 +1122,9 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+.contextual-enquiry { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 44px; font-weight: 700; text-transform: none; letter-spacing: 0; }
+.contextual-enquiry svg { flex-shrink: 0; }
+.mouldings-showcase .contextual-enquiry { color: var(--amber); }
 [data-theme="dark"] .text-link, [data-theme="dark"] .service-card a { color: var(--amber); }
 
 .band-dark {
@@ -1669,7 +1672,7 @@ dd { margin: 0; font-weight: 850; }
 .category-body { gap: 0.85rem; padding: 1.5rem; }
 .category-body .label { color: var(--amber-dark); font-weight: 750; }
 .category-body h3, .category-body p { margin: 0; }
-.category-body .text-link { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.category-body .text-link { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid var(--line); font-weight: 700; text-transform: none; letter-spacing: 0; }
 .category-body .text-link svg { flex-shrink: 0; }
 .category-specs { font-size: 0.9rem; line-height: 1.6; }
 .compact-list { gap: 0.45rem; margin: 0; }

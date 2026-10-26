@@ -1,7 +1,6 @@
 import { pageMetadata } from "@/lib/metadata";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { PageHeader } from "@/components/PageHeader";
-import { QuoteCTA } from "@/components/QuoteCTA";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SiteImage } from "@/components/SiteImage";
 import { toolCategories, toolImage } from "@/lib/site-data";
@@ -25,11 +24,6 @@ export default function ProductsPage() {
         />
         <CategoryGrid items={toolCategories} variant="tools" />
       </section>
-      <QuoteCTA
-        eyebrow="Need Something Specific?"
-        title="Can't find what you're looking for?"
-        copy="Contact our team and we'll help you find the right product."
-      />
       <section className="section materials-bridge" aria-labelledby="tools-cross-title">
         <div className="materials-bridge-shell">
           <div className="materials-bridge-copy reveal">
@@ -50,9 +44,6 @@ export default function ProductsPage() {
               <span>02</span>
               <strong>Concrete Sleepers</strong>
               <small>Concrete sleepers and industrial products.</small>
-            </a>
-            <a className="btn btn-primary materials-bridge-cta" href="/quote">
-              Request a Quote
             </a>
           </nav>
           <div className="materials-bridge-media reveal">

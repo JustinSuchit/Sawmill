@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { SiteImage } from "./SiteImage";
 
 const sleeperImages = [
@@ -36,9 +34,6 @@ export function SleeperFeature() {
             Heavy-duty concrete sleepers available for infrastructure and
             industrial applications, with sale and rental options handled by quote.
           </p>
-          <Link className="btn btn-dark" href="/quote?product=Concrete%20Sleepers">
-            Request Sleeper Quote
-          </Link>
         </div>
         <div className="sleeper-gallery reveal">
           <div className="sleeper-primary">

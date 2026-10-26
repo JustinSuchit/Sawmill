@@ -35,8 +35,6 @@ export default function LumberPage() {
         copy="Need a specific cut or timber dimension? Our sawmill services can help process timber to suit your project requirements."
         cta="Explore Sawmill Services"
         href="/services#sawmill-services"
-        secondaryCta="Request a Quote"
-        secondaryHref="/quote"
       />
     </main>
   );

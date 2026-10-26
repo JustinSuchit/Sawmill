@@ -34,8 +34,6 @@ export default function SteelPage() {
         copy="Coordinate your sleeper requirements with haulage and delivery support for your project location."
         cta="Explore Haulage"
         href="/services#haulage"
-        secondaryCta="Request Sleeper Quote"
-        secondaryHref="/quote?product=Concrete%20Sleepers"
       />
     </main>
   );
