@@ -263,12 +263,28 @@ button:disabled { cursor: wait; opacity: 0.72; }
 .hero h1 { max-width: 960px; margin-inline: auto; }
 .hero-alias { font-size: 1.05rem; font-style: italic; color: rgba(255,255,255,0.8); margin: 0 0 1.5rem; }
 .eyebrow, .label {
-  color: var(--amber);
+  color: var(--amber-dark);
   font-weight: 950;
   text-transform: uppercase;
   letter-spacing: 0;
   font-size: 0.78rem;
 }
+.hero .eyebrow, .page-hero .eyebrow, .band-dark .eyebrow,
+.quote-cta .eyebrow, .quote-copy .eyebrow, .mouldings-showcase .eyebrow,
+.operations-overview .eyebrow,
+.split-copy .eyebrow, .tree-copy .eyebrow, .sawmill-feature .eyebrow,
+.logging-proof .eyebrow, .sawmill-video-section .eyebrow,
+.service-feature .eyebrow, .materials-bridge .eyebrow { color: var(--amber); }
+.faq-list { max-width: 1240px; margin-inline: auto; }
+.faq-list details { max-width: 900px; border-top: 1px solid var(--line); }
+.faq-list details:last-child { border-bottom: 1px solid var(--line); }
+.faq-list summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; padding: 1rem 0; font-weight: 700; cursor: pointer; list-style: none; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary svg { flex-shrink: 0; transition: transform 160ms ease; }
+.faq-list details[open] summary svg { transform: rotate(45deg); }
+.faq-list details > div { padding: 0 0 1.5rem; max-width: 760px; }
+.faq-list p { color: var(--muted); }
+.faq-list a { display: inline-flex; align-items: center; min-height: 44px; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2, h3 {
   line-height: 1.12;

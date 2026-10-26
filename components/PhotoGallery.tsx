@@ -14,13 +14,15 @@ export function PhotoGallery({ images, className = "", sizes, priority = false }
   const [active, setActive] = useState<number | null>(null);
   const [imageState, setImageState] = useState<"loading" | "ready" | "error">("loading");
   const current = images[active ?? 0];
+  const isOpen = active !== null;
 
   useEffect(() => {
-    if (active === null) return;
+    if (!isOpen) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    dialog.current?.showModal();
     return () => { document.body.style.overflow = previous; };
-  }, [active]);
+  }, [isOpen]);
 
   function move(direction: number) {
     if (images.length < 2) return;
@@ -33,7 +35,7 @@ export function PhotoGallery({ images, className = "", sizes, priority = false }
       <div className={`photo-gallery ${className}`}>
         {images.map((photo, index) => (
           <figure key={photo.src}>
-            <button className="photo-gallery-trigger" type="button" aria-label={`View photo: ${photo.alt}`} aria-haspopup="dialog" onClick={() => { setImageState("loading"); setActive(index); dialog.current?.showModal(); }}>
+            <button className="photo-gallery-trigger" type="button" aria-label={`View photo: ${photo.alt}`} aria-haspopup="dialog" onClick={() => { setImageState("loading"); setActive(index); }}>
               <span className="photo-gallery-media">
                 <SiteImage src={photo.src} alt={photo.alt} objectPosition={photo.position} sizes={sizes} quality={65} priority={priority && index === 0} cover />
               </span>
@@ -47,6 +49,7 @@ export function PhotoGallery({ images, className = "", sizes, priority = false }
         if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); }
         if (event.key === "ArrowRight") { event.preventDefault(); move(1); }
       }}>
+        {isOpen && <>
         <div className="photo-dialog-toolbar">
           <span>{active === null ? "" : `${active + 1} / ${images.length}`}</span>
           <div>
@@ -66,6 +69,7 @@ export function PhotoGallery({ images, className = "", sizes, priority = false }
           </div>
         )}
         <p id={titleId} aria-live="polite">{current.caption || current.alt}</p>
+        </>}
       </dialog>
     </>
   );
