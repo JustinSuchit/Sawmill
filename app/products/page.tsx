@@ -1,9 +1,9 @@
 import { pageMetadata } from "@/lib/metadata";
-import { CategoryGrid } from "@/components/CategoryGrid";
+import { ManagedCatalog } from "@/components/ManagedCatalog";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SiteImage } from "@/components/SiteImage";
-import { toolCategories, toolImage } from "@/lib/site-data";
+import { toolImage } from "@/lib/site-data";
 
 export const metadata = pageMetadata("Tools & Hardware", "Tools, sawmill supplies and hardware for contractors and tradespeople in Trinidad & Tobago.", "/products");
 
@@ -22,7 +22,7 @@ export default function ProductsPage() {
           title="Tool Categories"
           copy="Browse blades, sharpening supplies, welding electrodes and nailers. Ask our team about the right fit for your work."
         />
-        <CategoryGrid items={toolCategories} variant="tools" />
+        <ManagedCatalog page="products" />
       </section>
       <section className="section materials-bridge" aria-labelledby="tools-cross-title">
         <div className="materials-bridge-shell">

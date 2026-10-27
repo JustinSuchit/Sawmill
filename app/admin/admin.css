@@ -1,0 +1,27 @@
+.admin-page { max-width: 1280px; margin: auto; padding: calc(var(--header-h) + 3rem) 1.25rem 4rem; min-height: 80vh; }
+.admin-page h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0; }
+.admin-page h2 { font-size: 1.3rem; }
+.admin-heading, .admin-actions, .admin-product-row { display: flex; gap: 1rem; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.admin-actions { justify-content: flex-start; gap: .6rem; }
+.admin-page button { min-height: 44px; }
+.admin-page label { display: grid; gap: .4rem; font-weight: 700; min-width: 0; }
+.admin-page input:not([type=checkbox]), .admin-page select, .admin-page textarea { width: 100%; min-width: 0; padding: .75rem; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--ink); }
+.admin-page textarea { resize: vertical; }
+.admin-page small { color: var(--muted); font-weight: 400; }
+.admin-login { max-width: 500px; margin: 2rem auto; background: var(--surface); padding: 2rem; border: 1px solid var(--line); }
+.admin-login form, .admin-form { display: grid; gap: 1rem; }
+.admin-editor { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 2rem; scroll-margin-top: calc(var(--header-h) + 1rem); margin-bottom: 3rem; }
+.admin-form, .admin-preview, .admin-list { padding: 1.5rem; background: var(--surface); border: 1px solid var(--line); min-width: 0; }
+.admin-preview { align-self: start; }
+.admin-preview .category-card { max-width: 100%; }
+.admin-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.admin-page .admin-check { display: flex; gap: .6rem; align-items: center; min-height: 44px; }
+.admin-check input { width: 20px; height: 20px; accent-color: var(--amber); }
+.admin-filters { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; align-items: end; }
+.admin-status { min-height: 1.6rem; color: var(--muted); overflow-wrap: anywhere; }
+.admin-product-row { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.admin-product-row h2, .admin-product-row p { margin: .2rem 0; overflow-wrap: anywhere; }
+.admin-local-preview { position: relative; aspect-ratio: 3 / 2; }
+.admin-removal { flex-basis: 100%; padding: 1rem; border-left: 3px solid var(--amber); background: var(--bg); }
+@media(max-width: 860px) { .admin-editor { grid-template-columns: 1fr; } .admin-filters { grid-template-columns: 1fr 1fr; } }
+@media(max-width: 520px) { .admin-fields, .admin-filters { grid-template-columns: 1fr; } .admin-form, .admin-preview, .admin-list, .admin-login { padding: 1rem; } }

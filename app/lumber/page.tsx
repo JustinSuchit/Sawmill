@@ -1,11 +1,11 @@
 import { pageMetadata } from "@/lib/metadata";
-import { CategoryGrid } from "@/components/CategoryGrid";
+import { ManagedCatalog } from "@/components/ManagedCatalog";
 import { LumberMediaSections } from "@/components/LumberMediaSections";
 import { LumberNavigation } from "@/components/LumberNavigation";
 import { PageHeader } from "@/components/PageHeader";
 import { QuoteCTA } from "@/components/QuoteCTA";
 import { SectionHeading } from "@/components/SectionHeading";
-import { lumberCategories, lumberImage } from "@/lib/site-data";
+import { lumberImage } from "@/lib/site-data";
 
 export const metadata = pageMetadata("Lumber & Timber", "Lumber, timber, mouldings and dressed lumber for construction and woodworking.", "/lumber");
 
@@ -26,7 +26,7 @@ export default function LumberPage() {
           title="Lumber for Every Project."
           copy="Explore lumber by type and application. Send your sizes and quantities for current pricing and availability."
         />
-        <CategoryGrid items={lumberCategories.filter((item) => item.title !== "Mouldings & Dressed Lumber")} />
+        <ManagedCatalog page="lumber" />
       </section>
       <LumberMediaSections />
       <QuoteCTA

@@ -1,10 +1,10 @@
 import { pageMetadata } from "@/lib/metadata";
-import { CategoryGrid } from "@/components/CategoryGrid";
+import { ManagedCatalog } from "@/components/ManagedCatalog";
 import { PageHeader } from "@/components/PageHeader";
 import { QuoteCTA } from "@/components/QuoteCTA";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SleeperFeature } from "@/components/SleeperFeature";
-import { steelCategories, steelImage } from "@/lib/site-data";
+import { steelImage } from "@/lib/site-data";
 
 export const metadata = pageMetadata("Concrete Sleepers", "Concrete sleepers for industrial and infrastructure applications, with sale and rental options.", "/steel");
 
@@ -25,7 +25,7 @@ export default function SteelPage() {
           title="Request by Category and Specification."
           copy="Share your required quantity, specifications and location for pricing and availability."
         />
-        <CategoryGrid items={steelCategories} variant="steel" />
+        <ManagedCatalog page="steel" />
       </section>
       <SleeperFeature />
       <QuoteCTA

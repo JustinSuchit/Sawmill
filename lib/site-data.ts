@@ -22,6 +22,8 @@ export type GalleryItem = ImageItem & {
 };
 
 export type CategoryCard = ImageItem & {
+  price?: number | null;
+  priceUnit?: string;
   thumbnailSrc?: string;
   id?: string;
   imagePosition?: string;
