@@ -26,7 +26,7 @@ export function CategoryCard({ item, variant = "default", priority = false }: Ca
         <h3>{item.title}</h3>
         <p>{item.description}</p>
         {item.price != null && <p className="category-specs"><strong>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD" }).format(item.price)}</strong>{item.priceUnit ? ` ${item.priceUnit}` : ""}</p>}
-        {item.examples && (
+        {item.examples && item.examples.length > 0 && (
           <ul className="compact-list" aria-label={`${item.title} examples`}>
             {item.examples.map((example) => <li key={example}>{example}</li>)}
           </ul>

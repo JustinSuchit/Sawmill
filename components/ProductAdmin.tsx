@@ -43,7 +43,7 @@ export function ProductAdmin() {
         if (roleError || !role) { setAccess("denied"); setProducts([]); setEditing(null); return; }
         const { data, error: queryError } = await client.from("catalog_products").select("*").order("sort_order").order("title");
         if (queryError) throw new Error("Unable to load products. Please try signing in again.");
-        if (active) { setProducts(data || []); setAccess("admin"); setStatus(current => current.startsWith("Check your email") ? "" : current); }
+        if (active) { setProducts(data || []); setAccess("admin"); setStatus(current => current.startsWith("Check your email") || current.startsWith("Could not send the sign-in link") || current.startsWith("A sign-in link was recently requested") ? "" : current); }
       } catch (error) {
         if (active) { setAccess("login"); setStatus(error instanceof Error ? error.message : "Unable to connect."); }
       }
@@ -69,7 +69,7 @@ export function ProductAdmin() {
       const { error } = await adminClient().auth.signInWithOtp({ email: email.trim().toLowerCase(), options: { emailRedirectTo: `${window.location.origin}/admin` } });
       if (error) throw error;
       setStatus("Check your email for a secure sign-in link. Open it in this browser to continue.");
-    } catch { setStatus("Could not send the sign-in link. Check the email address and try again shortly."); }
+    } catch (error) { setStatus(error instanceof Error && "status" in error && error.status === 429 ? "A sign-in link was recently requested. Use the latest email in your inbox, or wait a minute before trying again." : "Could not send the sign-in link. Check the email address and try again shortly."); }
     finally { setBusy(false); }
   }
 
