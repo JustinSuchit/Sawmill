@@ -5,6 +5,7 @@ import { Plus, LogOut, Pencil, Archive, RotateCcw } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { adminClient } from "@/lib/supabase-browser";
+import { adminSignInEmail } from "@/lib/admin-identity";
 import { catalogPages, productCard, validImageSource, type CatalogPage, type CatalogProduct } from "@/lib/catalog-types";
 import { imageExtension, thumbnailLimit } from "@/lib/catalog-upload";
 import { CategoryCard } from "./CategoryCard";
@@ -72,13 +73,15 @@ export function ProductAdmin() {
   async function signIn(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setBusy(true); setStatus("");
     try {
+      const signInEmail = adminSignInEmail(email);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signInEmail)) { setStatus("Enter your admin email address or the username Admin."); return; }
       if (recovering) {
-        const { error } = await adminClient().auth.resetPasswordForEmail(email.trim().toLowerCase(), { redirectTo: `${window.location.origin}/admin` });
+        const { error } = await adminClient().auth.resetPasswordForEmail(signInEmail, { redirectTo: `${window.location.origin}/admin` });
         if (error) throw error;
         setStatus("Check your email for password setup or recovery instructions. This is only needed when setting or resetting your password.");
         return;
       }
-      const { error } = await adminClient().auth.signInWithPassword({ email: email.trim().toLowerCase(), password });
+      const { error } = await adminClient().auth.signInWithPassword({ email: signInEmail, password });
       if (error) throw error;
       setPassword("");
     } catch (error) { setStatus(error instanceof Error && "status" in error && error.status === 429 ? "Too many sign-in or recovery attempts. Wait a minute before trying again." : recovering ? "Could not request password recovery. Try again shortly." : "Sign-in failed. Check your email and password, or use Set / reset password below."); }
@@ -151,7 +154,7 @@ export function ProductAdmin() {
   if (access === "loading") return <p role="status">Checking admin access…</p>;
   if (access !== "admin") return <section className="admin-login"><p className="eyebrow">Jagmohan Sawmill</p><h1>Product Admin</h1><p>Manage your products, photos and prices.</p>
     {access === "denied" ? <><p role="alert">This account does not have admin access.</p><button className="btn btn-dark" onClick={() => void adminClient().auth.signOut()}>Sign out</button></> :
-    <form onSubmit={signIn}><label>Admin email<input type="email" autoComplete="username" required value={email} onChange={event => setEmail(event.target.value)} /></label>{!recovering && <label>Password<input type="password" autoComplete="current-password" required maxLength={128} value={password} onChange={event => setPassword(event.target.value)} /></label>}<button className="btn btn-primary" disabled={busy}>{busy ? "Please wait…" : recovering ? "Send password recovery email" : "Sign in"}</button><button className="admin-auth-link" type="button" disabled={busy} onClick={() => { setRecovering(!recovering); setPassword(""); setStatus(""); }}>{recovering ? "Back to password sign-in" : "Set / reset password"}</button><p>Access is limited to approved administrators.</p></form>}
+    <form onSubmit={signIn}><label>Email or username<input type="text" autoComplete="username" autoCapitalize="none" spellCheck={false} maxLength={254} required value={email} onChange={event => setEmail(event.target.value)} /></label>{!recovering && <label>Password<input type="password" autoComplete="current-password" required maxLength={128} value={password} onChange={event => setPassword(event.target.value)} /></label>}<button className="btn btn-primary" disabled={busy}>{busy ? "Please wait…" : recovering ? "Send password recovery email" : "Sign in"}</button><button className="admin-auth-link" type="button" disabled={busy} onClick={() => { setRecovering(!recovering); setPassword(""); setStatus(""); }}>{recovering ? "Back to password sign-in" : "Set / reset password"}</button><p>Access is limited to approved administrators.</p></form>}
     <p role="status" aria-live="polite">{status}</p></section>;
 
   return <>

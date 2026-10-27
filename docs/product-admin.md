@@ -2,6 +2,8 @@
 
 Open `/admin` and sign in with your admin email and password. The approved first administrator is `justinsuchit37@gmail.com`. The public contact email remains `joshjagmohan93@gmail.com`.
 
+The separate business administrator uses `joshjagmohan93@gmail.com`. `Admin` (case-insensitive) is a sign-in alias for this public business email, including password recovery; it does not bypass authentication or grant privileges by itself. Existing admins continue to sign in with their own email addresses. The business administrator must accept their invitation and set their own password before signing in.
+
 ## Password setup and recovery
 
 If already signed in, choose “Set / change password” in the admin header. Otherwise choose “Set / reset password” on the sign-in form to request a recovery email. The recovery link returns to the existing approved `/admin` callback and routes to `/admin/password` after Supabase verifies the recovery session.
