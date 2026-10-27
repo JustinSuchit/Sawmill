@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Plus, LogOut, Pencil, Archive, RotateCcw } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { adminClient } from "@/lib/supabase-browser";
 import { catalogPages, productCard, validImageSource, type CatalogPage, type CatalogProduct } from "@/lib/catalog-types";
 import { imageExtension, thumbnailLimit } from "@/lib/catalog-upload";
@@ -15,6 +16,8 @@ function emptyProduct(): CatalogProduct {
 export function ProductAdmin() {
   const [access, setAccess] = useState<"loading" | "login" | "denied" | "admin">("loading");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [recovering, setRecovering] = useState(false);
   const [account, setAccount] = useState("");
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
@@ -43,7 +46,7 @@ export function ProductAdmin() {
         if (roleError || !role) { setAccess("denied"); setProducts([]); setEditing(null); return; }
         const { data, error: queryError } = await client.from("catalog_products").select("*").order("sort_order").order("title");
         if (queryError) throw new Error("Unable to load products. Please try signing in again.");
-        if (active) { setProducts(data || []); setAccess("admin"); setStatus(current => current.startsWith("Check your email") || current.startsWith("Could not send the sign-in link") || current.startsWith("A sign-in link was recently requested") ? "" : current); }
+        if (active) { setProducts(data || []); setAccess("admin"); setStatus(current => current.startsWith("Check your email") || current.startsWith("Sign-in failed") || current.startsWith("Too many sign-in") ? "" : current); }
       } catch (error) {
         if (active) { setAccess("login"); setStatus(error instanceof Error ? error.message : "Unable to connect."); }
       }
@@ -51,7 +54,10 @@ export function ProductAdmin() {
     void loadSession();
     let unsubscribe = () => {};
     try {
-      const { data: { subscription } } = adminClient().auth.onAuthStateChange(() => { window.setTimeout(() => { if (active) void loadSession(); }, 0); });
+      const { data: { subscription } } = adminClient().auth.onAuthStateChange(event => {
+        if (event === "PASSWORD_RECOVERY") { window.location.replace("/admin/password"); return; }
+        window.setTimeout(() => { if (active) void loadSession(); }, 0);
+      });
       unsubscribe = () => subscription.unsubscribe();
     } catch { /* Setup state is shown by loadSession. */ }
     return () => { active = false; unsubscribe(); if (previewRef.current) URL.revokeObjectURL(previewRef.current); };
@@ -66,11 +72,17 @@ export function ProductAdmin() {
   async function signIn(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setBusy(true); setStatus("");
     try {
-      const { error } = await adminClient().auth.signInWithOtp({ email: email.trim().toLowerCase(), options: { emailRedirectTo: `${window.location.origin}/admin` } });
+      if (recovering) {
+        const { error } = await adminClient().auth.resetPasswordForEmail(email.trim().toLowerCase(), { redirectTo: `${window.location.origin}/admin` });
+        if (error) throw error;
+        setStatus("Check your email for password setup or recovery instructions. This is only needed when setting or resetting your password.");
+        return;
+      }
+      const { error } = await adminClient().auth.signInWithPassword({ email: email.trim().toLowerCase(), password });
       if (error) throw error;
-      setStatus("Check your email for a secure sign-in link. Open it in this browser to continue.");
-    } catch (error) { setStatus(error instanceof Error && "status" in error && error.status === 429 ? "A sign-in link was recently requested. Use the latest email in your inbox, or wait a minute before trying again." : "Could not send the sign-in link. Check the email address and try again shortly."); }
-    finally { setBusy(false); }
+      setPassword("");
+    } catch (error) { setStatus(error instanceof Error && "status" in error && error.status === 429 ? "Too many sign-in or recovery attempts. Wait a minute before trying again." : recovering ? "Could not request password recovery. Try again shortly." : "Sign-in failed. Check your email and password, or use Set / reset password below."); }
+    finally { setPassword(""); setBusy(false); }
   }
 
   async function refreshPages() {
@@ -139,11 +151,11 @@ export function ProductAdmin() {
   if (access === "loading") return <p role="status">Checking admin access…</p>;
   if (access !== "admin") return <section className="admin-login"><p className="eyebrow">Jagmohan Sawmill</p><h1>Product Admin</h1><p>Manage your products, photos and prices.</p>
     {access === "denied" ? <><p role="alert">This account does not have admin access.</p><button className="btn btn-dark" onClick={() => void adminClient().auth.signOut()}>Sign out</button></> :
-    <form onSubmit={signIn}><label>Admin email<input type="email" autoComplete="email" required value={email} onChange={event => setEmail(event.target.value)} /></label><button className="btn btn-primary" disabled={busy}>{busy ? "Sending…" : "Email sign-in link"}</button><p>Access is limited to approved administrators.</p></form>}
+    <form onSubmit={signIn}><label>Admin email<input type="email" autoComplete="username" required value={email} onChange={event => setEmail(event.target.value)} /></label>{!recovering && <label>Password<input type="password" autoComplete="current-password" required maxLength={128} value={password} onChange={event => setPassword(event.target.value)} /></label>}<button className="btn btn-primary" disabled={busy}>{busy ? "Please wait…" : recovering ? "Send password recovery email" : "Sign in"}</button><button className="admin-auth-link" type="button" disabled={busy} onClick={() => { setRecovering(!recovering); setPassword(""); setStatus(""); }}>{recovering ? "Back to password sign-in" : "Set / reset password"}</button><p>Access is limited to approved administrators.</p></form>}
     <p role="status" aria-live="polite">{status}</p></section>;
 
   return <>
-    <header className="admin-heading"><div><p className="eyebrow">Jagmohan Sawmill</p><h1>Product Admin</h1><p>{account}</p></div><div className="admin-actions"><button className="btn btn-primary" disabled={busy} onClick={() => edit(emptyProduct())}><Plus size={18} /> Add product</button><button className="btn btn-dark" disabled={busy} onClick={() => void adminClient().auth.signOut()}><LogOut size={18} /> Sign out</button></div></header>
+    <header className="admin-heading"><div><p className="eyebrow">Jagmohan Sawmill</p><h1>Product Admin</h1><p>{account}</p></div><div className="admin-actions"><button className="btn btn-primary" disabled={busy} onClick={() => edit(emptyProduct())}><Plus size={18} /> Add product</button><Link className="btn btn-dark" href="/admin/password">Set / change password</Link><button className="btn btn-dark" disabled={busy} onClick={() => void adminClient().auth.signOut()}><LogOut size={18} /> Sign out</button></div></header>
     <p className="admin-status" role="status" aria-live="polite">{status}</p>
     {editing && <div className="admin-editor" ref={editor}>
       <form onSubmit={save} className="admin-form"><h2>{editing.updated_at ? "Edit product" : "New product"}</h2>

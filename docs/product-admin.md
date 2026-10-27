@@ -1,6 +1,12 @@
 # Product administration
 
-Open `/admin` and request a secure email sign-in link. The approved first administrator is `justinsuchit37@gmail.com`. The public contact email remains `joshjagmohan93@gmail.com`.
+Open `/admin` and sign in with your admin email and password. The approved first administrator is `justinsuchit37@gmail.com`. The public contact email remains `joshjagmohan93@gmail.com`.
+
+## Password setup and recovery
+
+If already signed in, choose “Set / change password” in the admin header. Otherwise choose “Set / reset password” on the sign-in form to request a recovery email. The recovery link returns to the existing approved `/admin` callback and routes to `/admin/password` after Supabase verifies the recovery session.
+
+The administrator enters their own password twice on `/admin/password`; at least 12 characters are required. Passwords are sent directly to Supabase Auth, never to application logs or database catalogue tables. A successful password change signs out Supabase sessions so the admin can sign in with their new password. Routine email/password sign-in does not send an email. Existing admin membership and database/storage policies are unchanged.
 
 ## Editing the catalogue
 
@@ -48,13 +54,13 @@ New administrators must be explicitly added to `public.catalog_admins` using a l
 
 - Production build and TypeScript passed (15 generated pages), with the database connected.
 - ESLint passed with zero warnings.
-- Real email-link authentication succeeded for the approved first admin.
+- Original email-link authentication succeeded for the approved first admin. Password sign-in replaces that routine flow; the administrator must personally set the password before the first password-based sign-in can be verified.
 - Browser tests passed for add, JPEG upload, preview, draft save, edit, move between pages, publish with TT$125.50 per bundle, public thumbnail rendering, quote preselection, remove, restore and return to draft.
 - The temporary catalogue row was deleted after tests; 11 original catalogue rows remain. Its uploaded verification image remains in the bucket as an unused business-image copy.
 - Authenticated editor layout checks passed at desktop and narrow mobile widths; no clipped fields or horizontal overflow. Public product cards were checked separately at desktop/mobile widths.
 - Database transaction tests confirmed anonymous/non-admin writes and self-promotion are denied; admin writes work; drafts/removed products are not public. All SQL fixtures rolled back.
 - Anonymous POST to `/api/admin/revalidate` returns 401.
 - Raster signature tests accept JPEG/PNG/WebP/AVIF and reject SVG/HTML.
-- Supabase performance advisor returned no findings after policy refinements. The remaining project security advisory concerns leaked-password protection, which is disabled by default; this application uses email-link authentication, not passwords. See https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection.
+- Supabase performance advisor returned no findings after policy refinements. The remaining project security advisory concerns leaked-password protection, which is disabled by default. With password authentication enabled, the project owner should review this Supabase setting: https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection.
 
 The required Vercel Production variables are configured. Push the reviewed changes to `main` to trigger production deployment. Preview environments are not configured.

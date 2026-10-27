@@ -23,5 +23,6 @@
 .admin-product-row h2, .admin-product-row p { margin: .2rem 0; overflow-wrap: anywhere; }
 .admin-local-preview { position: relative; aspect-ratio: 3 / 2; }
 .admin-removal { flex-basis: 100%; padding: 1rem; border-left: 3px solid var(--amber); background: var(--bg); }
+.admin-auth-link { background: transparent; color: var(--ink); border: 0; text-decoration: underline; text-underline-offset: .2em; padding: .5rem 0; cursor: pointer; text-align: left; }
 @media(max-width: 860px) { .admin-editor { grid-template-columns: 1fr; } .admin-filters { grid-template-columns: 1fr 1fr; } }
 @media(max-width: 520px) { .admin-fields, .admin-filters { grid-template-columns: 1fr; } .admin-form, .admin-preview, .admin-list, .admin-login { padding: 1rem; } }
