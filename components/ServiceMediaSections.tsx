@@ -10,7 +10,7 @@ const serviceMedia = {
     alt: "Log loading during forest clearing operation",
   },
   sawmillPoster: {
-    src: "/images/lumber/sawmill/sawmill-woodmizer.jpg",
+    src: "/images/lumber/sawmill/sawmill-operations-poster.avif",
     alt: "Wood-Mizer sawmill processing timber",
   },
 };

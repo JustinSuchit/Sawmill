@@ -64,7 +64,7 @@ export const sawmillImage =
   "/images/lumber/sawmill/sawmill-woodmizer.jpg";
 
 export const quarryImages: ImageItem[] = [
-  { src: "/images/quarry/white-plastering-sand-stockpiles.jpg", alt: "Piles of pale sand stored at the quarry" },
+  { src: "/images/quarry/white-plastering-sand-stockpiles.webp", alt: "Piles of pale sand stored at the quarry" },
   { src: "/images/quarry/sand-quarry-excavator.jpg", alt: "Excavator on a tracked access route between sand banks" },
   { src: "/images/quarry/quarry-sand-excavation.jpg", alt: "Front view of an excavator surrounded by sand stockpiles" },
 ];
