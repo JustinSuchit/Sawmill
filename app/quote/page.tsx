@@ -13,6 +13,7 @@ export default async function QuotePage({ searchParams }: { searchParams: Promis
   const category = managedProduct?.page === "lumber" ? "Lumber" : managedProduct?.page === "products" ? "Tools & Hardware" : managedProduct?.page === "steel" ? "Concrete Sleepers" : lumberCategories.some((item) => item.title === product) || /pallet/i.test(product) ? "Lumber" :
     toolCategories.some((item) => item.title === product) ? "Tools & Hardware" :
     /sleeper/i.test(product) ? "Concrete Sleepers" :
+    /white plastering sand/i.test(product) ? "White Plastering Sand" :
     /haulage|delivery/i.test(product) ? "Haulage & Delivery" :
     /tree|clearing/i.test(product) ? "Tree Removal" :
     /sawmill/i.test(product) ? "Sawmill Services" : "";

@@ -63,6 +63,12 @@ export const treeRemovalImage =
 export const sawmillImage =
   "/images/lumber/sawmill/sawmill-woodmizer.jpg";
 
+export const quarryImages: ImageItem[] = [
+  { src: "/images/quarry/white-plastering-sand-stockpiles.jpg", alt: "Piles of pale sand stored at the quarry" },
+  { src: "/images/quarry/sand-quarry-excavator.jpg", alt: "Excavator on a tracked access route between sand banks" },
+  { src: "/images/quarry/quarry-sand-excavation.jpg", alt: "Front view of an excavator surrounded by sand stockpiles" },
+];
+
 export const homeCapabilities: CategoryCard[] = [
   {
     label: "Tools",
@@ -351,6 +357,15 @@ export const steelCategories: CategoryCard[] = [
 ];
 
 export const serviceDetails: ServiceDetail[] = [
+  {
+    eyebrow: "White Plastering Sand",
+    title: "White plastering sand for your next project.",
+    description: "We supply white plastering sand for plastering work. Tell us the quantity you need and your project location for current pricing and availability.",
+    href: "/quote",
+    cta: "Enquire About Sand",
+    ...quarryImages[0],
+    items: ["White plastering sand supply", "Pricing and availability on enquiry", "Share your quantity and location"],
+  },
   {
     eyebrow: "Haulage & Delivery",
     title: "Transportation for materials, equipment and project loads.",

@@ -1031,6 +1031,10 @@ h3 {
 .tree-process {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
+.home-sand-feature { background: var(--surface); border-block: 1px solid var(--line); }
+.home-sand-feature .eyebrow { color: var(--amber-dark); }
+.quarry-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-block: 1.5rem; }
+.quarry-gallery-photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
 .cross-links {
   padding-top: 0;
 }

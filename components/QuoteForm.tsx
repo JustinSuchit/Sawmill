@@ -116,7 +116,7 @@ export function QuoteForm({ initialCategory = "", initialProduct = "" }: { initi
           <label>What do you need? *
             <select name="Request Type" data-field="requestType" required value={form.requestType} aria-invalid={errors.requestType || undefined} className={errors.requestType ? "error" : undefined} onChange={(event) => updateField("requestType", event.target.value)}>
               <option value="">Select one</option>
-              <option>Lumber</option><option>Tools & Hardware</option><option>Concrete Sleepers</option><option>Haulage & Delivery</option><option>Tree Removal</option><option>Sawmill Services</option><option>Other</option>
+              <option>Lumber</option><option>Tools & Hardware</option><option>Concrete Sleepers</option><option>White Plastering Sand</option><option>Haulage & Delivery</option><option>Tree Removal</option><option>Sawmill Services</option><option>Other</option>
             </select>
           </label>
           <label>{isSiteService ? "Service details" : "Product or material"}<input name="Product or Service" value={form.service} onChange={(event) => updateField("service", event.target.value)} /></label>

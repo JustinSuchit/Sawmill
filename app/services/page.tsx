@@ -6,7 +6,7 @@ import { ServiceMediaSections } from "@/components/ServiceMediaSections";
 import { heroImage } from "@/lib/site-data";
 import { ExtraCatalog } from "@/components/ExtraCatalog";
 
-export const metadata = pageMetadata("Haulage, Tree Removal & Sawmill Services", "Haulage, tree removal and sawmill services for projects in Trinidad & Tobago.", "/services");
+export const metadata = pageMetadata("Sand Supply, Haulage & Sawmill Services", "White plastering sand supply, haulage, tree removal and sawmill services for projects in Trinidad & Tobago.", "/services");
 
 export default function ServicesPage() {
   return (

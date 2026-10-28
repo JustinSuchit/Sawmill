@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { serviceDetails } from "@/lib/site-data";
+import { quarryImages, serviceDetails } from "@/lib/site-data";
 import { SiteImage } from "./SiteImage";
 
 const process = [
@@ -10,6 +10,7 @@ const process = [
 ] as const;
 
 const serviceIds: Record<string, string> = {
+  "White Plastering Sand": "white-plastering-sand",
   "Haulage & Delivery": "haulage",
   "Tree Removal": "tree-removal",
   "Sawmill Services": "sawmill-services"
@@ -34,6 +35,15 @@ export function ServiceDetailSections() {
             <div className="check-list" aria-label={`${service.eyebrow} capabilities`}>
               {service.items.map((item) => <span key={item}>{item}</span>)}
             </div>
+            {service.eyebrow === "White Plastering Sand" && (
+              <div className="quarry-gallery" aria-label="Sand quarry photos">
+                {quarryImages.slice(1).map((photo) => (
+                  <div className="quarry-gallery-photo" key={photo.src}>
+                    <SiteImage {...photo} sizes="(max-width: 860px) 45vw, 22vw" cover />
+                  </div>
+                ))}
+              </div>
+            )}
             {service.eyebrow === "Tree Removal" && (
               <ol className="process-mini tree-process">
                 {process.map(([number, title]) => (

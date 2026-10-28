@@ -23,7 +23,7 @@ export function Footer() {
       </nav>
       <nav aria-label="Footer services">
         <h2>Services</h2>
-        <Link href="/services#haulage">Haulage</Link><Link href="/services#tree-removal">Tree Removal</Link><Link href="/services#sawmill-services">Sawmill Services</Link>
+        <Link href="/services#white-plastering-sand">White Plastering Sand</Link><Link href="/services#haulage">Haulage</Link><Link href="/services#tree-removal">Tree Removal</Link><Link href="/services#sawmill-services">Sawmill Services</Link>
       </nav>
       <address>
         <h2>Contact</h2>
