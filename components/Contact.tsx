@@ -3,6 +3,13 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 
 const mapQuery = encodeURIComponent(`${business.address.label}, ${business.area}`);
 
+const contacts = [
+  { name: "Josh", phone: business.phone, telephone: business.telephone, email: business.email, whatsappUrl: business.whatsappUrl },
+  { name: "Narine", phone: "366-3911", telephone: "+18683663911", email: "barnsjag@live.com" },
+  { name: "Marc", phone: "391-0403", telephone: "+18683910403", email: "marcjagmohan011@gmail.com" },
+  { name: "Anand", phone: "337-7402", telephone: "+18683377402" },
+];
+
 export function Contact() {
   return (
     <section className="contact-section" id="contact" aria-labelledby="contact-title">
@@ -10,16 +17,25 @@ export function Contact() {
         <div className="contact-card reveal">
           <p className="eyebrow">Contact</p>
           <h2 id="contact-title">Phone, WhatsApp or Request a Quote.</h2>
+          <div className="contact-people">
+            {contacts.map((contact) => (
+              <article className="contact-person" aria-labelledby={`contact-${contact.name.toLowerCase()}`} key={contact.name}>
+                <h3 id={`contact-${contact.name.toLowerCase()}`}>{contact.name}</h3>
+                <dl>
+                  <div><dt>Phone</dt><dd><a href={`tel:${contact.telephone}`}>{contact.phone}</a></dd></div>
+                  {contact.whatsappUrl && <div><dt>WhatsApp</dt><dd><a href={contact.whatsappUrl}>{contact.phone}</a></dd></div>}
+                  {contact.email && <div><dt>Email</dt><dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd></div>}
+                </dl>
+              </article>
+            ))}
+          </div>
           <dl>
-            <div><dt>Phone</dt><dd><a href={`tel:${business.telephone}`}>{business.phone}</a></dd></div>
-            <div><dt>WhatsApp</dt><dd><a href={business.whatsappUrl}>{business.phone}</a></dd></div>
-            <div><dt>Email</dt><dd><a href={`mailto:${business.email}`}>{business.email}</a></dd></div>
             <div><dt>Location</dt><dd><address className="contact-address">{business.address.label}</address></dd></div>
             <div><dt>Business Hours</dt><dd>Business hours placeholder</dd></div>
           </dl>
           <div className="contact-actions">
-            <a className="btn btn-dark" href={`tel:${business.telephone}`}>Call Us</a>
-            <a className="btn btn-whatsapp" href={business.whatsappUrl}>WhatsApp Us</a>
+            <a className="btn btn-dark" href={`tel:${business.telephone}`}>Call Josh</a>
+            <a className="btn btn-whatsapp" href={business.whatsappUrl}>WhatsApp Josh</a>
             <a className="btn btn-primary" href="/quote">Request a Quote</a>
           </div>
         </div>
