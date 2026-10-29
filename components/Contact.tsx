@@ -1,4 +1,3 @@
-
 import { business } from "@/lib/business";
 import {
   ArrowUpRight,
@@ -39,14 +38,17 @@ const contacts = [
   },
 ];
 
-// Generate a clean telephone link
 const getPhoneLink = (phone: string) => {
   return `tel:${phone.replace(/[^\d+]/g, "")}`;
 };
 
-// Generate an email link for the default email application
-const getEmailLink = (email: string) => {
-  return `mailto:${email.trim()}`;
+const getEmailLink = (email: string, contactName: string) => {
+  const cleanEmail = email.trim();
+  const subject = encodeURIComponent(
+    `Website enquiry | Jagmohan Sawmill — ${contactName}`
+  );
+
+  return `mailto:${cleanEmail}?subject=${subject}`;
 };
 
 export function Contact() {
@@ -71,23 +73,16 @@ export function Contact() {
                 aria-labelledby={`contact-${contact.name.toLowerCase()}`}
                 key={contact.name}
               >
-                <h3
-                  id={`contact-${contact.name.toLowerCase()}`}
-                >
+                <h3 id={`contact-${contact.name.toLowerCase()}`}>
                   {contact.name}
                 </h3>
 
                 <dl>
-                  {/* PHONE NUMBER */}
                   <div>
                     <dt>
-                      <Phone
-                        size={16}
-                        aria-hidden="true"
-                      />
+                      <Phone size={16} aria-hidden="true" />
                       Phone
                     </dt>
-
                     <dd>
                       <a
                         href={getPhoneLink(contact.telephone)}
@@ -100,17 +95,12 @@ export function Contact() {
                     </dd>
                   </div>
 
-                  {/* WHATSAPP */}
                   {contact.whatsappUrl && (
                     <div>
                       <dt>
-                        <MessageCircle
-                          size={16}
-                          aria-hidden="true"
-                        />
+                        <MessageCircle size={16} aria-hidden="true" />
                         WhatsApp
                       </dt>
-
                       <dd>
                         <a
                           href={contact.whatsappUrl}
@@ -126,20 +116,15 @@ export function Contact() {
                     </div>
                   )}
 
-                  {/* EMAIL */}
                   {contact.email && (
                     <div>
                       <dt>
-                        <Mail
-                          size={16}
-                          aria-hidden="true"
-                        />
+                        <Mail size={16} aria-hidden="true" />
                         Email
                       </dt>
-
                       <dd>
                         <a
-                          href={getEmailLink(contact.email)}
+                          href={getEmailLink(contact.email, contact.name)}
                           className="contact-clickable-link"
                           aria-label={`Email ${contact.name} at ${contact.email}`}
                           title={`Email ${contact.name}`}
@@ -154,7 +139,6 @@ export function Contact() {
             ))}
           </div>
 
-          {/* BUSINESS DETAILS */}
           <dl>
             <div>
               <dt>Location</dt>
@@ -171,7 +155,6 @@ export function Contact() {
             </div>
           </dl>
 
-          {/* CONTACT ACTION BUTTONS */}
           <div className="contact-actions">
             <a
               className="btn btn-dark"
@@ -191,26 +174,16 @@ export function Contact() {
               WhatsApp Josh
             </a>
 
-            <a
-              className="btn btn-primary"
-              href="/quote"
-            >
+            <a className="btn btn-primary" href="/quote">
               Request a Quote
             </a>
           </div>
         </div>
 
-        {/* GOOGLE MAP */}
-        <div
-          className="contact-map"
-          aria-labelledby="map-title"
-        >
+        <div className="contact-map" aria-labelledby="map-title">
           <div className="contact-map-heading">
             <h2 id="map-title">
-              <MapPin
-                size={20}
-                aria-hidden="true"
-              />
+              <MapPin size={20} aria-hidden="true" />
               Find Us in Penal
             </h2>
 
@@ -221,10 +194,7 @@ export function Contact() {
               rel="noopener noreferrer"
             >
               Get Directions
-              <ArrowUpRight
-                size={18}
-                aria-hidden="true"
-              />
+              <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>
 
@@ -239,60 +209,49 @@ export function Contact() {
         </div>
       </div>
 
-      {/* CONTACT LINK STYLING */}
       <style>{`
         .contact-section .contact-clickable-link {
           display: inline-block;
           position: relative;
           z-index: 2;
-
           color: #16a34a !important;
           text-decoration: underline !important;
           text-decoration-color: #16a34a !important;
           text-decoration-thickness: 1.5px;
           text-underline-offset: 4px;
-
           font-weight: 600;
           cursor: pointer;
           pointer-events: auto;
-
           overflow-wrap: anywhere;
-
           padding: 3px 0;
-
           transition:
             color 0.2s ease,
             text-decoration-color 0.2s ease,
             opacity 0.2s ease;
         }
 
-        /* Hover */
         .contact-section .contact-clickable-link:hover {
           color: #15803d !important;
           text-decoration-color: #15803d !important;
           opacity: 0.85;
         }
 
-        /* Active / tapped */
         .contact-section .contact-clickable-link:active {
           color: #166534 !important;
         }
 
-        /* Keyboard accessibility */
         .contact-section .contact-clickable-link:focus-visible {
           outline: 2px solid #16a34a;
           outline-offset: 4px;
           border-radius: 3px;
         }
 
-        /* Mobile layout */
         @media (max-width: 640px) {
           .contact-section .contact-clickable-link {
             padding: 6px 0;
             max-width: 100%;
             overflow-wrap: anywhere;
-            -webkit-tap-highlight-color:
-              rgba(22, 163, 74, 0.15);
+            -webkit-tap-highlight-color: rgba(22, 163, 74, 0.15);
           }
         }
       `}</style>
