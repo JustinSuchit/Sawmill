@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { business } from "@/lib/business";
+import { CopyEmail } from "./CopyEmail";
 
 const year = new Date().getFullYear();
 const emailComposeUrl = `https://mail.google.com/mail/?${new URLSearchParams({
@@ -36,10 +37,11 @@ export function Footer() {
         Phone: <a href={`tel:${business.telephone}`}>{business.phone}</a><br />
         WhatsApp: <a href={business.whatsappUrl}>{business.phone}</a><br />
         <a href={emailComposeUrl} target="_blank" rel="noopener noreferrer" aria-label="Email Josh in Gmail (opens in a new tab)">{business.email}</a><br />
+        <CopyEmail email={business.email} /><br />
         {business.address.street}, {business.address.locality}<br />
         Trinidad & Tobago
       </address>
-      <p className="copyright">© {year} {business.name}. All rights reserved.</p>
+      <p className="copyright">All prices are in Trinidad and Tobago dollars (TTD) and include VAT.<br />© {year} {business.name}. All rights reserved.</p>
     </footer>
   );
 }

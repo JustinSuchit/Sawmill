@@ -10,6 +10,7 @@ type CategoryCardProps = {
 };
 
 export function CategoryCard({ item, variant = "default", priority = false }: CategoryCardProps) {
+  const hasPrice = item.price != null || /\$\s*\d/.test([item.specs, ...(item.examples || [])].join(" "));
   const imageSizes = variant === "steel"
     ? "(max-width: 680px) calc(100vw - 34px), (max-width: 1288px) calc(50vw - 25px), 619px"
     : variant === "tools"
@@ -25,13 +26,14 @@ export function CategoryCard({ item, variant = "default", priority = false }: Ca
         <p className="label">{item.label}</p>
         <h3>{item.title}</h3>
         <p>{item.description}</p>
-        {item.price != null && <p className="category-specs"><strong>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD" }).format(item.price)}</strong>{item.priceUnit ? ` ${item.priceUnit}` : ""}</p>}
+        {item.price != null && <p className="category-specs"><strong>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(item.price)}</strong>{item.priceUnit ? ` ${item.priceUnit}` : ""}</p>}
         {item.examples && item.examples.length > 0 && (
           <ul className="compact-list" aria-label={`${item.title} examples`}>
             {item.examples.map((example) => <li key={example}>{example}</li>)}
           </ul>
         )}
         {item.specs && <p className="category-specs">{item.specs}</p>}
+        {hasPrice && <p className="category-specs">Prices in TTD. VAT included.</p>}
         <Link className="text-link" aria-label={`${item.cta}: ${item.title}`} href={item.href === "/quote" ? `/quote?product=${encodeURIComponent(item.title)}` : item.href}>{item.cta}<ArrowUpRight size={18} aria-hidden="true" /></Link>
       </div>
     </article>

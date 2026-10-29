@@ -1,6 +1,7 @@
 "use client";
 
 import { business } from "@/lib/business";
+import { CopyEmail } from "./CopyEmail";
 import {
   ArrowUpRight,
   MapPin,
@@ -135,6 +136,7 @@ export function Contact() {
                         >
                           {contact.email}
                         </a>
+                        <CopyEmail email={contact.email} />
                       </dd>
                     </div>
                   )}
@@ -155,7 +157,7 @@ export function Contact() {
 
             <div>
               <dt>Business Hours</dt>
-              <dd>8:00am - 4:00pm</dd>
+              <dd>Monday–Saturday: 8:00am–4:00pm<br />Sunday: Closed</dd>
             </div>
           </dl>
 

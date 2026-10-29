@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { business } from "@/lib/business";
+import { CopyEmail } from "./CopyEmail";
 
 const initialForm = {
   name: "",
@@ -25,6 +26,7 @@ export function QuoteForm({ initialCategory = "", initialProduct = "" }: { initi
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
   const isSiteService = ["Haulage & Delivery", "Tree Removal", "Sawmill Services"].includes(form.requestType);
+  const isHaulage = form.requestType === "Haulage & Delivery";
 
   useEffect(() => {
     const resetLoading = () => setLoading(false);
@@ -101,6 +103,7 @@ export function QuoteForm({ initialCategory = "", initialProduct = "" }: { initi
           pricing and availability.
         </p>
         <a className="quote-email" href={`mailto:${business.email}`}>{business.email}</a>
+        <CopyEmail email={business.email} />
       </div>
       <form className="quote-form reveal" action={`https://formsubmit.co/${business.email}`} method="POST" encType="multipart/form-data" onSubmit={handleSubmit} noValidate aria-busy={loading}>
         <input type="hidden" name="_subject" value={`New quote request | ${business.name} | ${form.requestType || "General enquiry"}`} />
@@ -121,7 +124,15 @@ export function QuoteForm({ initialCategory = "", initialProduct = "" }: { initi
           </label>
           <label>{isSiteService ? "Service details" : "Product or material"}<input name="Product or Service" value={form.service} onChange={(event) => updateField("service", event.target.value)} /></label>
           <label>{isSiteService ? "Load size or scope" : "Quantity"}<input name="quantity" placeholder={isSiteService ? "Material, load or area" : "Approximate quantity"} value={form.quantity} onChange={(event) => updateField("quantity", event.target.value)} /></label>
-          <label>{isSiteService ? "Site location *" : "Delivery location (if needed)"}<input name="location" data-field="location" autoComplete="street-address" required={isSiteService} value={form.location} aria-invalid={errors.location || undefined} className={errors.location ? "error" : undefined} onChange={(event) => updateField("location", event.target.value)} /></label>
+          <label>{isHaulage ? "Delivery destination *" : isSiteService ? "Site location *" : "Delivery location (if needed)"}<input name="location" data-field="location" autoComplete="street-address" required={isSiteService} value={form.location} aria-invalid={errors.location || undefined} className={errors.location ? "error" : undefined} onChange={(event) => updateField("location", event.target.value)} /></label>
+          {isHaulage && (
+            <>
+              <label>Pickup location<input name="Pickup location" placeholder="Collection address or area" /></label>
+              <label>Load dimensions<input name="Load dimensions" placeholder="Length × width × height, including units" /></label>
+              <label>Approximate load weight<input name="Approximate load weight" placeholder="Include units, e.g. kg or tonnes" /></label>
+              <label>Trailer preference<select name="Trailer preference" defaultValue="Not sure — please advise"><option>Not sure — please advise</option><option>Low Boy</option><option>Step Deck</option><option>Goose Neck</option></select></label>
+            </>
+          )}
           {isSiteService && <label>Preferred Date <input name="Preferred Date" type="date" value={form.date} onChange={(event) => updateField("date", event.target.value)} /></label>}
           <label className="wide">Project details * <textarea name="message" data-field="message" rows={4} placeholder={isSiteService ? "Tell us about the site, access, timing and work required" : "Sizes, wood type, application and any special requirements"} required value={form.message} aria-invalid={errors.message || undefined} className={errors.message ? "error" : undefined} onChange={(event) => updateField("message", event.target.value)} /></label>
           <label className="wide file-field">File Upload / Photos (10 MB total maximum) <input name="attachment" type="file" multiple accept="image/*,.pdf" /></label>
