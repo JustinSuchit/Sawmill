@@ -12,6 +12,7 @@ const process = [
 const serviceIds: Record<string, string> = {
   "White Plastering Sand": "white-plastering-sand",
   "Haulage & Delivery": "haulage",
+  "Trailer Haulage": "trailer-haulage",
   "Tree Removal": "tree-removal",
   "Sawmill Services": "sawmill-services"
 };
@@ -26,7 +27,7 @@ export function ServiceDetailSections() {
           key={service.eyebrow}
         >
           <div className="service-feature-media reveal">
-            <SiteImage src={service.src} alt={service.alt} sizes="(max-width: 860px) 100vw, 50vw" quality={service.eyebrow === "White Plastering Sand" ? 65 : 75} cover />
+            <SiteImage src={service.src} alt={service.alt} sizes="(max-width: 860px) 100vw, 50vw" quality={service.eyebrow === "White Plastering Sand" ? 65 : 75} objectPosition={service.eyebrow === "Trailer Haulage" ? "50% 35%" : "center"} cover />
           </div>
           <div className="service-feature-copy reveal">
             <p className="eyebrow">{service.eyebrow}</p>

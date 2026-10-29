@@ -405,6 +405,16 @@ export const serviceDetails: ServiceDetail[] = [
     ],
   },
   {
+    eyebrow: "Trailer Haulage",
+    title: "Trailer haulage for every industry.",
+    description: "Trailer haulage for businesses across every industry, with Low Boy, Step Deck and Goose Neck trailers available. Tell us about your load, collection point and destination so we can discuss the right trailer for your requirements.",
+    href: "/quote",
+    cta: "Enquire About Trailer Haulage",
+    src: "/images/tools/trailer 1.jpg",
+    alt: "Red haulage trailer carrying bundled timber on the road",
+    items: ["Low Boy", "Step Deck", "Goose Neck"],
+  },
+  {
     eyebrow: "Tree Removal",
     title: "Tree cutting and removal for property-clearing requirements.",
     description:
