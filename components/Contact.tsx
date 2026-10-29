@@ -1,3 +1,5 @@
+"use client";
+
 import { business } from "@/lib/business";
 import {
   ArrowUpRight,
@@ -42,13 +44,15 @@ const getPhoneLink = (phone: string) => {
   return `tel:${phone.replace(/[^\d+]/g, "")}`;
 };
 
-const getEmailLink = (email: string, contactName: string) => {
-  const cleanEmail = email.trim();
-  const subject = encodeURIComponent(
-    `Website enquiry | Jagmohan Sawmill — ${contactName}`
-  );
+const getGmailComposeLink = (email: string, contactName: string) => {
+  const params = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to: email.trim(),
+    su: `Website enquiry | Jagmohan Sawmill — ${contactName}`,
+  });
 
-  return `mailto:${cleanEmail}?subject=${subject}`;
+  return `https://mail.google.com/mail/?${params.toString()}`;
 };
 
 export function Contact() {
@@ -62,9 +66,7 @@ export function Contact() {
         <div className="contact-card reveal">
           <p className="eyebrow">Contact</p>
 
-          <h2 id="contact-title">
-            Phone, WhatsApp or Request a Quote.
-          </h2>
+          <h2 id="contact-title">Phone, WhatsApp or Request a Quote.</h2>
 
           <div className="contact-people">
             {contacts.map((contact) => (
@@ -88,7 +90,6 @@ export function Contact() {
                         href={getPhoneLink(contact.telephone)}
                         className="contact-clickable-link"
                         aria-label={`Call ${contact.name} at ${contact.phone}`}
-                        title={`Call ${contact.name}`}
                       >
                         {contact.phone}
                       </a>
@@ -108,7 +109,6 @@ export function Contact() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`WhatsApp ${contact.name}`}
-                          title={`Message ${contact.name} on WhatsApp`}
                         >
                           {contact.phone}
                         </a>
@@ -124,10 +124,14 @@ export function Contact() {
                       </dt>
                       <dd>
                         <a
-                          href={getEmailLink(contact.email, contact.name)}
+                          href={getGmailComposeLink(
+                            contact.email,
+                            contact.name
+                          )}
                           className="contact-clickable-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           aria-label={`Email ${contact.name} at ${contact.email}`}
-                          title={`Email ${contact.name}`}
                         >
                           {contact.email}
                         </a>
@@ -159,7 +163,6 @@ export function Contact() {
             <a
               className="btn btn-dark"
               href={getPhoneLink(business.telephone)}
-              aria-label="Call Josh"
             >
               Call Josh
             </a>
@@ -169,7 +172,6 @@ export function Contact() {
               href={business.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="WhatsApp Josh"
             >
               WhatsApp Josh
             </a>
@@ -208,53 +210,6 @@ export function Contact() {
           />
         </div>
       </div>
-
-      <style>{`
-        .contact-section .contact-clickable-link {
-          display: inline-block;
-          position: relative;
-          z-index: 2;
-          color: #16a34a !important;
-          text-decoration: underline !important;
-          text-decoration-color: #16a34a !important;
-          text-decoration-thickness: 1.5px;
-          text-underline-offset: 4px;
-          font-weight: 600;
-          cursor: pointer;
-          pointer-events: auto;
-          overflow-wrap: anywhere;
-          padding: 3px 0;
-          transition:
-            color 0.2s ease,
-            text-decoration-color 0.2s ease,
-            opacity 0.2s ease;
-        }
-
-        .contact-section .contact-clickable-link:hover {
-          color: #15803d !important;
-          text-decoration-color: #15803d !important;
-          opacity: 0.85;
-        }
-
-        .contact-section .contact-clickable-link:active {
-          color: #166534 !important;
-        }
-
-        .contact-section .contact-clickable-link:focus-visible {
-          outline: 2px solid #16a34a;
-          outline-offset: 4px;
-          border-radius: 3px;
-        }
-
-        @media (max-width: 640px) {
-          .contact-section .contact-clickable-link {
-            padding: 6px 0;
-            max-width: 100%;
-            overflow-wrap: anywhere;
-            -webkit-tap-highlight-color: rgba(22, 163, 74, 0.15);
-          }
-        }
-      `}</style>
     </section>
   );
 }
