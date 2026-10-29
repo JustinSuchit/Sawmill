@@ -1914,21 +1914,41 @@ dd { margin: 0; font-weight: 850; }
   .reveal { opacity: 1; transform: none; }
 }
 
-/* Underlined contact links remain readable in both themes. */
-.contact-section .contact-person dd a {
+/* Clickable contact details */
+.contact-section .contact-clickable-link {
+  display: inline;
   color: #237344 !important;
   font-weight: 700;
   overflow-wrap: anywhere;
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration-color: currentColor;
   text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
-[data-theme="dark"] .contact-section .contact-person dd a {
-  color: #58c987 !important;
-}
-.contact-section .contact-person dd a:hover {
+
+.contact-section .contact-clickable-link:hover {
   color: var(--amber-dark) !important;
 }
-[data-theme="dark"] .contact-section .contact-person dd a:hover {
+
+[data-theme="dark"] .contact-section .contact-clickable-link {
+  color: #58c987 !important;
+}
+
+[data-theme="dark"] .contact-section .contact-clickable-link:hover {
   color: var(--amber) !important;
+}
+
+.contact-section .contact-clickable-link:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .contact-section .contact-clickable-link {
+    display: inline-block;
+    padding-block: 0.25rem;
+  }
 }
