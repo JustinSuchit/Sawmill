@@ -49,7 +49,7 @@ const getGmailComposeLink = (email: string, contactName: string) => {
     view: "cm",
     fs: "1",
     to: email.trim(),
-    su: `Website enquiry | Jagmohan Sawmill — ${contactName}`,
+    su: `Quote or product enquiry | Jagmohan Sawmill — ${contactName}`,
   });
 
   return `https://mail.google.com/mail/?${params.toString()}`;
