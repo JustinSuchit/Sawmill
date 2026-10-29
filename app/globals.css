@@ -1914,17 +1914,18 @@ dd { margin: 0; font-weight: 850; }
   .reveal { opacity: 1; transform: none; }
 }
 
+/* Clearly highlight clickable phone numbers, WhatsApp links and email addresses. */
 .contact-section .contact-clickable-link {
   display: inline-flex;
   align-items: center;
   min-height: 2.25rem;
   max-width: 100%;
   padding: 0.3rem 0.55rem;
-  color: var(--amber, #e5ad22) !important;
-  background: rgba(229, 173, 34, 0.08);
-  border: 1px solid rgba(229, 173, 34, 0.55);
+  color: var(--amber) !important;
+  background: color-mix(in srgb, var(--amber) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--amber) 58%, transparent);
   border-radius: 0.2rem;
-  box-shadow: inset 3px 0 0 var(--amber, #e5ad22);
+  box-shadow: inset 3px 0 0 var(--amber);
   font-weight: 700;
   line-height: 1.3;
   overflow-wrap: anywhere;
@@ -1941,14 +1942,14 @@ dd { margin: 0; font-weight: 850; }
 
 .contact-section .contact-clickable-link:hover {
   color: #ffffff !important;
-  background: #168a4d;
-  border-color: #168a4d;
-  box-shadow: inset 3px 0 0 #e5ad22;
+  background: var(--green-2);
+  border-color: var(--green-2);
+  box-shadow: inset 3px 0 0 var(--amber);
   transform: translateY(-1px);
 }
 
 .contact-section .contact-clickable-link:focus-visible {
-  outline: 3px solid var(--amber, #e5ad22);
+  outline: 3px solid var(--amber);
   outline-offset: 3px;
 }
 
