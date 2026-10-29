@@ -187,7 +187,8 @@ export const toolCategories: CategoryCard[] = [
   },
   {
     label: "Nailing",
-    title: "CN70 Pneumatic Coil Nailer",
+    id: "products-cn70-pneumatic-coil-nailer",
+    title: "Pneumatic Coil Nailer",
     description:
       "An industrial-grade pneumatic coil nailer specifically engineered for heavy-duty timber assembly, such as manufacturing and repairing wooden pallets, crates, drums and fencing.",
     href: "/quote",
@@ -199,10 +200,29 @@ export const toolCategories: CategoryCard[] = [
     examples: [
       "CN70 Nail Gun",
       "CN100 Nail Gun",
-      "2-inch Coil Nails",
-      "2.25-inch Coil Nails",
-      "2.5-inch Coil Nails",
     ],
+  },
+  {
+    id: "products-coil-nails",
+    label: "Nailing",
+    title: "Coil Nails",
+    description: "Wire-collated coil nails for compatible pneumatic coil nailers and timber assembly.",
+    href: "/quote",
+    cta: "Get Pricing",
+    src: "/images/tools/coil nails.jpg",
+    alt: "Wire-collated nails arranged in coils inside a box",
+    examples: ["2-inch", "2.25-inch", "2.5-inch"],
+  },
+  {
+    id: "products-loose-nails",
+    label: "Nailing",
+    title: "Loose Nails",
+    description: "Loose nails for general timber fixing, construction and woodworking applications.",
+    href: "/quote",
+    cta: "Get Pricing",
+    src: "/images/tools/nails.jpg",
+    alt: "Loose nails stored together in a bag",
+    examples: ["2-inch", "2.5-inch", "3-inch"],
   },
 ];
 

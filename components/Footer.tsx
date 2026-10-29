@@ -2,6 +2,12 @@ import Link from "next/link";
 import { business } from "@/lib/business";
 
 const year = new Date().getFullYear();
+const emailComposeUrl = `https://mail.google.com/mail/?${new URLSearchParams({
+  view: "cm",
+  fs: "1",
+  to: business.email.trim(),
+  su: "Quote or product enquiry | Jagmohan Sawmill — Josh",
+}).toString()}`;
 
 export function Footer() {
   return (
@@ -29,7 +35,7 @@ export function Footer() {
         <h2>Contact</h2>
         Phone: <a href={`tel:${business.telephone}`}>{business.phone}</a><br />
         WhatsApp: <a href={business.whatsappUrl}>{business.phone}</a><br />
-        <a href={`mailto:${business.email}`}>{business.email}</a><br />
+        <a href={emailComposeUrl} target="_blank" rel="noopener noreferrer" aria-label="Email Josh in Gmail (opens in a new tab)">{business.email}</a><br />
         {business.address.street}, {business.address.locality}<br />
         Trinidad & Tobago
       </address>

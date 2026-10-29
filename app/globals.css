@@ -1913,3 +1913,22 @@ dd { margin: 0; font-weight: 850; }
   }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Underlined contact links remain readable in both themes. */
+.contact-section .contact-person dd a {
+  color: #237344 !important;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+[data-theme="dark"] .contact-section .contact-person dd a {
+  color: #58c987 !important;
+}
+.contact-section .contact-person dd a:hover {
+  color: var(--amber-dark) !important;
+}
+[data-theme="dark"] .contact-section .contact-person dd a:hover {
+  color: var(--amber) !important;
+}

@@ -20,7 +20,7 @@ export default function ProductsPage() {
         <SectionHeading
           eyebrow="Tools"
           title="Tool Categories"
-          copy="Browse blades, sharpening supplies, welding electrodes and nailers. Ask our team about the right fit for your work."
+          copy="Browse blades, sharpening supplies, welding electrodes, nailers, coil nails and loose nails. Ask our team about the right fit for your work."
         />
         <ManagedCatalog page="products" />
       </section>
