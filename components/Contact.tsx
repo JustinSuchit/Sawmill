@@ -167,7 +167,7 @@ export function Contact() {
 
             <div>
               <dt>Business Hours</dt>
-              <dd>Business hours placeholder</dd>
+              <dd>8:00am - 4:00pm</dd>
             </div>
           </dl>
 
