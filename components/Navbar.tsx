@@ -179,7 +179,7 @@ export function Navbar() {
           aria-label="Home"
           onClick={closeMenu}
         >
-          <Image className="brand-logo" src="/images/jagmohan-sawmill-logo.webp" alt="Jagmohan Sawmill logo" width={64} height={64} unoptimized loading="eager" />
+          <Image className="brand-logo" src="/images/jagmohan-sawmill-logo-transparent.webp" alt="Jagmohan Sawmill logo" width={64} height={64} unoptimized loading="eager" />
 
           <span>
             <strong>{business.name}</strong>

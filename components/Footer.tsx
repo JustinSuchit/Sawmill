@@ -16,7 +16,7 @@ export function Footer() {
     <footer className="site-footer">
       <div>
         <Link className="brand footer-brand" href="/">
-          <Image className="brand-logo" src="/images/jagmohan-sawmill-logo.webp" alt="Jagmohan Sawmill logo" width={64} height={64} unoptimized />
+          <Image className="brand-logo" src="/images/jagmohan-sawmill-logo-transparent.webp" alt="Jagmohan Sawmill logo" width={64} height={64} unoptimized />
           <span><strong>{business.name}</strong><small>Materials. Sawmill. Haulage.</small></span>
         </Link>
         <p>Supplier of lumber, steel, tools and hardware with sawmill, haulage, tree cutting, tree removal and land clearing services in Trinidad & Tobago.</p>
