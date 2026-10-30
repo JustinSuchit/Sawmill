@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { business } from "@/lib/business";
 import { CopyEmail } from "./CopyEmail";
 
@@ -15,7 +16,7 @@ export function Footer() {
     <footer className="site-footer">
       <div>
         <Link className="brand footer-brand" href="/">
-          <span className="brand-mark" aria-hidden="true">JC</span>
+          <Image className="brand-logo" src="/images/jagmohan-sawmill-logo.webp" alt="Jagmohan Sawmill logo" width={64} height={64} unoptimized />
           <span><strong>{business.name}</strong><small>Materials. Sawmill. Haulage.</small></span>
         </Link>
         <p>Supplier of lumber, steel, tools and hardware with sawmill, haulage, tree cutting, tree removal and land clearing services in Trinidad & Tobago.</p>

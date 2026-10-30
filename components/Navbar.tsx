@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
@@ -178,12 +179,7 @@ export function Navbar() {
           aria-label="Home"
           onClick={closeMenu}
         >
-          <span
-            className="brand-mark"
-            aria-hidden="true"
-          >
-            JC
-          </span>
+          <Image className="brand-logo" src="/images/jagmohan-sawmill-logo.webp" alt="Jagmohan Sawmill logo" width={64} height={64} unoptimized loading="eager" />
 
           <span>
             <strong>{business.name}</strong>
