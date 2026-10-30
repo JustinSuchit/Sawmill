@@ -39,10 +39,11 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  ...(siteUrl ? { "@id": new URL("/#business", siteUrl).href, image: new URL("/images/og-jagmohan-yard.jpg", siteUrl).href } : {}),
   name: business.name,
   alternateName: business.alternateName,
   description:
-    "Supplier of lumber, steel, tools and hardware with sawmill, haulage, tree cutting, tree removal and land clearing services in Trinidad & Tobago.",
+    "Jagmohan Sawmill in Penal supplies lumber, mouldings, white plastering sand, tools and concrete sleepers, with sawmill, trailer haulage and site services in Trinidad & Tobago.",
   areaServed: "Trinidad and Tobago",
   email: business.email,
   telephone: business.telephone,
@@ -53,10 +54,36 @@ const structuredData = {
     addressLocality: business.address.locality,
     addressCountry: "TT",
   },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "08:00",
+      closes: "16:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Sunday",
+      opens: "00:00",
+      closes: "00:00",
+    },
+  ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Materials and Site Services",
     itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "White plastering sand supply", ...(siteUrl ? { url: new URL("/services#white-plastering-sand", siteUrl).href } : {}) },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Trailer haulage: Low Boy, Step Deck and Goose Neck", ...(siteUrl ? { url: new URL("/services#trailer-haulage", siteUrl).href } : {}) },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Concrete sleeper sale and rental", ...(siteUrl ? { url: new URL("/steel", siteUrl).href } : {}) },
+      },
       {
         "@type": "Offer",
         itemOffered: {
@@ -122,7 +149,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
           }}
         />
       </head>

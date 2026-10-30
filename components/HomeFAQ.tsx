@@ -3,6 +3,24 @@ import { Plus } from "lucide-react";
 
 const questions = [
   {
+    question: "Which trailers are available for haulage?",
+    answer: "Trailer haulage is available for businesses across industries, with Low Boy, Step Deck and Goose Neck options. Include your pickup location, destination, load dimensions and approximate weight in your enquiry so the team can discuss the right trailer and confirm availability.",
+    href: "/services#trailer-haulage",
+    link: "View trailer haulage options",
+  },
+  {
+    question: "What are your opening hours?",
+    answer: "The business is open Monday to Saturday from 8:00am to 4:00pm and closed on Sundays. Visit the contact page for the address, map and staff contact details.",
+    href: "/contact#contact",
+    link: "Contact the team",
+  },
+  {
+    question: "Are the displayed prices in TTD and inclusive of VAT?",
+    answer: "Yes. All displayed prices are in Trinidad and Tobago dollars (TTD) and include VAT. Send your required product, sizes and quantities for confirmation of current pricing and availability.",
+    href: "/quote",
+    link: "Request current pricing",
+  },
+  {
     question: "What information should I include in a lumber quote request?",
     answer: "Include the wood type, board sizes, quantities and intended use. Add your delivery location if needed, and attach drawings or photos when they help explain the job. Pricing and availability are confirmed when your request is reviewed.",
     href: "/quote?product=Dimensional%20Lumber",

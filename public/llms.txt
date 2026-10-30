@@ -1,0 +1,26 @@
+# Jagmohan Sawmill
+
+> Jebodh Jagmohan and Company LTD, known as Jagmohan Sawmill, supplies lumber, materials and site services in Trinidad & Tobago.
+
+## Business information
+
+- Address: J. Jagmohan & Co. Ltd, 331 Rochard Rd, Penal, Trinidad & Tobago.
+- Hours: Monday to Saturday, 8:00am to 4:00pm. Closed Sundays.
+- Displayed prices are in Trinidad and Tobago dollars (TTD) and include VAT. Confirm current prices and availability with the business.
+
+## Website pages
+
+- [Home](/): Business overview, capabilities and common questions.
+- [Lumber](/lumber): Timber types, mouldings, pallets and export timber.
+- [Tools](/products): Bandsaw blades, sharpening supplies, welding electrodes, pneumatic coil nailers, coil nails and loose nails.
+- [Concrete sleepers](/steel): Sale and rental enquiries.
+- [Services](/services): White plastering sand, haulage, trailer haulage, tree removal and sawmill services.
+- [Trailer haulage](/services#trailer-haulage): Low Boy, Step Deck and Goose Neck options. Enquire with load dimensions, weight, pickup and destination.
+- [Contact](/contact): Current staff contacts, opening hours, address and directions.
+- [Request a quote](/quote): Send quantities, sizes or service requirements for pricing and availability.
+
+## Contact
+
+- General email: joshjagmohan93@gmail.com
+- Josh, phone and WhatsApp: +1 868 363-2299
+- Use the contact page for other staff contacts. Do not infer additional WhatsApp numbers.
