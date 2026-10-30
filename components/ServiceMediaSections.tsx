@@ -1,3 +1,4 @@
+import { getPageProducts } from "@/lib/catalog";
 import { SiteImage } from "./SiteImage";
 
 const serviceMedia = {
@@ -15,10 +16,12 @@ const serviceMedia = {
   },
 };
 
-export function ServiceMediaSections() {
+export async function ServiceMediaSections() {
+  const services = await getPageProducts("services");
+  const has = (id: string) => services.some(item => item.id === id);
   return (
     <>
-      <section className="section service-proof" aria-labelledby="haulage-proof-title">
+      {has("haulage") && (<section className="section service-proof" aria-labelledby="haulage-proof-title">
         <div className="service-proof-shell">
           <div className="service-proof-copy reveal">
             <p className="eyebrow">Haulage & Delivery Capability</p>
@@ -37,9 +40,9 @@ export function ServiceMediaSections() {
             />
           </div>
         </div>
-      </section>
+      </section>)}
 
-      <section className="section logging-proof" aria-labelledby="logging-proof-title">
+      {has("tree-removal") && (<section className="section logging-proof" aria-labelledby="logging-proof-title">
         <div className="service-proof-shell service-proof-reverse">
           <div className="service-proof-media reveal">
             <SiteImage
@@ -58,9 +61,9 @@ export function ServiceMediaSections() {
             </p>
           </div>
         </div>
-      </section>
+      </section>)}
 
-      <section className="section sawmill-video-section" aria-labelledby="sawmill-video-title">
+      {has("sawmill-services") && (<section className="section sawmill-video-section" aria-labelledby="sawmill-video-title">
         <div className="video-proof-shell">
           <div className="video-proof-copy reveal">
             <p className="eyebrow">Sawmill Operation</p>
@@ -85,7 +88,7 @@ export function ServiceMediaSections() {
             </video>
           </div>
         </div>
-      </section>
+      </section>)}
     </>
   );
 }

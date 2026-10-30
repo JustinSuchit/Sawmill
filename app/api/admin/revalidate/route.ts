@@ -12,6 +12,6 @@ export async function POST(request: Request) {
   const { data: admin, error: roleError } = await supabase.from("catalog_admins").select("email").eq("email", user.email?.toLowerCase()).maybeSingle();
   if (roleError || !admin) return Response.json({ error: "Forbidden" }, { status: 403 });
   revalidateTag("catalog", { expire: 0 });
-  for (const path of ["/", "/products", "/lumber", "/steel", "/services", "/quote"]) revalidatePath(path);
+  revalidatePath("/", "layout");
   return Response.json({ ok: true });
 }

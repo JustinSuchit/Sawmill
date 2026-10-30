@@ -1,3 +1,4 @@
+import { getCatalog } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
 import { ManagedCatalog } from "@/components/ManagedCatalog";
 import { PageHeader } from "@/components/PageHeader";
@@ -8,7 +9,8 @@ import { steelImage } from "@/lib/site-data";
 
 export const metadata = pageMetadata("Concrete Sleepers", "Concrete sleepers for industrial and infrastructure applications, with sale and rental options.", "/steel");
 
-export default function SteelPage() {
+export default async function SteelPage() {
+  const catalog = await getCatalog();
   return (
     <main id="main">
       <PageHeader
@@ -28,13 +30,13 @@ export default function SteelPage() {
         <ManagedCatalog page="steel" />
       </section>
       <SleeperFeature />
-      <QuoteCTA
+      {catalog.some(item => item.id === "haulage") && catalog.some(item => item.id === "steel-concrete-sleepers") && <QuoteCTA
         eyebrow="Haulage"
         title="Need Sleepers Delivered?"
         copy="Coordinate your sleeper requirements with haulage and delivery support for your project location."
         cta="Explore Haulage"
         href="/services#haulage"
-      />
+      />}
     </main>
   );
 }

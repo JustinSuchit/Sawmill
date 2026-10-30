@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { getCatalog } from "@/lib/catalog";
 import { heroImage, homeCapabilities } from "@/lib/site-data";
 import { business } from "@/lib/business";
 import { CategoryGrid } from "./CategoryGrid";
 import { SiteImage } from "./SiteImage";
 
-export function Hero() {
+export async function Hero() {
+  const catalog = await getCatalog();
+  const capabilities = homeCapabilities.filter(item => !item.href.startsWith("/services#") || catalog.some(entry => entry.page === "services" && entry.id === item.href.split("#")[1]));
   return (
     <>
       <section className="hero" id="home" aria-labelledby="hero-title">
@@ -30,7 +33,7 @@ export function Hero() {
           <h2 id="capability-title">Lumber, materials and site services.<br />One connected operation.</h2>
           <p>Find the supplies and practical support your project needs.</p>
         </div>
-        <CategoryGrid items={homeCapabilities} />
+        <CategoryGrid items={capabilities} />
       </section>
     </>
   );

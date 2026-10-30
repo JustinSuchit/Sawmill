@@ -1,3 +1,4 @@
+import { getPageProducts } from "@/lib/catalog";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
@@ -71,7 +72,10 @@ function ExportLabel({
   );
 }
 
-export function LumberMediaSections() {
+export async function LumberMediaSections() {
+  const products = await getPageProducts("lumber");
+  const mouldings = products.find(item => item.id === "lumber-mouldings-dressed-lumber");
+  const pallets = products.find(item => item.id === "timber-pallets");
   return (
     <>
       <section className="section product-feature lumber-page-feature" aria-labelledby="processed-lumber-title">
@@ -95,46 +99,45 @@ export function LumberMediaSections() {
         </div>
       </section>
 
-      <section className="section mouldings-showcase" aria-labelledby="mouldings-title">
+      {mouldings && (<section className="section mouldings-showcase" aria-labelledby="mouldings-title">
         <div className="mouldings-shell">
           <div className="mouldings-heading reveal">
             <div>
               <p className="eyebrow">Mouldings &amp; Dressed Lumber</p>
-              <h2 id="mouldings-title">Timber Mouldings for the Finishing Details.</h2>
+              <h2 id="mouldings-title">{mouldings.title}</h2>
               <p>
-                We shape and dress timber for crown mouldings, base mouldings
-                and custom profiles to suit your project.
+                {mouldings.description}
               </p>
             </div>
-            <Link className="text-link contextual-enquiry" href="/quote?product=Mouldings%20%26%20Dressed%20Lumber">
+            <Link className="text-link contextual-enquiry" href={`/quote?product=${encodeURIComponent(mouldings.title)}`}>
               Discuss Your Mouldings <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
-          <PhotoGallery images={mouldingImages} className="mouldings-gallery" sizes="(max-width: 680px) 100vw, (max-width: 1240px) 50vw, 620px" />
+          <PhotoGallery images={[{ ...mouldingImages[0], src: mouldings.image_src, alt: mouldings.image_alt, position: mouldings.image_position }, ...mouldingImages.slice(1)]} className="mouldings-gallery" sizes="(max-width: 680px) 100vw, (max-width: 1240px) 50vw, 620px" />
           <div className="mouldings-details">
             <ul aria-label="Mouldings and dressed lumber options">
-              {["Lumber dressing", "Crown mouldings", "Base mouldings", "Premium decking", "Flooring", "Custom designs"].map((item) => <li key={item}>{item}</li>)}
+              {mouldings.examples.map((item) => <li key={item}>{item}</li>)}
             </ul>
-            <p>Dressing starts at $1.50 per square foot.</p>
+            <p>{mouldings.specs}</p>{mouldings.price != null && <p>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(mouldings.price)} {mouldings.price_unit}. VAT included.</p>}
           </div>
         </div>
-      </section>
+      </section>)}
 
-      <section className="section media-duo-section" aria-labelledby="pallets-title">
+      {pallets && (<section className="section media-duo-section" aria-labelledby="pallets-title">
         <div className="media-duo-shell">
           <div className="media-duo-copy reveal">
             <p className="eyebrow">Pallets</p>
-            <h2 id="pallets-title">Four-Way Entry Timber Pallets.</h2>
+            <h2 id="pallets-title">{pallets.title}</h2>
             <p>
-              Durable timber pallets designed for convenient handling and access
-              from multiple sides.
+              {pallets.description}
             </p>
-            <Link className="text-link contextual-enquiry" href="/quote?product=Timber%20Pallets">
+            {pallets.specs && <p>{pallets.specs}</p>}{pallets.price != null && <p>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(pallets.price)} {pallets.price_unit}. VAT included.</p>}
+            <Link className="text-link contextual-enquiry" href={`/quote?product=${encodeURIComponent(pallets.title)}`}>
               Get Pallet Pricing <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
           <div className="media-duo-grid reveal">
-            {palletImages.map((image) => (
+            {[{ src: pallets.image_src, alt: pallets.image_alt }, ...palletImages.slice(1)].map((image) => (
               <SiteImage
                 key={image.src}
                 src={image.src}
@@ -145,7 +148,7 @@ export function LumberMediaSections() {
             ))}
           </div>
         </div>
-      </section>
+      </section>)}
 
       <section className="section export-feature" aria-labelledby="export-title">
         <div className="section-head reveal">

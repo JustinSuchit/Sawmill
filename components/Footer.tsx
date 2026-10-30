@@ -1,3 +1,4 @@
+import { getPageProducts } from "@/lib/catalog";
 import Link from "next/link";
 import Image from "next/image";
 import { business } from "@/lib/business";
@@ -11,7 +12,8 @@ const emailComposeUrl = `https://mail.google.com/mail/?${new URLSearchParams({
   su: "Quote or product enquiry | Jagmohan Sawmill — Josh",
 }).toString()}`;
 
-export function Footer() {
+export async function Footer() {
+  const services = await getPageProducts("services");
   return (
     <footer className="site-footer">
       <div>
@@ -31,7 +33,7 @@ export function Footer() {
       </nav>
       <nav aria-label="Footer services">
         <h2>Services</h2>
-        <Link href="/services#white-plastering-sand">White Plastering Sand</Link><Link href="/services#haulage">Haulage</Link><Link href="/services#trailer-haulage">Trailer Haulage</Link><Link href="/services#tree-removal">Tree Removal</Link><Link href="/services#sawmill-services">Sawmill Services</Link>
+        {services.map(service => <Link key={service.id} href={`/services#${service.id}`}>{service.title}</Link>)}
       </nav>
       <address>
         <h2>Contact</h2>

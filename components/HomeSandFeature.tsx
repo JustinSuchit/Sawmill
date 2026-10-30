@@ -1,16 +1,19 @@
+import { getPageProducts } from "@/lib/catalog";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { quarryImages } from "@/lib/site-data";
 import { SiteImage } from "./SiteImage";
 
-export function HomeSandFeature() {
+export async function HomeSandFeature() {
+  const service = (await getPageProducts("services")).find(item => item.id === "white-plastering-sand");
+  if (!service) return null;
   return (
     <section className="section home-sand-feature" aria-labelledby="home-sand-title">
       <div className="service-proof-shell">
         <div className="service-proof-copy">
           <p className="eyebrow">Materials for your project</p>
-          <h2 id="home-sand-title">White plastering sand.<br />Now part of our supply.</h2>
-          <p>Alongside our timber and site services, we supply white plastering sand for plastering work. Ask about pricing and availability for the quantity you need.</p>
+          <h2 id="home-sand-title">{service.title}.<br />Supply for your project.</h2>
+          <p>{service.description}</p>
           <Link className="btn btn-primary" href="/services#white-plastering-sand">Explore Sand Supply <ArrowUpRight size={18} aria-hidden="true" /></Link>
         </div>
         <div className="service-proof-media">

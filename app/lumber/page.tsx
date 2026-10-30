@@ -1,3 +1,4 @@
+import { getPageProducts } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
 import { ManagedCatalog } from "@/components/ManagedCatalog";
 import { LumberMediaSections } from "@/components/LumberMediaSections";
@@ -9,7 +10,8 @@ import { lumberImage } from "@/lib/site-data";
 
 export const metadata = pageMetadata("Lumber & Timber", "Lumber, timber, mouldings and dressed lumber for construction and woodworking.", "/lumber");
 
-export default function LumberPage() {
+export default async function LumberPage() {
+  const [products, services] = await Promise.all([getPageProducts("lumber"), getPageProducts("services")]);
   return (
     <main id="main" className="lumber-page">
       <PageHeader
@@ -19,7 +21,7 @@ export default function LumberPage() {
         image={lumberImage}
         tone="timber"
       />
-      <LumberNavigation />
+      <LumberNavigation availableIds={products.map(item => item.id)} />
       <section className="section lumber-texture">
         <SectionHeading
           eyebrow="Lumber"
@@ -29,13 +31,13 @@ export default function LumberPage() {
         <ManagedCatalog page="lumber" />
       </section>
       <LumberMediaSections />
-      <QuoteCTA
+      {services.some(item => item.id === "sawmill-services") && <QuoteCTA
         eyebrow="Sawmill Connection"
         title="Need Lumber Cut to Size?"
         copy="Need a specific cut or timber dimension? Our sawmill services can help process timber to suit your project requirements."
         cta="Explore Sawmill Services"
         href="/services#sawmill-services"
-      />
+      />}
     </main>
   );
 }

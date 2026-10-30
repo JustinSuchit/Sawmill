@@ -1,3 +1,4 @@
+import { getCatalog } from "@/lib/catalog";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 
@@ -46,7 +47,13 @@ const questions = [
   },
 ] as const;
 
-export function HomeFAQ() {
+export async function HomeFAQ() {
+  const catalog = await getCatalog();
+  const visibleQuestions = questions.filter(item => {
+    if (item.href === "/services#trailer-haulage") return catalog.some(entry => entry.id === "trailer-haulage");
+    if (item.href === "/lumber#mouldings-title") return catalog.some(entry => entry.id === "lumber-mouldings-dressed-lumber");
+    return true;
+  });
   return (
     <section className="section faq-section" aria-labelledby="faq-title">
       <div className="section-head">
@@ -54,7 +61,7 @@ export function HomeFAQ() {
         <h2 id="faq-title">Planning Your Order or Site Work.</h2>
       </div>
       <div className="faq-list">
-        {questions.map(({ question, answer, href, link }) => (
+        {visibleQuestions.map(({ question, answer, href, link }) => (
           <details key={question}>
             <summary>{question}<Plus size={20} aria-hidden="true" /></summary>
             <div><p>{answer}</p><Link className="text-link" href={href}>{link}</Link></div>

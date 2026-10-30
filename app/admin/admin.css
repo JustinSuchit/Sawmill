@@ -17,7 +17,7 @@
 .admin-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .admin-page .admin-check { display: flex; gap: .6rem; align-items: center; min-height: 44px; }
 .admin-check input { width: 20px; height: 20px; accent-color: var(--amber); }
-.admin-filters { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; align-items: end; }
+.admin-filters { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1rem; align-items: end; }
 .admin-status { min-height: 1.6rem; color: var(--muted); overflow-wrap: anywhere; }
 .admin-product-row { padding: 1rem 0; border-bottom: 1px solid var(--line); }
 .admin-product-row h2, .admin-product-row p { margin: .2rem 0; overflow-wrap: anywhere; }
@@ -26,3 +26,8 @@
 .admin-auth-link { background: transparent; color: var(--ink); border: 0; text-decoration: underline; text-underline-offset: .2em; padding: .5rem 0; cursor: pointer; text-align: left; }
 @media(max-width: 860px) { .admin-editor { grid-template-columns: 1fr; } .admin-filters { grid-template-columns: 1fr 1fr; } }
 @media(max-width: 520px) { .admin-fields, .admin-filters { grid-template-columns: 1fr; } .admin-form, .admin-preview, .admin-list, .admin-login { padding: 1rem; } }
+
+.admin-preview .service-feature { display: block; }
+.admin-preview .service-feature-media { min-height: 0; height: 240px; }
+.admin-preview .service-feature-copy { padding: 1rem; }
+.admin-preview .service-feature h2 { font-size: 1.5rem; }

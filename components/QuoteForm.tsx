@@ -20,13 +20,14 @@ const initialForm = {
 
 type FieldName = keyof typeof initialForm;
 
-export function QuoteForm({ initialCategory = "", initialProduct = "" }: { initialCategory?: string; initialProduct?: string }) {
+export function QuoteForm({ initialCategory = "", initialProduct = "", serviceOptions = [] }: { initialCategory?: string; initialProduct?: string; serviceOptions?: { id: string; title: string }[] }) {
   const [form, setForm] = useState({ ...initialForm, requestType: initialCategory, service: initialProduct });
   const [errors, setErrors] = useState<Partial<Record<FieldName, boolean>>>({});
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
-  const isSiteService = ["Haulage & Delivery", "Tree Removal", "Sawmill Services"].includes(form.requestType);
-  const isHaulage = form.requestType === "Haulage & Delivery";
+  const selectedService = serviceOptions.find(item => item.title === form.requestType);
+  const isSiteService = Boolean(selectedService);
+  const isHaulage = selectedService?.id === "haulage" || selectedService?.id === "trailer-haulage";
 
   useEffect(() => {
     const resetLoading = () => setLoading(false);
@@ -119,7 +120,7 @@ export function QuoteForm({ initialCategory = "", initialProduct = "" }: { initi
           <label>What do you need? *
             <select name="Request Type" data-field="requestType" required value={form.requestType} aria-invalid={errors.requestType || undefined} className={errors.requestType ? "error" : undefined} onChange={(event) => updateField("requestType", event.target.value)}>
               <option value="">Select one</option>
-              <option>Lumber</option><option>Tools & Hardware</option><option>Concrete Sleepers</option><option>White Plastering Sand</option><option>Haulage & Delivery</option><option>Tree Removal</option><option>Sawmill Services</option><option>Other</option>
+              <option>Lumber</option><option>Tools & Hardware</option><option>Concrete Sleepers</option>{serviceOptions.map(service => <option key={service.id}>{service.title}</option>)}<option>Other</option>
             </select>
           </label>
           <label>{isSiteService ? "Service details" : "Product or material"}<input name="Product or Service" value={form.service} onChange={(event) => updateField("service", event.target.value)} /></label>

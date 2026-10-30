@@ -1,3 +1,4 @@
+import { getCatalog } from "@/lib/catalog";
 import type { Metadata } from "next";
 
 import { Footer } from "@/components/Footer";
@@ -68,73 +69,16 @@ const structuredData = {
       closes: "00:00",
     },
   ],
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Materials and Site Services",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "White plastering sand supply", ...(siteUrl ? { url: new URL("/services#white-plastering-sand", siteUrl).href } : {}) },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Trailer haulage: Low Boy, Step Deck and Goose Neck", ...(siteUrl ? { url: new URL("/services#trailer-haulage", siteUrl).href } : {}) },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Concrete sleeper sale and rental", ...(siteUrl ? { url: new URL("/steel", siteUrl).href } : {}) },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Lumber and timber supply",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Sawmill services",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Steel and hardware supply",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Haulage",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Tree removal",
-        },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Land clearing",
-        },
-      },
-    ],
-  },
+
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const catalog = await getCatalog();
+  const data = { ...structuredData, hasOfferCatalog: { "@type": "OfferCatalog", name: "Materials and Site Services", itemListElement: catalog.map(item => ({ "@type": "Offer", itemOffered: { "@type": item.page === "services" ? "Service" : "Product", name: item.title, ...(siteUrl ? { url: new URL(item.page === "services" ? `/services#${item.id}` : item.page === "home" ? "/" : `/${item.page}`, siteUrl).href } : {}) } })) } };
   return (
     <html
       lang="en"
@@ -149,7 +93,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(data).replace(/</g, "\\u003c"),
           }}
         />
       </head>

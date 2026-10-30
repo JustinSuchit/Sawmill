@@ -1,4 +1,4 @@
-import { lumberCategories, steelCategories, toolCategories, type CategoryCard } from "./site-data";
+import { lumberCategories, steelCategories, toolCategories, serviceDetails, type CategoryCard } from "./site-data";
 import type { CatalogPage, CatalogProduct } from "./catalog-types";
 
 function seed(items: CategoryCard[], page: CatalogPage): CatalogProduct[] {
@@ -12,6 +12,8 @@ function seed(items: CategoryCard[], page: CatalogPage): CatalogProduct[] {
 }
 export const initialCatalog = [
   ...seed(toolCategories, "products"),
-  ...seed(lumberCategories.filter(item => item.title !== "Mouldings & Dressed Lumber"), "lumber"),
+  ...seed(lumberCategories, "lumber"),
+  ...seed([{ id: "timber-pallets", title: "Timber Pallets", label: "Pallets", description: "Durable timber pallets designed for convenient handling and access from multiple sides.", src: "/images/lumber/pallets/four-way-entry-timber-pallet-side-view.jpg", alt: "Side view of four-way entry timber pallet", href: "/quote", cta: "Get Pallet Pricing" }], "lumber"),
   ...seed(steelCategories, "steel"),
+  ...seed(serviceDetails.map((item, index) => ({ id: ["white-plastering-sand", "haulage", "trailer-haulage", "tree-removal", "sawmill-services"][index], title: item.eyebrow, label: item.eyebrow, description: item.description, src: item.src, alt: item.alt, examples: item.items, href: "/quote", cta: item.cta, imagePosition: item.eyebrow === "Trailer Haulage" ? "50% 35%" : "50% 50%" })), "services"),
 ];

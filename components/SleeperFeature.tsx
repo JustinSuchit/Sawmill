@@ -1,3 +1,4 @@
+import { getPageProducts } from "@/lib/catalog";
 import { SiteImage } from "./SiteImage";
 
 const sleeperImages = [
@@ -23,7 +24,8 @@ const sleeperImages = [
   },
 ];
 
-export function SleeperFeature() {
+export async function SleeperFeature() {
+  if (!(await getPageProducts("steel")).some(item => item.id === "steel-concrete-sleepers")) return null;
   return (
     <section className="section sleeper-feature" aria-labelledby="sleeper-feature-title">
       <div className="sleeper-shell">

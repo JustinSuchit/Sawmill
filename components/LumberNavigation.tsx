@@ -14,7 +14,8 @@ const categories = [
   ["export-title", "Export"],
 ] as const;
 
-export function LumberNavigation() {
+export function LumberNavigation({ availableIds }: { availableIds: string[] }) {
+  const visibleCategories = categories.filter(([id]) => id === "export-title" || availableIds.includes(id === "mouldings-title" ? "lumber-mouldings-dressed-lumber" : id === "pallets-title" ? "timber-pallets" : id));
   const [active, setActive] = useState("");
   const links = useRef<HTMLDivElement>(null);
 
@@ -53,12 +54,12 @@ export function LumberNavigation() {
       window.removeEventListener("resize", onScroll);
       window.removeEventListener("hashchange", onScroll);
     };
-  }, []);
+  }, [availableIds]);
 
   return (
     <nav className="lumber-navigation" aria-label="Lumber categories">
       <div ref={links}>
-        {categories.map(([id, label]) => (
+        {visibleCategories.map(([id, label]) => (
           <a href={`#${id}`} key={id} aria-current={active === id ? "location" : undefined}>{label}</a>
         ))}
       </div>

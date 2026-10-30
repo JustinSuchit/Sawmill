@@ -1,8 +1,9 @@
 import "server-only";
+import { cache } from "react";
 import { initialCatalog } from "./catalog-seed";
 import type { CatalogProduct, CatalogPage } from "./catalog-types";
 
-export async function getCatalog(): Promise<CatalogProduct[]> {
+export const getCatalog = cache(async (): Promise<CatalogProduct[]> => {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
   if (!url || !key) return initialCatalog;
@@ -11,7 +12,7 @@ export async function getCatalog(): Promise<CatalogProduct[]> {
   });
   if (!response.ok) throw new Error("The product catalogue is temporarily unavailable.");
   return await response.json() as CatalogProduct[];
-}
+});
 
 export async function getPageProducts(page: CatalogPage) {
   return (await getCatalog()).filter(item => item.page === page);

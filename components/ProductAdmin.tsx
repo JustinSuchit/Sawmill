@@ -9,9 +9,10 @@ import { adminSignInEmail } from "@/lib/admin-identity";
 import { catalogPages, productCard, validImageSource, type CatalogPage, type CatalogProduct } from "@/lib/catalog-types";
 import { imageExtension, thumbnailLimit } from "@/lib/catalog-upload";
 import { CategoryCard } from "./CategoryCard";
+import { ServiceFeature } from "./ServiceFeature";
 
-function emptyProduct(): CatalogProduct {
-  return { id: crypto.randomUUID(), page: "lumber", title: "", label: "Lumber", description: "", image_src: "", image_alt: "", thumbnail_src: null, image_position: "50% 50%", specs: "", examples: [], price: null, price_unit: "", sort_order: 0, published: false, archived: false, updated_at: "" };
+function emptyProduct(service = false): CatalogProduct {
+  return { id: crypto.randomUUID(), page: service ? "services" : "lumber", title: "", label: service ? "Service" : "Lumber", description: "", image_src: "", image_alt: "", thumbnail_src: null, image_position: "50% 50%", specs: "", examples: [], price: null, price_unit: "", sort_order: 0, published: false, archived: false, updated_at: "" };
 }
 
 export function ProductAdmin() {
@@ -25,7 +26,8 @@ export function ProductAdmin() {
   const [products, setProducts] = useState<CatalogProduct[]>([]);
   const [page, setPage] = useState("all");
   const [search, setSearch] = useState("");
-  const [showArchived, setShowArchived] = useState(false);
+  const [visibility, setVisibility] = useState("active");
+  const [kind, setKind] = useState("all");
   const [pendingRemoval, setPendingRemoval] = useState<string | null>(null);
   const [editing, setEditing] = useState<CatalogProduct | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -46,7 +48,7 @@ export function ProductAdmin() {
         setAccount(user.email || "");
         if (roleError || !role) { setAccess("denied"); setProducts([]); setEditing(null); return; }
         const { data, error: queryError } = await client.from("catalog_products").select("*").order("sort_order").order("title");
-        if (queryError) throw new Error("Unable to load products. Please try signing in again.");
+        if (queryError) throw new Error("Unable to load products and services. Please try signing in again.");
         if (active) { setProducts(data || []); setAccess("admin"); setStatus(current => current.startsWith("Check your email") || current.startsWith("Sign-in failed") || current.startsWith("Too many sign-in") ? "" : current); }
       } catch (error) {
         if (active) { setAccess("login"); setStatus(error instanceof Error ? error.message : "Unable to connect."); }
@@ -122,47 +124,51 @@ export function ProductAdmin() {
         ? client.from("catalog_products").update(payload).eq("id", editing.id).eq("updated_at", previousVersion)
         : client.from("catalog_products").insert(payload);
       const { data, error } = await query.select().maybeSingle();
-      if (error) throw new Error("Product could not be saved. Check the fields and your admin access.");
-      if (!data) throw new Error("This product changed in another session. Reload the page before editing it again.");
+      if (error) throw new Error("Item could not be saved. Check the fields and your admin access.");
+      if (!data) throw new Error("This item changed in another session. Reload the page before editing it again.");
       persisted = true;
       setProducts(current => [...current.filter(item => item.id !== data.id), data]);
       setEditing(null); setFile(null); setPreview("");
       await refreshPages();
-      setStatus(data.published ? "Product saved and published." : "Draft saved. Switch on Published when it is ready.");
+      setStatus(data.archived ? "Saved in the archive. This item is hidden from the website." : data.published ? "Saved and published on the website." : "Draft saved. Publish when ready.");
     } catch (error) {
       if (uploaded && !persisted) await adminClient().storage.from("product-thumbnails").remove([uploaded]);
-      setStatus(error instanceof Error ? error.message : "Unable to save product.");
+      setStatus(error instanceof Error ? error.message : "Unable to save item.");
     } finally { setBusy(false); }
   }
 
-  async function archive(product: CatalogProduct, archived: boolean) {
+  async function setPublication(product: CatalogProduct, state: "published" | "archived") {
     setBusy(true); setStatus("");
     try {
-      const { data, error } = await adminClient().from("catalog_products").update({ archived }).eq("id", product.id).eq("updated_at", product.updated_at).select().maybeSingle();
-      if (error || !data) throw new Error("Unable to update this product. Reload to check for changes by another admin.");
+      const { data, error } = await adminClient().from("catalog_products").update({ archived: state === "archived", published: state === "published" }).eq("id", product.id).eq("updated_at", product.updated_at).select().maybeSingle();
+      if (error || !data) throw new Error("Unable to update this item. Reload to check for changes by another admin.");
       setProducts(current => current.map(item => item.id === data.id ? data : item));
       setPendingRemoval(null);
       if (editing?.id === data.id) setEditing(null);
-      await refreshPages(); setStatus(archived ? "Product removed. You can restore it below." : "Product restored.");
-    } catch (error) { setStatus(error instanceof Error ? error.message : "Unable to update product."); }
+      await refreshPages(); setStatus(state === "archived" ? "Archived and hidden from the website. Photos, descriptions and prices are saved for republishing." : "Published on the website.");
+    } catch (error) { setStatus(error instanceof Error ? error.message : "Unable to update item."); }
     finally { setBusy(false); }
   }
 
-  const visible = products.filter(item => item.archived === showArchived && (page === "all" || item.page === page) && `${item.title} ${item.label}`.toLowerCase().includes(search.toLowerCase())).sort((a,b) => a.sort_order - b.sort_order || a.title.localeCompare(b.title));
+  const visible = products.filter(item =>
+    (visibility === "all" || (visibility === "active" && !item.archived) || (visibility === "archived" && item.archived) || (visibility === "published" && item.published && !item.archived) || (visibility === "draft" && !item.published && !item.archived)) &&
+    (kind === "all" || (kind === "services" ? item.page === "services" : item.page !== "services")) &&
+    (page === "all" || item.page === page) && `${item.title} ${item.label}`.toLowerCase().includes(search.toLowerCase())
+  ).sort((a,b) => a.sort_order - b.sort_order || a.title.localeCompare(b.title));
   const update = <K extends keyof CatalogProduct>(key: K, value: CatalogProduct[K]) => setEditing(current => current ? { ...current, [key]: value } : current);
 
   if (access === "loading") return <p role="status">Checking admin access…</p>;
-  if (access !== "admin") return <section className="admin-login"><p className="eyebrow">Jagmohan Sawmill</p><h1>Product Admin</h1><p>Manage your products, photos and prices.</p>
+  if (access !== "admin") return <section className="admin-login"><p className="eyebrow">Jagmohan Sawmill</p><h1>Products &amp; Services</h1><p>Manage products and services, photos, prices and website visibility.</p>
     {access === "denied" ? <><p role="alert">This account does not have admin access.</p><button className="btn btn-dark" onClick={() => void adminClient().auth.signOut()}>Sign out</button></> :
     <form onSubmit={signIn}><label>Email or username<input type="text" autoComplete="username" autoCapitalize="none" spellCheck={false} maxLength={254} required value={email} onChange={event => setEmail(event.target.value)} /></label>{!recovering && <label>Password<input type="password" autoComplete="current-password" required maxLength={128} value={password} onChange={event => setPassword(event.target.value)} /></label>}<button className="btn btn-primary" disabled={busy}>{busy ? "Please wait…" : recovering ? "Send password recovery email" : "Sign in"}</button><button className="admin-auth-link" type="button" disabled={busy} onClick={() => { setRecovering(!recovering); setPassword(""); setStatus(""); }}>{recovering ? "Back to password sign-in" : "Set / reset password"}</button><p>Access is limited to approved administrators.</p></form>}
     <p role="status" aria-live="polite">{status}</p></section>;
 
   return <>
-    <header className="admin-heading"><div><p className="eyebrow">Jagmohan Sawmill</p><h1>Product Admin</h1><p>{account}</p></div><div className="admin-actions"><button className="btn btn-primary" disabled={busy} onClick={() => edit(emptyProduct())}><Plus size={18} /> Add product</button><Link className="btn btn-dark" href="/admin/password">Set / change password</Link><button className="btn btn-dark" disabled={busy} onClick={() => void adminClient().auth.signOut()}><LogOut size={18} /> Sign out</button></div></header>
+    <header className="admin-heading"><div><p className="eyebrow">Jagmohan Sawmill</p><h1>Products &amp; Services</h1><p>{account}</p></div><div className="admin-actions"><button className="btn btn-primary" disabled={busy} onClick={() => edit(emptyProduct())}><Plus size={18} /> Add product</button><button className="btn btn-primary" disabled={busy} onClick={() => edit(emptyProduct(true))}><Plus size={18} /> Add service</button><Link className="btn btn-dark" href="/admin/password">Set / change password</Link><button className="btn btn-dark" disabled={busy} onClick={() => void adminClient().auth.signOut()}><LogOut size={18} /> Sign out</button></div></header>
     <p className="admin-status" role="status" aria-live="polite">{status}</p>
     {editing && <div className="admin-editor" ref={editor}>
-      <form onSubmit={save} className="admin-form"><h2>{editing.updated_at ? "Edit product" : "New product"}</h2>
-        <label>Product name<input name="title" maxLength={160} required value={editing.title} onChange={e => update("title",e.target.value)} /></label>
+      <form onSubmit={save} className="admin-form"><h2>{editing.updated_at ? "Edit" : "New"} {editing.page === "services" ? "service" : "product"}</h2>
+        <label>{editing.page === "services" ? "Service" : "Product"} name<input name="title" maxLength={160} required value={editing.title} onChange={e => update("title",e.target.value)} /></label>
         <div className="admin-fields"><label>Show on page<select value={editing.page} onChange={e => update("page", e.target.value as CatalogPage)}>{Object.entries(catalogPages).map(([key,label]) => <option key={key} value={key}>{label}</option>)}</select></label><label>Category label<input required maxLength={80} value={editing.label} onChange={e => update("label",e.target.value)} /></label></div>
         <label>Description<textarea rows={4} required maxLength={3000} value={editing.description} onChange={e => update("description", e.target.value)} /></label>
         <label>Thumbnail photo<input type="file" accept="image/jpeg,image/png,image/webp,image/avif" onChange={e => {
@@ -177,16 +183,31 @@ export function ProductAdmin() {
         <label>Specifications / pricing notes<textarea rows={2} maxLength={2000} value={editing.specs} onChange={e => update("specs", e.target.value)} /></label>
         <label>Sizes / examples (one per line)<textarea rows={4} value={editing.examples.join("\n")} onChange={e => update("examples", e.target.value.split("\n"))} /></label>
         <div className="admin-fields"><label>Display order<input type="number" min="0" max="9999" step="1" value={editing.sort_order} onChange={e => update("sort_order", Number(e.target.value))} /></label><label>Photo crop<select value={editing.image_position} onChange={e => update("image_position",e.target.value)}><option value={editing.image_position}>{editing.image_position}</option>{["50% 50%","50% 0%","50% 100%","0% 50%","100% 50%"].filter(p => p !== editing.image_position).map(p => <option key={p} value={p}>{p}</option>)}</select></label></div>
-        <label className="admin-check"><input type="checkbox" checked={editing.published} onChange={e => update("published",e.target.checked)} /> Published on website</label>
-        <div className="admin-actions"><button className="btn btn-primary" disabled={busy}>{busy ? "Saving…" : "Save product"}</button><button type="button" className="btn btn-dark" disabled={busy} onClick={() => setEditing(null)}>Cancel</button></div>
+        <label>Website visibility<select value={editing.archived ? "archived" : editing.published ? "published" : "draft"} onChange={e => { update("archived", e.target.value === "archived"); update("published", e.target.value === "published"); }}><option value="draft">Draft — hidden until ready</option><option value="published">Published — show on website</option><option value="archived">Archived — hidden, saved for later</option></select><small>Archive an unavailable item without losing its photo, description or price. Choose Published to show it again.</small></label>
+        <div className="admin-actions"><button className="btn btn-primary" disabled={busy}>{busy ? "Saving…" : "Save changes"}</button><button type="button" className="btn btn-dark" disabled={busy} onClick={() => setEditing(null)}>Cancel</button></div>
       </form>
-      <aside className="admin-preview"><h2>Card preview</h2><p>The website uses this same card formatting.</p>{preview || validImageSource(editing.image_src) ? <>
+      <aside className="admin-preview"><h2>{editing.page === "services" ? "Service preview" : "Card preview"}</h2><p>The website uses this same formatting.</p>{editing.page === "services" && (preview || validImageSource(editing.image_src)) ? <ServiceFeature service={{ ...editing, image_src: preview || editing.image_src, thumbnail_src: null }} /> : preview || validImageSource(editing.image_src) ? <>
         {preview ? <article className="category-card"><div className="category-media admin-local-preview"><Image src={preview} alt={editing.image_alt || "Selected thumbnail"} fill unoptimized style={{ objectFit: "cover", objectPosition: editing.image_position }} /></div><div className="category-body"><p className="label">{editing.label}</p><h3>{editing.title || "Product name"}</h3><p>{editing.description || "Product description"}</p>{editing.price != null && <p className="category-specs">{new Intl.NumberFormat("en-TT",{style:"currency",currency:"TTD"}).format(editing.price)} {editing.price_unit}</p>}{editing.specs && <p className="category-specs">{editing.specs}</p>}</div></article> : <CategoryCard item={productCard(editing)} variant={editing.page === "products" ? "tools" : editing.page === "steel" ? "steel" : "default"} />}
-      </> : <p>Add a thumbnail to preview the product card.</p>}</aside>
+      </> : <p>Add a thumbnail to preview this item.</p>}</aside>
     </div>}
-    <section className="admin-list" aria-label="Product catalogue"><div className="admin-filters"><label>Search products<input type="search" value={search} onChange={e => setSearch(e.target.value)} /></label><label>Page<select value={page} onChange={e => setPage(e.target.value)}><option value="all">All pages</option>{Object.entries(catalogPages).map(([key,label]) => <option key={key} value={key}>{label}</option>)}</select></label><label className="admin-check"><input type="checkbox" checked={showArchived} onChange={e => setShowArchived(e.target.checked)} /> Removed products</label></div><p>{visible.length} {visible.length === 1 ? "product" : "products"}</p>
-      <div className="admin-product-list">{visible.map(product => <article className="admin-product-row" key={product.id}><div><h2>{product.title}</h2><p>{catalogPages[product.page]} · {product.archived ? "Removed" : product.published ? "Published" : "Draft"}</p></div><div className="admin-actions">{!product.archived && <button className="btn btn-dark" disabled={busy} onClick={() => edit(product)} aria-label={`Edit ${product.title}`}><Pencil size={16} /> Edit</button>}<button className="btn btn-dark" disabled={busy} onClick={() => product.archived ? void archive(product,false) : setPendingRemoval(product.id)} aria-label={`${product.archived ? "Restore" : "Remove"} ${product.title}`}>{product.archived ? <RotateCcw size={16} /> : <Archive size={16} />}{product.archived ? "Restore" : "Remove"}</button></div>{pendingRemoval === product.id && <div className="admin-removal" role="group" aria-label={`Confirm removal of ${product.title}`}><p>Remove this product from the website? You can restore it later.</p><div className="admin-actions"><button className="btn btn-primary" disabled={busy} onClick={() => void archive(product,true)}>Confirm removal</button><button className="btn btn-dark" disabled={busy} onClick={() => setPendingRemoval(null)}>Keep product</button></div></div>}</article>)}</div>
-      {!visible.length && <p>No products match these filters.</p>}
+    <section className="admin-list" aria-label="Products and services catalogue">
+      <p>Published items appear on the website. Archive unavailable items to hide them, then publish them again when ready. Archived items can still be edited.</p>
+      <div className="admin-filters">
+        <label>Search products and services<input type="search" value={search} onChange={e => setSearch(e.target.value)} /></label>
+        <label>Type<select value={kind} onChange={e => { setKind(e.target.value); setPage("all"); }}><option value="all">Products and services</option><option value="products">Products</option><option value="services">Services</option></select></label>
+        <label>Page<select value={page} onChange={e => setPage(e.target.value)}><option value="all">All pages</option>{Object.entries(catalogPages).filter(([key]) => kind === "all" || (kind === "services" ? key === "services" : key !== "services")).map(([key,label]) => <option key={key} value={key}>{label}</option>)}</select></label>
+        <label>Status<select value={visibility} onChange={e => setVisibility(e.target.value)}><option value="active">Active (published and drafts)</option><option value="published">Published</option><option value="draft">Drafts</option><option value="archived">Archived</option><option value="all">All statuses</option></select></label>
+      </div><p>{visible.length} {visible.length === 1 ? "item" : "items"}</p>
+      <div className="admin-product-list">{visible.map(product => <article className="admin-product-row" key={product.id}>
+        <div><h2>{product.title}</h2><p>{product.page === "services" ? "Service" : "Product"} · {catalogPages[product.page]} · <strong>{product.archived ? "Archived — hidden" : product.published ? "Published" : "Draft — hidden"}</strong></p></div>
+        <div className="admin-actions">
+          <button className="btn btn-dark" disabled={busy} onClick={() => edit(product)} aria-label={`Edit ${product.title}`}><Pencil size={16} /> Edit</button>
+          {product.archived || !product.published ? <button className="btn btn-primary" disabled={busy} onClick={() => void setPublication(product,"published")} aria-label={`Publish ${product.title}`}><RotateCcw size={16} /> Publish</button> : null}
+          {!product.archived && <button className="btn btn-dark" disabled={busy} onClick={() => setPendingRemoval(product.id)} aria-label={`Archive ${product.title}`}><Archive size={16} /> Archive / hide</button>}
+        </div>
+        {pendingRemoval === product.id && <div className="admin-removal" role="group" aria-label={`Confirm archive of ${product.title}`}><p>Hide this {product.page === "services" ? "service" : "product"} from the website? It stays saved in Archived and can be edited or published again.</p><div className="admin-actions"><button className="btn btn-primary" disabled={busy} onClick={() => void setPublication(product,"archived")}>Confirm archive</button><button className="btn btn-dark" disabled={busy} onClick={() => setPendingRemoval(null)}>Cancel</button></div></div>}
+      </article>)}</div>
+      {!visible.length && <p>No items match these filters.</p>}
     </section>
   </>;
 }

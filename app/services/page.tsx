@@ -4,7 +4,6 @@ import { Process } from "@/components/Process";
 import { ServiceDetailSections } from "@/components/ServiceDetailSections";
 import { ServiceMediaSections } from "@/components/ServiceMediaSections";
 import { heroImage } from "@/lib/site-data";
-import { ExtraCatalog } from "@/components/ExtraCatalog";
 
 export const metadata = pageMetadata("Sand Supply, Haulage & Sawmill Services", "White plastering sand supply, trailer haulage with Low Boy, Step Deck and Goose Neck trailers, tree removal and sawmill services in Trinidad & Tobago.", "/services");
 
@@ -18,7 +17,6 @@ export default function ServicesPage() {
         image={heroImage}
       />
       <ServiceDetailSections />
-      <ExtraCatalog page="services" />
       <ServiceMediaSections />
       <Process />
     </main>
