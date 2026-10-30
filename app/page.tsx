@@ -7,8 +7,8 @@ import { HomeFAQ } from "@/components/HomeFAQ";
 import { ExtraCatalog } from "@/components/ExtraCatalog";
 
 export const metadata = {
-  ...pageMetadata("Lumber & Site Services", "Jagmohan Sawmill in Penal supplies lumber, mouldings, sand, tools and concrete sleepers, plus sawmill and haulage services across Trinidad & Tobago.", "/"),
-  title: "Jagmohan Sawmill | Lumber & Site Services, Trinidad",
+  ...pageMetadata("Lumber, Materials & Site Services", "Jagmohan Sawmill supplies lumber, materials and site services in Trinidad & Tobago, including mouldings, sand, concrete sleepers, sawmilling and haulage.", "/"),
+  title: "Jagmohan Sawmill | Lumber, Materials & Site Services",
 };
 
 export default function Home() {

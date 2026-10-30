@@ -27,7 +27,7 @@ export function Hero() {
       <section className="section capabilities-section" id="capabilities" aria-labelledby="capability-title">
         <div className="section-head">
           <p className="eyebrow">What we do</p>
-          <h2 id="capability-title">Materials and services.<br />One connected operation.</h2>
+          <h2 id="capability-title">Lumber, materials and site services.<br />One connected operation.</h2>
           <p>Find the supplies and practical support your project needs.</p>
         </div>
         <CategoryGrid items={homeCapabilities} />
