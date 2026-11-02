@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  ...(siteUrl ? { "@id": new URL("/#business", siteUrl).href, image: new URL("/images/og-jagmohan-yard.jpg", siteUrl).href, logo: new URL("/images/jagmohan-sawmill-logo-transparent.webp", siteUrl).href } : {}),
+  ...(siteUrl ? { "@id": new URL("/#business", siteUrl).href, image: new URL("/images/og-jagmohan-yard.jpg", siteUrl).href, logo: new URL("/images/jagmohan-company-logo-256.webp", siteUrl).href } : {}),
   name: business.name,
   alternateName: business.alternateName,
   description:

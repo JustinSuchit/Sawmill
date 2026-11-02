@@ -11,7 +11,11 @@ export const getCatalog = cache(async (): Promise<CatalogProduct[]> => {
     headers: { apikey: key }, next: { revalidate: 60, tags: ["catalog"] }, signal: AbortSignal.timeout(8000),
   });
   if (!response.ok) throw new Error("The product catalogue is temporarily unavailable.");
-  return await response.json() as CatalogProduct[];
+  const products = await response.json() as CatalogProduct[];
+  // Migrate the original bundled image without overriding admin-uploaded replacements.
+  return products.map(product => product.id === "products-bandsaw-blades" && product.image_src === "/images/bandsaw img.webp"
+    ? { ...product, image_src: "/images/tools/coiled-bandsaw-blade.avif", image_alt: "Coiled toothed bandsaw blade" }
+    : product);
 });
 
 export async function getPageProducts(page: CatalogPage) {

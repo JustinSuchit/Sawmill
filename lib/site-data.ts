@@ -141,8 +141,8 @@ export const toolCategories: CategoryCard[] = [
       "Bandsaw blades available for Wood-Mizer and wood bandsaw applications.",
     href: "/quote",
     cta: "Get Pricing",
-    src: "/images/bandsaw img.webp",
-    alt: "Bandsaw blade product image",
+    src: "/images/tools/coiled-bandsaw-blade.avif",
+    alt: "Coiled toothed bandsaw blade",
     examples: [
       "Wood-Mizer",
       "Wideband 4-inch",
