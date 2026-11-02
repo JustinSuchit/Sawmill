@@ -1,5 +1,6 @@
 export const business = {
   name: "Jebodh Jagmohan and Company LTD",
+  description: "A trusted supplier of lumber, steel, tools, and hardware in Trinidad & Tobago, offering comprehensive services including sawmilling, haulage, tree cutting and removal, and land clearing",
   alternateName: "Jagmohan Sawmill",
   email: "joshjagmohan93@gmail.com",
   phone: "363-2299",

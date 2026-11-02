@@ -9,7 +9,7 @@ export function ServiceFeature({ service, index = 0, haulageVisible = true }: { 
     <div className="service-feature-copy reveal">
       <p className="eyebrow">{service.label}</p><h2>{service.title}</h2><p>{service.description}</p>
       {service.examples.length > 0 && <div className="check-list" aria-label={`${service.title} capabilities`}>{service.examples.map((item, i) => <span key={`${i}:${item}`}>{item}</span>)}</div>}
-      {service.price != null && <p className="category-specs"><strong>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(service.price)}</strong>{service.price_unit ? ` ${service.price_unit}` : ""}. VAT included.</p>}
+      {service.price != null && <p className="category-specs"><strong>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(service.price)}</strong>{service.price_unit ? ` ${service.price_unit}` : ""}</p>}
       {service.specs && <p className="category-specs">{service.specs}</p>}
       {service.id === "white-plastering-sand" && <div className="quarry-gallery" aria-label="Sand quarry photos">{quarryImages.slice(1).map(photo => <div className="quarry-gallery-photo" key={photo.src}><SiteImage {...photo} sizes="(max-width: 860px) 45vw, 22vw" cover /></div>)}</div>}
       {service.id === "tree-removal" && <ol className="process-mini tree-process">{["Site Assessment", "Planning & Preparation", "Tree Cutting & Removal", "Cleanup & Hauling"].map((title,i) => <li key={title}><strong>{String(i+1).padStart(2,"0")}</strong> {title}</li>)}</ol>}

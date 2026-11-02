@@ -33,7 +33,7 @@ export function CategoryCard({ item, variant = "default", priority = false }: Ca
           </ul>
         )}
         {item.specs && <p className="category-specs">{item.specs}</p>}
-        {hasPrice && <p className="category-specs">Prices in TTD. VAT included.</p>}
+        {hasPrice && <p className="category-specs">Prices in TTD.</p>}
         <Link className="text-link" aria-label={`${item.cta}: ${item.title}`} href={item.href === "/quote" ? `/quote?product=${encodeURIComponent(item.title)}` : item.href}>{item.cta}<ArrowUpRight size={18} aria-hidden="true" /></Link>
       </div>
     </article>

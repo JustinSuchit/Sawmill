@@ -16,8 +16,8 @@ const questions = [
     link: "Contact the team",
   },
   {
-    question: "Are the displayed prices in TTD and inclusive of VAT?",
-    answer: "Yes. All displayed prices are in Trinidad and Tobago dollars (TTD) and include VAT. Send your required product, sizes and quantities for confirmation of current pricing and availability.",
+    question: "What currency are the displayed prices in?",
+    answer: "All displayed prices are in Trinidad and Tobago dollars (TTD). Send your required product, sizes and quantities for confirmation of current pricing and availability.",
     href: "/quote",
     link: "Request current pricing",
   },

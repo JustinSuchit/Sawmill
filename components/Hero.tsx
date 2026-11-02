@@ -16,7 +16,7 @@ export async function Hero() {
         <div className="hero-overlay" />
         <div className="hero-content">
           <p className="eyebrow">Lumber, materials &amp; site services</p>
-          <h1 id="hero-title">{business.name}</h1>
+          <h1 id="hero-title">{business.name.replace(/\bLTD\b/, "Ltd")}</h1>
           <p className="hero-alias">&quot;{business.alternateName}&quot;</p>
           <p className="hero-line">From forest to finished timber.</p>
           <p className="hero-copy">Lumber, mouldings, sawmill services and haulage for projects across Trinidad &amp; Tobago.</p>

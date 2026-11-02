@@ -21,7 +21,7 @@ export async function Footer() {
           <Image className="brand-logo" src="/images/jagmohan-sawmill-logo-transparent.webp" alt="Jagmohan Sawmill logo" width={64} height={64} unoptimized />
           <span><strong>{business.name}</strong><small>Materials. Sawmill. Haulage.</small></span>
         </Link>
-        <p>Supplier of lumber, steel, tools and hardware with sawmill, haulage, tree cutting, tree removal and land clearing services in Trinidad & Tobago.</p>
+        <p>{business.description}</p>
       </div>
       <nav aria-label="Footer navigation">
         <h2>Navigation</h2>
@@ -44,7 +44,7 @@ export async function Footer() {
         {business.address.street}, {business.address.locality}<br />
         Trinidad & Tobago
       </address>
-      <p className="copyright">All prices are in Trinidad and Tobago dollars (TTD) and include VAT.<br />© {year} {business.name}. All rights reserved.</p>
+      <p className="copyright">All prices are in Trinidad and Tobago dollars (TTD).<br />© {year} {business.name}. All rights reserved.</p>
     </footer>
   );
 }

@@ -118,7 +118,7 @@ export async function LumberMediaSections() {
             <ul aria-label="Mouldings and dressed lumber options">
               {mouldings.examples.map((item) => <li key={item}>{item}</li>)}
             </ul>
-            <p>{mouldings.specs}</p>{mouldings.price != null && <p>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(mouldings.price)} {mouldings.price_unit}. VAT included.</p>}
+            <p>{mouldings.specs}</p>{mouldings.price != null && <p>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(mouldings.price)} {mouldings.price_unit}</p>}
           </div>
         </div>
       </section>)}
@@ -131,7 +131,7 @@ export async function LumberMediaSections() {
             <p>
               {pallets.description}
             </p>
-            {pallets.specs && <p>{pallets.specs}</p>}{pallets.price != null && <p>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(pallets.price)} {pallets.price_unit}. VAT included.</p>}
+            {pallets.specs && <p>{pallets.specs}</p>}{pallets.price != null && <p>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(pallets.price)} {pallets.price_unit}</p>}
             <Link className="text-link contextual-enquiry" href={`/quote?product=${encodeURIComponent(pallets.title)}`}>
               Get Pallet Pricing <ArrowUpRight size={18} aria-hidden="true" />
             </Link>

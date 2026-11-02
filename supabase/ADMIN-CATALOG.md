@@ -10,7 +10,7 @@ Open /admin and sign in with an approved admin account.
 - Archive / hide removes an unavailable item from the public catalogue without deleting its content or photo.
 - Select Status > Archived to find hidden items. Edit them or click Publish to show them again.
 - Saving Published in the editor also restores an archived item.
-- Prices are optional and shown in TTD inclusive of VAT. Service enquiry links retain the selected service.
+- Prices are optional and shown in TTD. Service enquiry links retain the selected service.
 
 Changes refresh the website after saving; an already open visitor tab may need reloading. If a refresh fails, the admin status explains the delay and the catalogue refreshes within about a minute.
 

@@ -1,3 +1,4 @@
+import { business } from "@/lib/business";
 import { pageMetadata } from "@/lib/metadata";
 import { Hero } from "@/components/Hero";
 import { HomeLumberStory } from "@/components/HomeLumberStory";
@@ -7,7 +8,7 @@ import { HomeFAQ } from "@/components/HomeFAQ";
 import { ExtraCatalog } from "@/components/ExtraCatalog";
 
 export const metadata = {
-  ...pageMetadata("Lumber, Materials & Site Services", "Jagmohan Sawmill supplies lumber, materials and site services in Trinidad & Tobago, including mouldings, sand, concrete sleepers, sawmilling and haulage.", "/"),
+  ...pageMetadata("Lumber, Materials & Site Services", business.description, "/"),
   title: "Jagmohan Sawmill | Lumber, Materials & Site Services",
 };
 

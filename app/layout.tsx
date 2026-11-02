@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title:
     `${business.name} | Lumber, Sawmill & Site Services`,
   description:
-    "A professional Trinidad & Tobago supplier for lumber, timber, sawmill services, steel, hardware, tools, haulage, tree cutting, tree removal and land clearing.",
+    business.description,
   robots: {
     index: true,
     follow: true,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title:
       "Lumber, Steel, Haulage & Tree Services in Trinidad & Tobago",
     description:
-      "Reliable materials, sawmill capabilities, haulage and site services for contractors, property owners and industrial clients across Trinidad & Tobago.",
+      business.description,
     siteName: business.name,
     ...(siteUrl ? { images: [{ url: new URL("/images/og-jagmohan-yard.jpg", siteUrl).href, width: 1200, height: 630, alt: `${business.name} timber yard` }] } : {}),
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title:
       "Lumber, Sawmill, Steel, Haulage & Tree Services",
     description:
-      "Construction materials and field services for Trinidad & Tobago.",
+      business.description,
     ...(siteUrl ? { images: [new URL("/images/og-jagmohan-yard.jpg", siteUrl).href] } : {}),
   },
 };
@@ -44,7 +44,7 @@ const structuredData = {
   name: business.name,
   alternateName: business.alternateName,
   description:
-    "Jagmohan Sawmill in Penal supplies lumber, mouldings, white plastering sand, tools and concrete sleepers, with sawmill, trailer haulage and site services in Trinidad & Tobago.",
+    business.description,
   areaServed: "Trinidad and Tobago",
   email: business.email,
   telephone: business.telephone,
