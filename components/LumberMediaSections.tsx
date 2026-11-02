@@ -116,7 +116,7 @@ export async function LumberMediaSections() {
           <PhotoGallery images={[{ ...mouldingImages[0], src: mouldings.image_src, alt: mouldings.image_alt, position: mouldings.image_position }, ...mouldingImages.slice(1)]} className="mouldings-gallery" sizes="(max-width: 680px) 100vw, (max-width: 1240px) 50vw, 620px" />
           <div className="mouldings-details">
             <ul aria-label="Mouldings and dressed lumber options">
-              {mouldings.examples.map((item) => <li key={item}>{item}</li>)}
+              {mouldings.examples.map((item, index) => <li key={`${index}:${item}`}>{item}</li>)}
             </ul>
             <p>{mouldings.specs}</p>{mouldings.price != null && <p>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(mouldings.price)} {mouldings.price_unit}</p>}
           </div>

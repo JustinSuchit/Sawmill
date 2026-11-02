@@ -29,7 +29,7 @@ export function CategoryCard({ item, variant = "default", priority = false }: Ca
         {item.price != null && <p className="category-specs"><strong>{new Intl.NumberFormat("en-TT", { style: "currency", currency: "TTD", currencyDisplay: "code" }).format(item.price)}</strong>{item.priceUnit ? ` ${item.priceUnit}` : ""}</p>}
         {item.examples && item.examples.length > 0 && (
           <ul className="compact-list" aria-label={`${item.title} examples`}>
-            {item.examples.map((example) => <li key={example}>{example}</li>)}
+            {item.examples.map((example, index) => <li key={`${index}:${example}`}>{example}</li>)}
           </ul>
         )}
         {item.specs && <p className="category-specs">{item.specs}</p>}
