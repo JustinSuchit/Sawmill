@@ -38,6 +38,7 @@ const contacts = [
     name: "Anand",
     phone: "337-7402",
     telephone: "+18683377402",
+    email: "jjagmohan_2004@yahoo.com",
   },
 ];
 
