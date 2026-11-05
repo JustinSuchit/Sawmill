@@ -6,7 +6,6 @@ import { LumberNavigation } from "@/components/LumberNavigation";
 import { PageHeader } from "@/components/PageHeader";
 import { QuoteCTA } from "@/components/QuoteCTA";
 import { SectionHeading } from "@/components/SectionHeading";
-import { lumberImage } from "@/lib/site-data";
 
 export const metadata = pageMetadata("Lumber & Timber", "Lumber, timber, mouldings and dressed lumber for construction and woodworking.", "/lumber");
 
@@ -18,7 +17,8 @@ export default async function LumberPage() {
         eyebrow="Lumber & Timber"
         title="Quality Lumber. Ready for the Job."
         copy="From structural applications to general construction, we supply lumber and timber products for a wide range of projects."
-        image={lumberImage}
+        image="/images/lumber/delivery/southern-pine-enhanced.webp"
+        imagePosition="85% 0%"
         tone="timber"
       />
       <LumberNavigation availableIds={products.map(item => item.id)} />
