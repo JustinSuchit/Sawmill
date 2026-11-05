@@ -6,8 +6,8 @@ import { SiteImage } from "./SiteImage";
 import { PhotoGallery } from "./PhotoGallery";
 
 const processedLumber = {
-  src: "/images/lumber/export/export-lumber-bundles.jpg",
-  alt: "Processed timber bundled and stacked in the workshop",
+  src: "/images/lumber/delivery/southern pine.jpeg",
+  alt: "Bundles of Southern Pine lumber loaded on a flatbed delivery truck",
 };
 
 const palletImages = [
