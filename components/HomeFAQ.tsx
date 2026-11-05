@@ -11,7 +11,7 @@ const questions = [
   },
   {
     question: "What are your opening hours?",
-    answer: "The business is open Monday to Saturday from 8:00am to 4:00pm and closed on Sundays. Visit the contact page for the address, map and staff contact details.",
+    answer: "The business is open Monday to Friday from 7:00am to 4:00pm, Saturday from 7:00am to 2:00pm, and closed on Sundays. Visit the contact page for the address, map and staff contact details.",
     href: "/contact#contact",
     link: "Contact the team",
   },

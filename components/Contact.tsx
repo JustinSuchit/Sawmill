@@ -157,7 +157,7 @@ export function Contact() {
 
             <div>
               <dt>Business Hours</dt>
-              <dd>Monday–Saturday: 8:00am–4:00pm<br />Sunday: Closed</dd>
+              <dd>Monday–Friday: 7:00am–4:00pm<br />Saturday: 7:00am–2:00pm<br />Sunday: Closed</dd>
             </div>
           </dl>
 

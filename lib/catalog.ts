@@ -19,5 +19,9 @@ export const getCatalog = cache(async (): Promise<CatalogProduct[]> => {
 });
 
 export async function getPageProducts(page: CatalogPage) {
-  return (await getCatalog()).filter(item => item.page === page);
+  const products = (await getCatalog()).filter(item => item.page === page);
+  if (page !== "services") return products;
+
+  const serviceOrder = ["sawmill-services", "haulage", "tree-removal", "trailer-haulage", "white-plastering-sand"];
+  return products.sort((a, b) => serviceOrder.indexOf(a.id) - serviceOrder.indexOf(b.id));
 }

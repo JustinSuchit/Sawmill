@@ -378,13 +378,20 @@ export const steelCategories: CategoryCard[] = [
 
 export const serviceDetails: ServiceDetail[] = [
   {
-    eyebrow: "White Plastering Sand",
-    title: "White plastering sand for your next project.",
-    description: "We supply white plastering sand for plastering work. Tell us the quantity you need and your project location for current pricing and availability.",
+    eyebrow: "Sawmill Services",
+    title: "Bandsaw resharpening and blade setting.",
+    description:
+      "Bandsaw resharpening and blade setting services for qualifying blades.",
     href: "/quote",
-    cta: "Enquire About Sand",
-    ...quarryImages[0],
-    items: ["White plastering sand supply", "Pricing and availability on enquiry", "Share your quantity and location"],
+    cta: "Discuss Sawmill Requirements",
+    src: sawmillImage,
+    alt: "Wood-Mizer sawmill processing timber",
+    items: [
+      "Bandsaw resharpening",
+      "Bandsaw blade setting",
+      "7° blades",
+      "Blades up to 2 inches",
+    ],
   },
   {
     eyebrow: "Haulage & Delivery",
@@ -405,16 +412,6 @@ export const serviceDetails: ServiceDetail[] = [
     ],
   },
   {
-    eyebrow: "Trailer Haulage",
-    title: "Trailer haulage for every industry.",
-    description: "Trailer haulage for businesses across every industry, with Low Boy, Step Deck and Goose Neck trailers available. Tell us about your load, collection point and destination so we can discuss the right trailer for your requirements.",
-    href: "/quote",
-    cta: "Enquire About Trailer Haulage",
-    src: "/images/tools/trailer 1.jpg",
-    alt: "Red haulage trailer carrying bundled timber on the road",
-    items: ["Low Boy", "Step Deck", "Goose Neck"],
-  },
-  {
     eyebrow: "Tree Removal",
     title: "Tree cutting and removal for property-clearing requirements.",
     description:
@@ -433,20 +430,23 @@ export const serviceDetails: ServiceDetail[] = [
     ],
   },
   {
-    eyebrow: "Sawmill Services",
-    title: "Bandsaw resharpening and blade setting.",
-    description:
-      "Bandsaw resharpening and blade setting services for qualifying blades.",
+    eyebrow: "Trailer Haulage",
+    title: "Trailer haulage for every industry.",
+    description: "Trailer haulage for businesses across every industry, with Low Boy, Step Deck and Goose Neck trailers available. Tell us about your load, collection point and destination so we can discuss the right trailer for your requirements.",
     href: "/quote",
-    cta: "Discuss Sawmill Requirements",
-    src: sawmillImage,
-    alt: "Wood-Mizer sawmill processing timber",
-    items: [
-      "Bandsaw resharpening",
-      "Bandsaw blade setting",
-      "7° blades",
-      "Blades up to 2 inches",
-    ],
+    cta: "Enquire About Trailer Haulage",
+    src: "/images/tools/trailer 1.jpg",
+    alt: "Red haulage trailer carrying bundled timber on the road",
+    items: ["Low Boy", "Step Deck", "Goose Neck"],
+  },
+  {
+    eyebrow: "White Plastering Sand",
+    title: "White plastering sand for your next project.",
+    description: "We supply white plastering sand for plastering work. Tell us the quantity you need and your project location for current pricing and availability.",
+    href: "/quote",
+    cta: "Enquire About Sand",
+    ...quarryImages[0],
+    items: ["White plastering sand supply", "Pricing and availability on enquiry", "Share your quantity and location"],
   },
 ];
 
