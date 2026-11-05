@@ -71,6 +71,16 @@ export const quarryImages: ImageItem[] = [
 
 export const homeCapabilities: CategoryCard[] = [
   {
+    label: "Lumber",
+    title: "Lumber and timber products.",
+    description:
+      "A range of lumber and timber products for construction and general applications.",
+    href: "/lumber",
+    cta: "Explore Lumber",
+    src: lumberImage,
+    alt: "Stacks of processed lumber",
+  },
+  {
     label: "Tools",
     title: "Professional tools and hardware.",
     description:
@@ -80,16 +90,6 @@ export const homeCapabilities: CategoryCard[] = [
     src: toolImage,
     thumbnailSrc: "/images/tools/cn70-pneumatic-coil-nailer-thumbnail.webp",
     alt: "Hardware tools arranged for construction work",
-  },
-  {
-    label: "Lumber",
-    title: "Lumber and timber products.",
-    description:
-      "A range of lumber and timber products for construction and general applications.",
-    href: "/lumber",
-    cta: "Explore Lumber",
-    src: lumberImage,
-    alt: "Stacks of processed lumber",
   },
   {
     label: "Concrete Sleepers",

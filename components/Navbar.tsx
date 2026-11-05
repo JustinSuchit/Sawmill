@@ -9,8 +9,8 @@ import { business } from "@/lib/business";
 
 const navItems = [
   ["/", "Home"],
-  ["/products", "Tools"],
   ["/lumber", "Lumber"],
+  ["/products", "Tools"],
   ["/steel", "Sleepers"],
   ["/services", "Services"],
   ["/contact", "Contact"],
